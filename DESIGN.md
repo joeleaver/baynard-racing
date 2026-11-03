@@ -108,10 +108,18 @@ Farm-themed, readable at a glance:
 - **Couch**: split screen for 2–4 players; online and couch players can mix.
 - **Battle** (later): arenas built into the world.
 
-## Look and sound (proposal)
+## Look and sound
 
-- **Look:** stylised, chunky, toy-like. Soft, clay-like shapes, bright saturated colours, warm light.
-  Readable silhouettes at kart speed. Not realistic.
+- **Look (decided 2026-11-03): claymation.** Everything looks hand-modelled in plasticine: soft rounded
+  shapes, matte surfaces with a light, soft clay texture (no thumbprints), chunky simplified forms, big heads
+  on small bodies. Bright saturated colours, warm golden late-afternoon light, soft shadows, like a miniature
+  stop-motion set. Readable silhouettes at kart speed. Not realistic. Reference:
+  [`art/concepts/style-claymation-hen.png`](art/concepts/style-claymation-hen.png). (Considered and passed
+  over: a glossy vinyl-toy look and a felt-and-wood toy diorama.)
+- **Roster concepts** in that style, one kart each, all farm junk: Hen (wooden crate), Pig (bathtub), Goat
+  (tin cans and a chewed road sign), Cow (milk-churn engine, cowbell), Sheep (wheelbarrow), Goose (rowing
+  boat), Horse (red racer with a tractor engine, number 1), Barn Cat (feed scoop with a watering-can tank). In
+  `art/concepts/racer-*.png`. Each animal must stay clearly our own: no echoes of well-known characters.
 - **Characters** are sculpted in hifipushie (SDF clay sculpting), rigged to the standard humanoid skeleton
   where they can be, with ARKit-named face shapes for expressions.
 - **Props and scenery** come from oxidegen (concept image → mesh) and are cleaned up before use.

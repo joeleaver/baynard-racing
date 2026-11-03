@@ -44,21 +44,23 @@ One county, **Baynard County**, made of regions that flow into each other:
 - **Day and night, and weather**: rain makes roads slippery; mud slows you down.
 - Tracks are built in Playweft's level editor from world shapes, not imported from other tools.
 
-## The racers (proposal)
+## The racers
 
-Starting roster, about eight, with more to unlock. Each is a sculpted, rigged character with facial
-expressions.
+Starting roster of eight, with more to unlock. Each is a sculpted, rigged character with facial
+expressions. Names decided 2026-11-03.
 
-| Animal | Personality | Weight class |
-|---|---|---|
-| **Hen** | anxious perfectionist, lays eggs when nervous | light |
-| **Pig** | cheerful, loves mud | medium |
-| **Goat** | chaotic, eats things | medium |
-| **Cow** | calm and unstoppable | heavy |
-| **Sheep** | fluffy, unbothered | light |
-| **Goose** | menace | medium |
-| **Horse** (Bayard) | proud champion, the rival | heavy |
-| **Barn Cat** | smug, precise | light |
+| Name | Animal | Personality | Kart | Weight class |
+|---|---|---|---|---|
+| **Hettie Cluckworth** | Hen | anxious perfectionist, lays eggs when nervous | wooden crate | light |
+| **Puddles** | Pig | cheerful, loves mud | cast-iron bathtub | medium |
+| **Scraps** | Goat | chaotic, eats things | tin cans and a chewed road sign | medium |
+| **Mabel** | Cow | calm and unstoppable | milk-churn engine, cowbell | heavy |
+| **Duvet** | Sheep | fluffy, unbothered, always half asleep | three-wheeled wheelbarrow | light |
+| **The Major** | Goose | menace | rowing boat on wheels | medium |
+| **Maximillian Gallop** ("Max") | Horse | proud champion, the rival | red racer with a tractor engine, number 1 | heavy |
+| **Marmalade** | Barn Cat | smug, precise | feed scoop with a watering-can tank | light |
+
+Every racer stands upright on two legs with two arms (the Sheep and the Horse included).
 
 Later: Duck, Donkey, Sheepdog, Rooster, Rabbit, Turkey.
 
@@ -120,11 +122,18 @@ Farm-themed, readable at a glance:
   (tin cans and a chewed road sign), Cow (milk-churn engine, cowbell), Sheep (wheelbarrow), Goose (rowing
   boat), Horse (red racer with a tractor engine, number 1), Barn Cat (feed scoop with a watering-can tank). In
   `art/concepts/racer-*.png`. Each animal must stay clearly our own: no echoes of well-known characters.
+- **Reference sheets** for modelling: every racer and every kart has a standalone concept and a
+  front / side / back turnaround in `art/racers/<name>/` and `art/karts/<name>/`. World concepts (ten scenes
+  across the regions) and isolated prop concepts are in `art/world/concepts/` and `art/world/props/`.
 - **Characters** are sculpted in hifipushie (SDF clay sculpting), rigged to the standard humanoid skeleton
   where they can be, with ARKit-named face shapes for expressions.
 - **Props and scenery** come from oxidegen (concept image → mesh) and are cleaned up before use.
 - **Audio:** every engine is a live sound graph that follows revs and load; animal voices for hits,
   overtakes and wins; music that follows the race (a lap-three surge, the final-lap key change).
+- **Voices:** each racer has a distinct voice cast in oxidegen with Breeze, cloned from a minute-long
+  reference of neutral lines, then performed with Fish Audio Drama 3 for the race callouts. Every line lives
+  in [`audio/dialogue/racers.json`](audio/dialogue/racers.json): the reference lines, the callouts by race
+  moment, and the performed versions marked up with the stressed words.
 
 ## What this shows off in Playweft
 

@@ -1,0 +1,1171 @@
+{
+ "_about": "Dialogue for each racer. reference: calm, neutral lines read once to build the voice's long reference (no shouting, whispers or vocal events). callouts: race lines by moment, performed later. Audition = the casting line. performed: the same callouts marked up for Drama 3 (<emphasis> on the stressed words, [cues] where they happen), with a voice-actor direction per moment.",
+ "hettie": {
+  "name": "Hettie Cluckworth",
+  "animal": "Hen",
+  "brief": "anxious perfectionist hen: bright, quick, slightly high middle-aged woman's voice, fussy and breathless, worries out loud",
+  "audition": "Oh, oh no, the tyres aren't even warm yet! Right. Deep breath. Mirrors, seatbelt, eggs secured. I can do this.",
+  "reference": [
+   "Good morning. I've polished the crate twice already, just to be on the safe side.",
+   "I like to walk the whole track before a race. You never know where a pothole might be hiding.",
+   "My grandmother raced on these roads, you know. She never once took a corner too fast.",
+   "I keep a little notebook of every bend in Baynard County. It's mostly underlined.",
+   "The orchard is lovely this time of year, though the apples do make the road terribly sticky.",
+   "I've packed a spare wheel, a spare seat cushion and three spare eggs. Just in case.",
+   "Puddles is very sweet, but I do wish he'd wipe his trotters before he sits down.",
+   "If everyone simply kept to the left, I think racing would be a great deal calmer.",
+   "I timed my practice laps this morning. The fourth one was the best, by a tenth of a second.",
+   "The crate is made of good honest pine. It creaks a little, but it's never let me down.",
+   "After the race I like a cup of tea and a sit-down somewhere quiet, away from the Major.",
+   "Right then. Checklist done, nerves mostly settled. Let's see how we get on."
+  ],
+  "callouts": {
+   "race_start": [
+    "Oh goodness, oh goodness, here we go!",
+    "Mirrors, wheel, go! Go, Hettie!",
+    "Please don't stall, please don't stall."
+   ],
+   "overtake": [
+    "Excuse me! Sorry! Coming through!",
+    "Oh! I passed someone! Did you see that?",
+    "Pardon me, terribly sorry!"
+   ],
+   "overtaken": [
+    "No, no, no, wait for me!",
+    "That was very rude!",
+    "Oh, they're so close, I can't look."
+   ],
+   "hit": [
+    "Bwak! My crate!",
+    "Oh, my feathers!",
+    "Who threw that? Honestly!"
+   ],
+   "item_use": [
+    "Sorry about this!",
+    "Egg incoming, mind your heads!",
+    "I'm ever so sorry, but it's a race."
+   ],
+   "drift_boost": [
+    "Steady, steady... now!",
+    "Oh! That worked!",
+    "Just like I practised!"
+   ],
+   "last_lap": [
+    "Last lap, last lap, don't panic!",
+    "One more go round. Breathe, Hettie."
+   ],
+   "win": [
+    "I won? I actually won! Somebody write this down!",
+    "First place! Exactly as planned. Mostly."
+   ],
+   "lose": [
+    "I'll do better next time. I've made a note.",
+    "Oh dear. Back to the notebook."
+   ],
+   "taunt": [
+    "I've been practising, you know!",
+    "Indicate when you pass, please!"
+   ]
+  },
+  "performed": {
+   "race_start": {
+    "direction": "a fussy, anxious hen in an animated kart-racing game, breathless and fretful, at the start lights",
+    "lines": [
+     "Oh goodness, oh <emphasis>goodness</emphasis>, here we go! [shaky breath]",
+     "Mirrors, wheel, <emphasis>go</emphasis>! Go, <emphasis>Hettie</emphasis>!",
+     "[shaky breath] Please don't <emphasis>stall</emphasis>, please don't <emphasis>stall</emphasis>."
+    ]
+   },
+   "overtake": {
+    "direction": "a fussy, anxious hen in an animated kart-racing game, breathless and fretful, passing a rival",
+    "lines": [
+     "<emphasis>Excuse</emphasis> me! <emphasis>Sorry</emphasis>! Coming through!",
+     "Oh! I <emphasis>passed</emphasis> someone! Did you <emphasis>see</emphasis> that?",
+     "Pardon me, <emphasis>terribly</emphasis> sorry!"
+    ]
+   },
+   "overtaken": {
+    "direction": "a fussy, anxious hen in an animated kart-racing game, breathless and fretful, being passed",
+    "lines": [
+     "No, no, <emphasis>no</emphasis>, wait for <emphasis>me</emphasis>!",
+     "That was <emphasis>very</emphasis> rude!",
+     "Oh, they're <emphasis>so</emphasis> close, I can't <emphasis>look</emphasis>."
+    ]
+   },
+   "hit": {
+    "direction": "a fussy, anxious hen in an animated kart-racing game, breathless and fretful, just hit by an item",
+    "lines": [
+     "[gasp] Bwak! My <emphasis>crate</emphasis>!",
+     "Oh, my <emphasis>feathers</emphasis>!",
+     "Who <emphasis>threw</emphasis> that? <emphasis>Honestly</emphasis>!"
+    ]
+   },
+   "item_use": {
+    "direction": "a fussy, anxious hen in an animated kart-racing game, breathless and fretful, throwing an item",
+    "lines": [
+     "<emphasis>Sorry</emphasis> about this!",
+     "Egg <emphasis>incoming</emphasis>, mind your <emphasis>heads</emphasis>!",
+     "I'm <emphasis>ever</emphasis> so sorry, but it's a <emphasis>race</emphasis>."
+    ]
+   },
+   "drift_boost": {
+    "direction": "a fussy, anxious hen in an animated kart-racing game, breathless and fretful, firing a drift boost",
+    "lines": [
+     "Steady, steady... <emphasis>now</emphasis>!",
+     "Oh! That <emphasis>worked</emphasis>!",
+     "Just like I <emphasis>practised</emphasis>!"
+    ]
+   },
+   "last_lap": {
+    "direction": "a fussy, anxious hen in an animated kart-racing game, breathless and fretful, on the final lap",
+    "lines": [
+     "<emphasis>Last</emphasis> lap, last lap, don't <emphasis>panic</emphasis>!",
+     "[shaky breath] One more go round. <emphasis>Breathe</emphasis>, Hettie."
+    ]
+   },
+   "win": {
+    "direction": "a fussy, anxious hen in an animated kart-racing game, breathless and fretful, crossing the line first",
+    "lines": [
+     "I <emphasis>won</emphasis>? I <emphasis>actually</emphasis> won! Somebody <emphasis>write this down</emphasis>!",
+     "<emphasis>First</emphasis> place! <emphasis>Exactly</emphasis> as planned. [small laugh] <emphasis>Mostly</emphasis>."
+    ]
+   },
+   "lose": {
+    "direction": "a fussy, anxious hen in an animated kart-racing game, breathless and fretful, after losing",
+    "lines": [
+     "[sigh] I'll do <emphasis>better</emphasis> next time. I've made a <emphasis>note</emphasis>.",
+     "Oh <emphasis>dear</emphasis>. Back to the <emphasis>notebook</emphasis>."
+    ]
+   },
+   "taunt": {
+    "direction": "a fussy, anxious hen in an animated kart-racing game, breathless and fretful, taunting a rival",
+    "lines": [
+     "I've been <emphasis>practising</emphasis>, you know!",
+     "<emphasis>Indicate</emphasis> when you pass, <emphasis>please</emphasis>!"
+    ]
+   }
+  }
+ },
+ "puddles": {
+  "name": "Puddles",
+  "animal": "Pig",
+  "brief": "cheerful, happy-go-lucky pig: warm, round, chuckly young man's voice, big grin you can hear, loves a mess",
+  "audition": "Ha! Mud on the track? Best day ever! Hold onto your hats, everyone, I'm going straight through the middle!",
+  "reference": [
+   "Morning, everyone! Lovely day for it. Bit of rain last night, so the ruts should be nice and soft.",
+   "I found this bathtub behind the old cottage. Put some wheels on it, and here we are.",
+   "People ask why I don't wash it. I tell them the mud's part of the paint job.",
+   "My favourite bit of the county is the duck pond. Great splash if you take the bend wide.",
+   "I don't really mind if I win. I just like going fast and getting messy.",
+   "Hettie gave me a little towel for the seat. Very thoughtful. I used it as a flag.",
+   "Mabel makes the best apple crumble on the farm. I always save room for seconds.",
+   "If you ever get stuck in the mud, just give me a shout. I know all the best ways out.",
+   "The tub's a bit heavy, but once it gets rolling, nothing stops it.",
+   "I like the cornfield track. You can't see a thing, so you just laugh and keep going.",
+   "Scraps tried to eat my plug chain last week. Fair enough, really. It was a nice chain.",
+   "Right then. Let's go and have some fun."
+  ],
+  "callouts": {
+   "race_start": [
+    "Wahey! Here we go!",
+    "Let's get muddy!",
+    "Hold on to your tails!"
+   ],
+   "overtake": [
+    "Beep beep! Coming through!",
+    "See you later!",
+    "Mind the splash!"
+   ],
+   "overtaken": [
+    "Ooh, nice one!",
+    "Go on then, I'll catch you!",
+    "Hey, save some road for me!"
+   ],
+   "hit": [
+    "Oof! That tickled!",
+    "Whoa! Bit of a wobble!",
+    "Oink! Good shot!"
+   ],
+   "item_use": [
+    "Mud pie, special delivery!",
+    "Here, have a present!",
+    "Catch!"
+   ],
+   "drift_boost": [
+    "Wheee!",
+    "Sliiiide!",
+    "Look at her go!"
+   ],
+   "last_lap": [
+    "Last lap! Let's make it a messy one!",
+    "Final lap, full tub!"
+   ],
+   "win": [
+    "I won! Mud baths for everyone!",
+    "Best. Day. Ever!"
+   ],
+   "lose": [
+    "Ah, who cares, that was brilliant!",
+    "Again! Let's go again!"
+   ],
+   "taunt": [
+    "Come on, get a bit dirty!",
+    "Too clean, that's your problem!"
+   ]
+  },
+  "performed": {
+   "race_start": {
+    "direction": "a cheerful pig in an animated kart-racing game, laughing, warm and delighted, at the start lights",
+    "lines": [
+     "<emphasis>Wahey</emphasis>! Here we go!",
+     "Let's get <emphasis>muddy</emphasis>!",
+     "Hold on to your <emphasis>tails</emphasis>!"
+    ]
+   },
+   "overtake": {
+    "direction": "a cheerful pig in an animated kart-racing game, laughing, warm and delighted, passing a rival",
+    "lines": [
+     "Beep <emphasis>beep</emphasis>! Coming through!",
+     "[laugh] See you <emphasis>later</emphasis>!",
+     "Mind the <emphasis>splash</emphasis>!"
+    ]
+   },
+   "overtaken": {
+    "direction": "a cheerful pig in an animated kart-racing game, laughing, warm and delighted, being passed",
+    "lines": [
+     "Ooh, <emphasis>nice</emphasis> one!",
+     "Go on then, I'll <emphasis>catch</emphasis> you!",
+     "Hey, save some road for <emphasis>me</emphasis>!"
+    ]
+   },
+   "hit": {
+    "direction": "a cheerful pig in an animated kart-racing game, laughing, warm and delighted, just hit by an item",
+    "lines": [
+     "<emphasis>Oof</emphasis>! [laugh] That <emphasis>tickled</emphasis>!",
+     "Whoa! Bit of a <emphasis>wobble</emphasis>!",
+     "Oink! <emphasis>Good</emphasis> shot!"
+    ]
+   },
+   "item_use": {
+    "direction": "a cheerful pig in an animated kart-racing game, laughing, warm and delighted, throwing an item",
+    "lines": [
+     "Mud pie, <emphasis>special</emphasis> delivery!",
+     "Here, have a <emphasis>present</emphasis>!",
+     "<emphasis>Catch</emphasis>!"
+    ]
+   },
+   "drift_boost": {
+    "direction": "a cheerful pig in an animated kart-racing game, laughing, warm and delighted, firing a drift boost",
+    "lines": [
+     "<emphasis>Wheee</emphasis>!",
+     "<emphasis>Sliiiide</emphasis>!",
+     "Look at her <emphasis>go</emphasis>!"
+    ]
+   },
+   "last_lap": {
+    "direction": "a cheerful pig in an animated kart-racing game, laughing, warm and delighted, on the final lap",
+    "lines": [
+     "<emphasis>Last</emphasis> lap! Let's make it a <emphasis>messy</emphasis> one!",
+     "<emphasis>Final</emphasis> lap, <emphasis>full</emphasis> tub!"
+    ]
+   },
+   "win": {
+    "direction": "a cheerful pig in an animated kart-racing game, laughing, warm and delighted, crossing the line first",
+    "lines": [
+     "I <emphasis>won</emphasis>! Mud baths for <emphasis>everyone</emphasis>!",
+     "[laugh] <emphasis>Best</emphasis>. <emphasis>Day</emphasis>. <emphasis>Ever</emphasis>!"
+    ]
+   },
+   "lose": {
+    "direction": "a cheerful pig in an animated kart-racing game, laughing, warm and delighted, after losing",
+    "lines": [
+     "Ah, who <emphasis>cares</emphasis>, that was <emphasis>brilliant</emphasis>!",
+     "<emphasis>Again</emphasis>! Let's go <emphasis>again</emphasis>!"
+    ]
+   },
+   "taunt": {
+    "direction": "a cheerful pig in an animated kart-racing game, laughing, warm and delighted, taunting a rival",
+    "lines": [
+     "Come on, get a bit <emphasis>dirty</emphasis>!",
+     "Too <emphasis>clean</emphasis>, that's your problem!"
+    ]
+   }
+  }
+ },
+ "scraps": {
+  "name": "Scraps",
+  "animal": "Goat",
+  "brief": "chaotic goat: scratchy, wild, unpredictable voice of a young adult, jumps between whispering and shouting, slightly unhinged glee",
+  "audition": "Is that a road sign? I'm gonna eat it. Is that a tyre? I'm gonna eat that too. Corners are just suggestions!",
+  "reference": [
+   "Hello. I built this kart myself. Mostly out of things nobody was using. Yet.",
+   "That's a tin of beans, that's a tin of peaches, and that one I'm saving for later.",
+   "The road sign on the back means slow down. I think it's very funny.",
+   "I've eaten three fences, a wellington boot and most of a hymn book. The hymn book was best.",
+   "People say I don't follow the racing line. I say the racing line doesn't follow me.",
+   "The High Pasture is where I grew up. Lots of rocks. Lots of very surprised hikers.",
+   "My kart rattles when it goes fast. That means it's working.",
+   "I tried to eat Max's trophy once. It tasted of polish and disappointment.",
+   "Duvet is my best friend, because Duvet never notices when I nibble the wool.",
+   "Sometimes I take the shortcut through the barn. Sometimes I make a new one.",
+   "I keep a spare wheel in my mouth. You never know.",
+   "Right. Let's go and break something. Politely."
+  ],
+  "callouts": {
+   "race_start": [
+    "Chaos time!",
+    "Go go go go go!",
+    "Who wants to see something stupid?"
+   ],
+   "overtake": [
+    "Bleeeh! Bye!",
+    "Ha! Tasty!",
+    "Zoom! Gone!"
+   ],
+   "overtaken": [
+    "Hey! I was gonna eat that!",
+    "Come back here!",
+    "Rude! Delicious, but rude."
+   ],
+   "hit": [
+    "Baaah! My cans!",
+    "Ow! Can I eat that?",
+    "Whoa, that rattled my teeth!"
+   ],
+   "item_use": [
+    "Have some garbage!",
+    "Present! Don't eat it. I would.",
+    "Yoink! Yeet!"
+   ],
+   "drift_boost": [
+    "Sideways is the best ways!",
+    "Wheeeee!",
+    "Scrape scrape scrape!"
+   ],
+   "last_lap": [
+    "Last lap! Hide the fences!",
+    "One more! Then snacks!"
+   ],
+   "win": [
+    "I won! I'm eating the trophy!",
+    "First! Bleeeeh!"
+   ],
+   "lose": [
+    "Whatever. I ate a tyre on lap two.",
+    "Worth it."
+   ],
+   "taunt": [
+    "Your kart looks delicious.",
+    "Nice bumper. Can I have it?"
+   ]
+  },
+  "performed": {
+   "race_start": {
+    "direction": "a chaotic goat in an animated kart-racing game, manic, gleeful, unhinged, at the start lights",
+    "lines": [
+     "<emphasis>Chaos</emphasis> time!",
+     "Go go go go <emphasis>go</emphasis>!",
+     "Who wants to see something <emphasis>stupid</emphasis>?"
+    ]
+   },
+   "overtake": {
+    "direction": "a chaotic goat in an animated kart-racing game, manic, gleeful, unhinged, passing a rival",
+    "lines": [
+     "<emphasis>Bleeeh</emphasis>! Bye!",
+     "Ha! <emphasis>Tasty</emphasis>!",
+     "Zoom! <emphasis>Gone</emphasis>!"
+    ]
+   },
+   "overtaken": {
+    "direction": "a chaotic goat in an animated kart-racing game, manic, gleeful, unhinged, being passed",
+    "lines": [
+     "Hey! I was gonna <emphasis>eat</emphasis> that!",
+     "Come <emphasis>back</emphasis> here!",
+     "<emphasis>Rude</emphasis>! <whisper>Delicious, but rude.</whisper>"
+    ]
+   },
+   "hit": {
+    "direction": "a chaotic goat in an animated kart-racing game, manic, gleeful, unhinged, just hit by an item",
+    "lines": [
+     "Baaah! My <emphasis>cans</emphasis>!",
+     "Ow! Can I <emphasis>eat</emphasis> that?",
+     "Whoa, that rattled my <emphasis>teeth</emphasis>!"
+    ]
+   },
+   "item_use": {
+    "direction": "a chaotic goat in an animated kart-racing game, manic, gleeful, unhinged, throwing an item",
+    "lines": [
+     "Have some <emphasis>garbage</emphasis>!",
+     "<emphasis>Present</emphasis>! Don't eat it. <whisper>I would.</whisper>",
+     "<emphasis>Yoink</emphasis>! <emphasis>Yeet</emphasis>!"
+    ]
+   },
+   "drift_boost": {
+    "direction": "a chaotic goat in an animated kart-racing game, manic, gleeful, unhinged, firing a drift boost",
+    "lines": [
+     "<emphasis>Sideways</emphasis> is the <emphasis>best</emphasis> ways!",
+     "[laugh] Wheeeee!",
+     "Scrape scrape <emphasis>scrape</emphasis>!"
+    ]
+   },
+   "last_lap": {
+    "direction": "a chaotic goat in an animated kart-racing game, manic, gleeful, unhinged, on the final lap",
+    "lines": [
+     "<emphasis>Last</emphasis> lap! Hide the <emphasis>fences</emphasis>!",
+     "One more! Then <emphasis>snacks</emphasis>!"
+    ]
+   },
+   "win": {
+    "direction": "a chaotic goat in an animated kart-racing game, manic, gleeful, unhinged, crossing the line first",
+    "lines": [
+     "I <emphasis>won</emphasis>! I'm eating the <emphasis>trophy</emphasis>!",
+     "<emphasis>First</emphasis>! Bleeeeh!"
+    ]
+   },
+   "lose": {
+    "direction": "a chaotic goat in an animated kart-racing game, manic, gleeful, unhinged, after losing",
+    "lines": [
+     "<emphasis>Whatever</emphasis>. I ate a <emphasis>tyre</emphasis> on lap two.",
+     "[small laugh] Worth it."
+    ]
+   },
+   "taunt": {
+    "direction": "a chaotic goat in an animated kart-racing game, manic, gleeful, unhinged, taunting a rival",
+    "lines": [
+     "Your kart looks <emphasis>delicious</emphasis>.",
+     "Nice bumper. Can I <emphasis>have</emphasis> it?"
+    ]
+   }
+  }
+ },
+ "mabel": {
+  "name": "Mabel",
+  "animal": "Cow",
+  "brief": "calm, unstoppable cow: deep, slow, warm, unflappable older woman's alto, totally serene, a gentle hint of a West Country drawl",
+  "audition": "No need to rush, dears. I'll get there when I get there. And when I get there, I'll be first.",
+  "reference": [
+   "Afternoon, dears. Lovely light today. The grass is coming up nicely in the top field.",
+   "This engine was a milk churn, once. Now it hums along like an old friend.",
+   "I don't hurry. Hurrying is how you spill things.",
+   "The bell on the front is so the little ones know I'm coming. Most of them move.",
+   "I've lived on Home Farm my whole life. I know every stone in every lane.",
+   "Hettie worries too much. I tell her, the road will still be there tomorrow.",
+   "Max thinks he's the champion. He's a good lad, really. Just a bit full of himself.",
+   "A good race is like a good walk. Steady pace, and enjoy the view.",
+   "I like the coast road best. The sea air does wonders for the engine.",
+   "When things get bumpy, I just lean back and let the weight do the work.",
+   "After a race I like a long drink from the trough and a bit of a lie down.",
+   "Right then. Let's have a nice gentle drive, and see who's in front at the end."
+  ],
+  "callouts": {
+   "race_start": [
+    "Off we go, then.",
+    "Nice and steady.",
+    "Here we go, dears."
+   ],
+   "overtake": [
+    "Excuse me, love.",
+    "Mind yourself, coming past.",
+    "Pardon me, dear."
+   ],
+   "overtaken": [
+    "Off you go, then. I'll see you shortly.",
+    "No rush.",
+    "Enjoy it while it lasts, dear."
+   ],
+   "hit": [
+    "Oh. Well, that was uncalled for.",
+    "Mmm. Didn't feel a thing.",
+    "Now, now."
+   ],
+   "item_use": [
+    "There you are, dear.",
+    "Something for you.",
+    "Don't take it personally."
+   ],
+   "drift_boost": [
+    "And round we go.",
+    "Lovely.",
+    "There she goes."
+   ],
+   "last_lap": [
+    "Last lap. Steady now.",
+    "Nearly home, dears."
+   ],
+   "win": [
+    "Told you, dears. Steady wins.",
+    "Well, isn't that nice."
+   ],
+   "lose": [
+    "Never mind. Lovely drive, all the same.",
+    "There's always next time."
+   ],
+   "taunt": [
+    "You'll wear yourself out, rushing like that.",
+    "Slow down, dear. You'll miss the view."
+   ]
+  },
+  "performed": {
+   "race_start": {
+    "direction": "a calm old cow in an animated kart-racing game, slow, serene, warm West Country drawl, at the start lights",
+    "lines": [
+     "Off we go, <emphasis>then</emphasis>.",
+     "Nice and <emphasis>steady</emphasis>.",
+     "Here we go, <emphasis>dears</emphasis>."
+    ]
+   },
+   "overtake": {
+    "direction": "a calm old cow in an animated kart-racing game, slow, serene, warm West Country drawl, passing a rival",
+    "lines": [
+     "<emphasis>Excuse</emphasis> me, love.",
+     "Mind yourself, coming <emphasis>past</emphasis>.",
+     "<emphasis>Pardon</emphasis> me, dear."
+    ]
+   },
+   "overtaken": {
+    "direction": "a calm old cow in an animated kart-racing game, slow, serene, warm West Country drawl, being passed",
+    "lines": [
+     "Off you go, then. I'll see you <emphasis>shortly</emphasis>.",
+     "No <emphasis>rush</emphasis>.",
+     "Enjoy it while it <emphasis>lasts</emphasis>, dear."
+    ]
+   },
+   "hit": {
+    "direction": "a calm old cow in an animated kart-racing game, slow, serene, warm West Country drawl, just hit by an item",
+    "lines": [
+     "Oh. Well, <emphasis>that</emphasis> was uncalled for.",
+     "Mmm. Didn't feel a <emphasis>thing</emphasis>.",
+     "Now, <emphasis>now</emphasis>."
+    ]
+   },
+   "item_use": {
+    "direction": "a calm old cow in an animated kart-racing game, slow, serene, warm West Country drawl, throwing an item",
+    "lines": [
+     "There you <emphasis>are</emphasis>, dear.",
+     "Something for <emphasis>you</emphasis>.",
+     "Don't take it <emphasis>personally</emphasis>."
+    ]
+   },
+   "drift_boost": {
+    "direction": "a calm old cow in an animated kart-racing game, slow, serene, warm West Country drawl, firing a drift boost",
+    "lines": [
+     "And <emphasis>round</emphasis> we go.",
+     "<emphasis>Lovely</emphasis>.",
+     "There she <emphasis>goes</emphasis>."
+    ]
+   },
+   "last_lap": {
+    "direction": "a calm old cow in an animated kart-racing game, slow, serene, warm West Country drawl, on the final lap",
+    "lines": [
+     "<emphasis>Last</emphasis> lap. <emphasis>Steady</emphasis> now.",
+     "Nearly <emphasis>home</emphasis>, dears."
+    ]
+   },
+   "win": {
+    "direction": "a calm old cow in an animated kart-racing game, slow, serene, warm West Country drawl, crossing the line first",
+    "lines": [
+     "<emphasis>Told</emphasis> you, dears. <emphasis>Steady</emphasis> wins.",
+     "Well, isn't that <emphasis>nice</emphasis>."
+    ]
+   },
+   "lose": {
+    "direction": "a calm old cow in an animated kart-racing game, slow, serene, warm West Country drawl, after losing",
+    "lines": [
+     "Never mind. <emphasis>Lovely</emphasis> drive, all the same.",
+     "There's always <emphasis>next</emphasis> time."
+    ]
+   },
+   "taunt": {
+    "direction": "a calm old cow in an animated kart-racing game, slow, serene, warm West Country drawl, taunting a rival",
+    "lines": [
+     "You'll wear yourself <emphasis>out</emphasis>, rushing like that.",
+     "Slow <emphasis>down</emphasis>, dear. You'll miss the <emphasis>view</emphasis>."
+    ]
+   }
+  }
+ },
+ "duvet": {
+  "name": "Duvet",
+  "animal": "Sheep",
+  "brief": "fluffy, unbothered sheep: soft, sleepy, mellow young voice, half-yawning, nothing ever surprises them",
+  "audition": "Mm. Is it starting? Wake me up at the last lap. Actually, don't bother. I'll probably win anyway.",
+  "reference": [
+   "Hello. Sorry. I was having a little rest in the wheelbarrow.",
+   "It's a very comfortable wheelbarrow. Someone left it in the sun, and I've been here ever since.",
+   "People think I'm slow. I'm not slow. I'm just not in a hurry.",
+   "The wool keeps me warm, and it's a very good cushion if I fall out.",
+   "Scraps keeps nibbling my fleece. I don't mind. It saves on haircuts.",
+   "My favourite place is the High Pasture. Nice and quiet up there, until the goats arrive.",
+   "I don't really practise. I find it's better to just turn up and see what happens.",
+   "Marmalade says my driving is sloppy. Marmalade says a lot of things.",
+   "Sometimes I fall asleep on the straight bits. The wheelbarrow knows the way.",
+   "The fair at night is nice. All those lights. Very soothing.",
+   "After the race I'm going to have a nap. Before the race I might have a nap as well.",
+   "Right. I suppose we'd better start. Wake me if anything exciting happens."
+  ],
+  "callouts": {
+   "race_start": [
+    "Oh. Are we going? Okay.",
+    "Mm. Here we go, I suppose.",
+    "Right. Off we pootle."
+   ],
+   "overtake": [
+    "Oh. Sorry. Didn't see you there.",
+    "Excuse me. Just drifting by.",
+    "Mm. Passing."
+   ],
+   "overtaken": [
+    "Oh, okay. Bye.",
+    "That's fine. I'll catch up. Eventually.",
+    "Mm. Have fun."
+   ],
+   "hit": [
+    "Oof. That was a bit rude.",
+    "Mm. Bouncy.",
+    "Baa. Okay."
+   ],
+   "item_use": [
+    "Here you go.",
+    "This is for you, I think.",
+    "Oops. Did I throw that?"
+   ],
+   "drift_boost": [
+    "Whoa. That was fast.",
+    "Mm. Nice.",
+    "Oh, that felt good."
+   ],
+   "last_lap": [
+    "Last lap? Already? Okay.",
+    "One more. Then a nap."
+   ],
+   "win": [
+    "Oh. I won. That's nice. Can I sleep now?",
+    "Mm. Told you."
+   ],
+   "lose": [
+    "That's alright. Good nap, though.",
+    "Mm. Next time, maybe."
+   ],
+   "taunt": [
+    "You seem stressed.",
+    "Have you tried lying down?"
+   ]
+  },
+  "performed": {
+   "race_start": {
+    "direction": "a sleepy sheep in an animated kart-racing game, drowsy, deadpan, half-yawning, at the start lights",
+    "lines": [
+     "Oh. Are we <emphasis>going</emphasis>? Okay.",
+     "Mm. Here we go, I <emphasis>suppose</emphasis>.",
+     "Right. Off we <emphasis>pootle</emphasis>."
+    ]
+   },
+   "overtake": {
+    "direction": "a sleepy sheep in an animated kart-racing game, drowsy, deadpan, half-yawning, passing a rival",
+    "lines": [
+     "Oh. Sorry. Didn't <emphasis>see</emphasis> you there.",
+     "Excuse me. Just <emphasis>drifting</emphasis> by.",
+     "Mm. <emphasis>Passing</emphasis>."
+    ]
+   },
+   "overtaken": {
+    "direction": "a sleepy sheep in an animated kart-racing game, drowsy, deadpan, half-yawning, being passed",
+    "lines": [
+     "Oh, okay. <emphasis>Bye</emphasis>.",
+     "That's fine. I'll catch up. [pause] <emphasis>Eventually</emphasis>.",
+     "Mm. Have <emphasis>fun</emphasis>."
+    ]
+   },
+   "hit": {
+    "direction": "a sleepy sheep in an animated kart-racing game, drowsy, deadpan, half-yawning, just hit by an item",
+    "lines": [
+     "Oof. That was a bit <emphasis>rude</emphasis>.",
+     "Mm. <emphasis>Bouncy</emphasis>.",
+     "Baa. <emphasis>Okay</emphasis>."
+    ]
+   },
+   "item_use": {
+    "direction": "a sleepy sheep in an animated kart-racing game, drowsy, deadpan, half-yawning, throwing an item",
+    "lines": [
+     "Here you <emphasis>go</emphasis>.",
+     "This is for <emphasis>you</emphasis>, I think.",
+     "Oops. Did I <emphasis>throw</emphasis> that?"
+    ]
+   },
+   "drift_boost": {
+    "direction": "a sleepy sheep in an animated kart-racing game, drowsy, deadpan, half-yawning, firing a drift boost",
+    "lines": [
+     "Whoa. That was <emphasis>fast</emphasis>.",
+     "Mm. <emphasis>Nice</emphasis>.",
+     "Oh, that felt <emphasis>good</emphasis>."
+    ]
+   },
+   "last_lap": {
+    "direction": "a sleepy sheep in an animated kart-racing game, drowsy, deadpan, half-yawning, on the final lap",
+    "lines": [
+     "<emphasis>Last</emphasis> lap? <emphasis>Already</emphasis>? Okay.",
+     "One more. Then a <emphasis>nap</emphasis>."
+    ]
+   },
+   "win": {
+    "direction": "a sleepy sheep in an animated kart-racing game, drowsy, deadpan, half-yawning, crossing the line first",
+    "lines": [
+     "Oh. I <emphasis>won</emphasis>. That's nice. Can I <emphasis>sleep</emphasis> now?",
+     "Mm. <emphasis>Told</emphasis> you."
+    ]
+   },
+   "lose": {
+    "direction": "a sleepy sheep in an animated kart-racing game, drowsy, deadpan, half-yawning, after losing",
+    "lines": [
+     "That's alright. Good <emphasis>nap</emphasis>, though.",
+     "Mm. Next time, <emphasis>maybe</emphasis>."
+    ]
+   },
+   "taunt": {
+    "direction": "a sleepy sheep in an animated kart-racing game, drowsy, deadpan, half-yawning, taunting a rival",
+    "lines": [
+     "You seem <emphasis>stressed</emphasis>.",
+     "Have you tried <emphasis>lying down</emphasis>?"
+    ]
+   }
+  }
+ },
+ "the_major": {
+  "name": "The Major",
+  "animal": "Goose",
+  "brief": "menacing goose: harsh, raspy, nasal villain voice, gleefully mean, hissy consonants, honks for emphasis",
+  "audition": "Out of my way. Out of MY way. This is my road, my pond, my trophy. Honk if you disagree. Actually, don't. I'll honk.",
+  "reference": [
+   "Good afternoon. This is my pond. That is my road. You are standing on my grass.",
+   "I am known as the Major. Nobody gave me the rank. I simply took it.",
+   "My kart is a rowing boat with wheels. It floats, it rolls, and it frightens people.",
+   "I patrol the duck pond every morning at six. The ducks have learned to be elsewhere.",
+   "I have chased the postman, the vicar, and on one occasion a small tractor.",
+   "Maximillian Gallop thinks he is the champion of this county. He is mistaken.",
+   "Hettie is afraid of me. That is correct. That is how it should be.",
+   "I do not race for trophies. I race so that everyone else will lose.",
+   "The oars are not for rowing. The oars are for reaching across and making a point.",
+   "I enjoy the coast road. Plenty of gulls to shout at.",
+   "When I win, there will be a parade. Attendance will be compulsory.",
+   "Now then. Let us begin, and let us be quick about it."
+  ],
+  "callouts": {
+   "race_start": [
+    "Out of my way!",
+    "Move, peasants!",
+    "This road is mine!"
+   ],
+   "overtake": [
+    "Honk! Beneath me!",
+    "Pathetic!",
+    "Hisss! Out!"
+   ],
+   "overtaken": [
+    "How dare you!",
+    "You will regret that!",
+    "Come back and face me!"
+   ],
+   "hit": [
+    "Honk! Who did that? I will find you.",
+    "Insolence!",
+    "My boat! My beautiful boat!"
+   ],
+   "item_use": [
+    "Take that!",
+    "With my compliments. Hiss.",
+    "Honk honk!"
+   ],
+   "drift_boost": [
+    "Feel my wake!",
+    "Ha!",
+    "Onwards!"
+   ],
+   "last_lap": [
+    "Last lap. Now you will all suffer.",
+    "The end is near. For you."
+   ],
+   "win": [
+    "Of course. Kneel.",
+    "The pond is mine. The county is mine. Honk!"
+   ],
+   "lose": [
+    "This race was rigged.",
+    "I demand a rematch. Immediately."
+   ],
+   "taunt": [
+    "Honk.",
+    "Your driving offends me."
+   ]
+  },
+  "performed": {
+   "race_start": {
+    "direction": "a villainous goose in an animated kart-racing game, raspy, sneering, gleefully menacing, at the start lights",
+    "lines": [
+     "Out of <emphasis>my</emphasis> way!",
+     "<emphasis>Move</emphasis>, peasants!",
+     "This road is <emphasis>mine</emphasis>!"
+    ]
+   },
+   "overtake": {
+    "direction": "a villainous goose in an animated kart-racing game, raspy, sneering, gleefully menacing, passing a rival",
+    "lines": [
+     "Honk! <emphasis>Beneath</emphasis> me!",
+     "<emphasis>Pathetic</emphasis>!",
+     "Hisss! <emphasis>Out</emphasis>!"
+    ]
+   },
+   "overtaken": {
+    "direction": "a villainous goose in an animated kart-racing game, raspy, sneering, gleefully menacing, being passed",
+    "lines": [
+     "How <emphasis>dare</emphasis> you!",
+     "You will <emphasis>regret</emphasis> that!",
+     "Come <emphasis>back</emphasis> and face me!"
+    ]
+   },
+   "hit": {
+    "direction": "a villainous goose in an animated kart-racing game, raspy, sneering, gleefully menacing, just hit by an item",
+    "lines": [
+     "Honk! <emphasis>Who</emphasis> did that? I will <emphasis>find</emphasis> you.",
+     "<emphasis>Insolence</emphasis>!",
+     "My boat! My <emphasis>beautiful</emphasis> boat!"
+    ]
+   },
+   "item_use": {
+    "direction": "a villainous goose in an animated kart-racing game, raspy, sneering, gleefully menacing, throwing an item",
+    "lines": [
+     "Take <emphasis>that</emphasis>!",
+     "With my <emphasis>compliments</emphasis>. Hiss.",
+     "Honk <emphasis>honk</emphasis>!"
+    ]
+   },
+   "drift_boost": {
+    "direction": "a villainous goose in an animated kart-racing game, raspy, sneering, gleefully menacing, firing a drift boost",
+    "lines": [
+     "Feel my <emphasis>wake</emphasis>!",
+     "<emphasis>Ha</emphasis>!",
+     "<emphasis>Onwards</emphasis>!"
+    ]
+   },
+   "last_lap": {
+    "direction": "a villainous goose in an animated kart-racing game, raspy, sneering, gleefully menacing, on the final lap",
+    "lines": [
+     "<emphasis>Last</emphasis> lap. Now you will <emphasis>all</emphasis> suffer.",
+     "The end is near. For <emphasis>you</emphasis>."
+    ]
+   },
+   "win": {
+    "direction": "a villainous goose in an animated kart-racing game, raspy, sneering, gleefully menacing, crossing the line first",
+    "lines": [
+     "Of <emphasis>course</emphasis>. <emphasis>Kneel</emphasis>.",
+     "The pond is <emphasis>mine</emphasis>. The county is <emphasis>mine</emphasis>. <emphasis>Honk</emphasis>!"
+    ]
+   },
+   "lose": {
+    "direction": "a villainous goose in an animated kart-racing game, raspy, sneering, gleefully menacing, after losing",
+    "lines": [
+     "This race was <emphasis>rigged</emphasis>.",
+     "I <emphasis>demand</emphasis> a rematch. <emphasis>Immediately</emphasis>."
+    ]
+   },
+   "taunt": {
+    "direction": "a villainous goose in an animated kart-racing game, raspy, sneering, gleefully menacing, taunting a rival",
+    "lines": [
+     "<emphasis>Honk</emphasis>.",
+     "Your driving <emphasis>offends</emphasis> me."
+    ]
+   }
+  }
+ },
+ "max": {
+  "name": "Maximillian Gallop",
+  "animal": "Horse",
+  "brief": "Maximillian Gallop ('Max'), the proud champion horse and rival: rich, confident baritone of a grown man, posh and theatrical, every sentence a victory speech",
+  "audition": "Ah, the challengers. How delightful. Do try to keep up. The view from first place is simply magnificent.",
+  "reference": [
+   "Good day. Maximillian Gallop, four-time champion of Baynard County. Max, to my friends. I have a great many friends.",
+   "This rosette was awarded for excellence in racing. And grooming. And general excellence.",
+   "My kart has a tractor engine. Only the finest farm machinery for a champion.",
+   "I have won the Barnyard Cup four years running. I keep the trophies in the hay loft. All of them.",
+   "I train every morning on the orchard road. The apples fall, and I simply don't.",
+   "Mabel is a dear old thing. She thinks steady wins the race. Bless her.",
+   "The Major and I have an understanding. He shouts, and I win.",
+   "A true champion is gracious in victory. I've had a great deal of practice.",
+   "I always give the crowd a wave on the final straight. They deserve a good look.",
+   "The County Fair is my favourite race. The lights do flatter my mane.",
+   "Marmalade claims to be the fastest. Marmalade has clearly never seen me.",
+   "Well then. Shall we get this formality over with?"
+  ],
+  "callouts": {
+   "race_start": [
+    "Let the show begin!",
+    "Try to keep up, everyone!",
+    "And they're off! Well, I am."
+   ],
+   "overtake": [
+    "Pardon me, champion coming through.",
+    "Do enjoy the view of my tail.",
+    "Ta-ta!"
+   ],
+   "overtaken": [
+    "A temporary arrangement, I assure you.",
+    "Enjoy it while it lasts!",
+    "Most irregular!"
+   ],
+   "hit": [
+    "My mane! Do you know how long that took?",
+    "How uncouth!",
+    "Neigh! Unacceptable!"
+   ],
+   "item_use": [
+    "With the compliments of the champion.",
+    "A small gift.",
+    "Do excuse me."
+   ],
+   "drift_boost": [
+    "Magnificent!",
+    "Simply flawless.",
+    "And that, everyone, is technique."
+   ],
+   "last_lap": [
+    "Final lap. Time for the victory parade.",
+    "Last lap! Prepare the trophy!"
+   ],
+   "win": [
+    "Thank you, thank you. Yes, I know.",
+    "Champion once again! Was there ever any doubt?"
+   ],
+   "lose": [
+    "A fluke. A complete and total fluke.",
+    "I let you have that one."
+   ],
+   "taunt": [
+    "Is that the best you can do?",
+    "Do try harder. It's embarrassing."
+   ]
+  },
+  "performed": {
+   "race_start": {
+    "direction": "a pompous champion horse in an animated kart-racing game, posh, theatrical, booming, at the start lights",
+    "lines": [
+     "Let the <emphasis>show</emphasis> begin!",
+     "Try to <emphasis>keep up</emphasis>, everyone!",
+     "And they're off! Well, <emphasis>I</emphasis> am."
+    ]
+   },
+   "overtake": {
+    "direction": "a pompous champion horse in an animated kart-racing game, posh, theatrical, booming, passing a rival",
+    "lines": [
+     "Pardon me, <emphasis>champion</emphasis> coming through.",
+     "Do enjoy the view of my <emphasis>tail</emphasis>.",
+     "<emphasis>Ta</emphasis>-ta!"
+    ]
+   },
+   "overtaken": {
+    "direction": "a pompous champion horse in an animated kart-racing game, posh, theatrical, booming, being passed",
+    "lines": [
+     "A <emphasis>temporary</emphasis> arrangement, I assure you.",
+     "Enjoy it while it <emphasis>lasts</emphasis>!",
+     "Most <emphasis>irregular</emphasis>!"
+    ]
+   },
+   "hit": {
+    "direction": "a pompous champion horse in an animated kart-racing game, posh, theatrical, booming, just hit by an item",
+    "lines": [
+     "My <emphasis>mane</emphasis>! Do you know how <emphasis>long</emphasis> that took?",
+     "How <emphasis>uncouth</emphasis>!",
+     "Neigh! <emphasis>Unacceptable</emphasis>!"
+    ]
+   },
+   "item_use": {
+    "direction": "a pompous champion horse in an animated kart-racing game, posh, theatrical, booming, throwing an item",
+    "lines": [
+     "With the compliments of the <emphasis>champion</emphasis>.",
+     "A <emphasis>small</emphasis> gift.",
+     "Do <emphasis>excuse</emphasis> me."
+    ]
+   },
+   "drift_boost": {
+    "direction": "a pompous champion horse in an animated kart-racing game, posh, theatrical, booming, firing a drift boost",
+    "lines": [
+     "<emphasis>Magnificent</emphasis>!",
+     "Simply <emphasis>flawless</emphasis>.",
+     "And <emphasis>that</emphasis>, everyone, is <emphasis>technique</emphasis>."
+    ]
+   },
+   "last_lap": {
+    "direction": "a pompous champion horse in an animated kart-racing game, posh, theatrical, booming, on the final lap",
+    "lines": [
+     "<emphasis>Final</emphasis> lap. Time for the victory <emphasis>parade</emphasis>.",
+     "Last lap! Prepare the <emphasis>trophy</emphasis>!"
+    ]
+   },
+   "win": {
+    "direction": "a pompous champion horse in an animated kart-racing game, posh, theatrical, booming, crossing the line first",
+    "lines": [
+     "Thank you, thank you. Yes, I <emphasis>know</emphasis>.",
+     "<emphasis>Champion</emphasis> once again! Was there <emphasis>ever</emphasis> any doubt?"
+    ]
+   },
+   "lose": {
+    "direction": "a pompous champion horse in an animated kart-racing game, posh, theatrical, booming, after losing",
+    "lines": [
+     "A <emphasis>fluke</emphasis>. A <emphasis>complete</emphasis> and <emphasis>total</emphasis> fluke.",
+     "I <emphasis>let</emphasis> you have that one."
+    ]
+   },
+   "taunt": {
+    "direction": "a pompous champion horse in an animated kart-racing game, posh, theatrical, booming, taunting a rival",
+    "lines": [
+     "Is that the <emphasis>best</emphasis> you can do?",
+     "Do try <emphasis>harder</emphasis>. It's <emphasis>embarrassing</emphasis>."
+    ]
+   }
+  }
+ },
+ "marmalade": {
+  "name": "Marmalade",
+  "animal": "Barn Cat",
+  "brief": "smug, precise barn cat: smooth, low, silky voice of a young adult, dry wit, purrs a little on long vowels, unhurried",
+  "audition": "Perfect line. Perfect drift. Perfect, as usual. You may now admire me from behind.",
+  "reference": [
+   "Hello. I'm Marmalade. I live in the barn, and the barn lives for me.",
+   "My kart is made from a feed scoop. It is light, it is precise, and it is beautifully balanced.",
+   "The watering can is the fuel tank. I find it elegant. Nobody else has thought of it.",
+   "I study every corner. There is always one perfect line, and I always find it.",
+   "The others drive with their hearts. I drive with my whiskers.",
+   "Hettie keeps a notebook. I keep it all up here. It's a much neater system.",
+   "Max is very loud and very shiny. Neither of those things wins races.",
+   "Puddles is charming, in a damp sort of way.",
+   "I like the barn shortcut. It's dark, it's narrow, and it's mine.",
+   "I never rush. I simply arrive before everyone else.",
+   "After a race I like to sit on the warmest bale in the barn and think about how well it went.",
+   "Shall we? Try not to get in my way."
+  ],
+  "callouts": {
+   "race_start": [
+    "Purrfect.",
+    "Watch and learn.",
+    "Let's be tidy about this."
+   ],
+   "overtake": [
+    "Excuse me.",
+    "Too slow.",
+    "Mm. Pass."
+   ],
+   "overtaken": [
+    "How tiresome.",
+    "Enjoy it. Briefly.",
+    "Hmph."
+   ],
+   "hit": [
+    "Hsss! My fur!",
+    "Unnecessary.",
+    "How common."
+   ],
+   "item_use": [
+    "For you. Don't mention it.",
+    "Oops.",
+    "Precision delivery."
+   ],
+   "drift_boost": [
+    "Flawless.",
+    "Mm. Lovely line.",
+    "As intended."
+   ],
+   "last_lap": [
+    "Last lap. Time to be brilliant.",
+    "Final lap. Purr."
+   ],
+   "win": [
+    "Naturally.",
+    "First. As it should be."
+   ],
+   "lose": [
+    "I wasn't really trying.",
+    "Statistically, I was due a bad day."
+   ],
+   "taunt": [
+    "Your racing line is a mess.",
+    "You drive like a dog."
+   ]
+  },
+  "performed": {
+   "race_start": {
+    "direction": "a smug barn cat in an animated kart-racing game, silky, dry, purring, at the start lights",
+    "lines": [
+     "<emphasis>Purrfect</emphasis>.",
+     "Watch and <emphasis>learn</emphasis>.",
+     "Let's be <emphasis>tidy</emphasis> about this."
+    ]
+   },
+   "overtake": {
+    "direction": "a smug barn cat in an animated kart-racing game, silky, dry, purring, passing a rival",
+    "lines": [
+     "<emphasis>Excuse</emphasis> me.",
+     "Too <emphasis>slow</emphasis>.",
+     "Mm. <emphasis>Pass</emphasis>."
+    ]
+   },
+   "overtaken": {
+    "direction": "a smug barn cat in an animated kart-racing game, silky, dry, purring, being passed",
+    "lines": [
+     "How <emphasis>tiresome</emphasis>.",
+     "Enjoy it. <emphasis>Briefly</emphasis>.",
+     "<emphasis>Hmph</emphasis>."
+    ]
+   },
+   "hit": {
+    "direction": "a smug barn cat in an animated kart-racing game, silky, dry, purring, just hit by an item",
+    "lines": [
+     "Hsss! My <emphasis>fur</emphasis>!",
+     "<emphasis>Unnecessary</emphasis>.",
+     "How <emphasis>common</emphasis>."
+    ]
+   },
+   "item_use": {
+    "direction": "a smug barn cat in an animated kart-racing game, silky, dry, purring, throwing an item",
+    "lines": [
+     "For <emphasis>you</emphasis>. Don't mention it.",
+     "<emphasis>Oops</emphasis>.",
+     "<emphasis>Precision</emphasis> delivery."
+    ]
+   },
+   "drift_boost": {
+    "direction": "a smug barn cat in an animated kart-racing game, silky, dry, purring, firing a drift boost",
+    "lines": [
+     "<emphasis>Flawless</emphasis>.",
+     "Mm. <emphasis>Lovely</emphasis> line.",
+     "As <emphasis>intended</emphasis>."
+    ]
+   },
+   "last_lap": {
+    "direction": "a smug barn cat in an animated kart-racing game, silky, dry, purring, on the final lap",
+    "lines": [
+     "<emphasis>Last</emphasis> lap. Time to be <emphasis>brilliant</emphasis>.",
+     "<emphasis>Final</emphasis> lap. Purr."
+    ]
+   },
+   "win": {
+    "direction": "a smug barn cat in an animated kart-racing game, silky, dry, purring, crossing the line first",
+    "lines": [
+     "<emphasis>Naturally</emphasis>.",
+     "<emphasis>First</emphasis>. As it <emphasis>should</emphasis> be."
+    ]
+   },
+   "lose": {
+    "direction": "a smug barn cat in an animated kart-racing game, silky, dry, purring, after losing",
+    "lines": [
+     "I wasn't <emphasis>really</emphasis> trying.",
+     "Statistically, I was <emphasis>due</emphasis> a bad day."
+    ]
+   },
+   "taunt": {
+    "direction": "a smug barn cat in an animated kart-racing game, silky, dry, purring, taunting a rival",
+    "lines": [
+     "Your racing line is a <emphasis>mess</emphasis>.",
+     "You drive like a <emphasis>dog</emphasis>."
+    ]
+   }
+  }
+ }
+}

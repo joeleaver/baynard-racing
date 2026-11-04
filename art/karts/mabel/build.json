@@ -1668,7 +1668,10 @@
     0.272
    ],
    "joint": "pendulum",
-   "swing": 40
+   "swing": 40,
+   "stops": [
+    "frame"
+   ]
   },
   {
    "type": "turned",

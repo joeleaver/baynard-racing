@@ -17,6 +17,9 @@ Spec (paths relative to the spec file):
     wheel   pos [x, y, z] hub centre, radius, width, hub (colour), name (wheel_FL/FR/RL/RR/F/R), lugs (count of
             chevron tread lugs; 0 gives a smooth balloon tyre with a groove round the middle)
             Each wheel is its own object with its origin at the hub, so the game spins it about X.
+            "steer": false keeps a front wheel from steering, for a wheel held fixed in a fork (a wheelbarrow);
+            "steer_limit" (default 25) is how far a front wheel steers; "tilt" (degrees) lets a wheel lean into
+            turns about the kart's forward axis. Every moving part is checked at the ends of its travel.
     tube    points [[x, y, z], ...], radius; "smooth": true bends through the points instead of jointing at them
     box     centre, size [x, y, z], bevel (rounding in metres), tilt [rx, ry, rz] degrees (optional)
     planks  centre, size, count, axis ("z" stacks planks upward; "x"/"y" lays them side by side), gap, bevel,
@@ -46,7 +49,8 @@ Spec (paths relative to the spec file):
   its origin at the pivot (e.g. "steering_wheel", which the game turns with the steering). "axis" [x, y, z] says
   which way it turns (spec frame) and goes into the GLB as an extra, in the GLB's Y-up frame. "joint":
   "pendulum" with "swing" (degrees) marks something that hangs from its pivot and swings, such as a bell, for
-  the game to animate or drive with physics. "parent" names another moving part this one rides on, such as a
+  the game to animate or drive with physics; "stops" lists parts it is meant to come to rest against at the
+  end of its swing (a bell meeting a bumper). "parent" names another moving part this one rides on, such as a
   clapper inside a swinging bell.
   Wheels carry extras too, in the GLB's frame: spin_axis [1, 0, 0] and, for front wheels (name ending F, FL or
   FR), steer_axis [0, 1, 0].
@@ -376,7 +380,8 @@ def part_tube(p, i):
     bpy.context.view_layer.objects.active = o; o.select_set(True)
     bpy.ops.object.convert(target="MESH"); o.select_set(False)
     o = bpy.context.view_layer.objects.active
-    set_rest(o, Matrix())
+    span = [max(v[a] for v in pts) - min(v[a] for v in pts) for a in range(3)]
+    set_rest(o, Matrix(), tuple(sorted(range(3), key=lambda a: -span[a])))  # wood grain runs along the tube
     parts = [o]
     ends = [] if closed else [pts[0], pts[-1]] if smooth else pts  # rounded ends; balls at jointed bends
     if p.get("open_end") and ends: ends = ends[:-1]  # a pipe_end part finishes this end instead
@@ -713,7 +718,11 @@ body = join(body, "body")
 gl = lambda v: [v[0], v[2], -v[1]]  # extras are read in the GLB's own frame (Y up), not Blender's
 for w in wheels:  # the game spins every wheel about its hub and steers the front ones
     w["spin_axis"] = gl([1, 0, 0])
-    if w.name.split("_")[-1] in ("F", "FL", "FR"): w["steer_axis"] = gl([0, 0, 1])
+    wp = next((q for q in spec["parts"] if q.get("name") == w.name), {})
+    if w.name.split("_")[-1] in ("F", "FL", "FR") and wp.get("steer", True):
+        w["steer_axis"] = gl([0, 0, 1]); w["steer_limit"] = wp.get("steer_limit", 25)
+    if wp.get("tilt"):  # leans into a turn about the kart's forward axis through its hub
+        w["tilt_axis"] = gl([0, 1, 0]); w["tilt_limit"] = wp["tilt"]
 movers = []
 for name, (p, objs) in named.items():
     o = join(objs, name); piv = Vector(p["pivot"])
@@ -734,6 +743,52 @@ for name, (p, objs) in named.items():  # a moving part can ride on another (a cl
 bpy.context.view_layer.update()
 tris = sum(len(f.vertices) - 2 for o in meshes for f in o.data.polygons)
 print(f"KART {os.path.basename(spec_path)}: body {len(body.data.polygons)} faces, {len(moving)} moving parts, {tris} triangles")
+
+# ---------------------------------------------------------------- moving parts at their limits
+def limits_check():
+    """Turn each moving part to the ends of its travel (steer, tilt, swing) and report any part it then runs
+    into harder than at rest. Counted part by part, so an axle that always passes through a hub can't hide a
+    fork the wheel swings into. Extras are in the GLB frame; turn them back to Blender's."""
+    bl = lambda v: Vector((v[0], -v[2], v[1]))
+    own = {}  # moving object name -> the part ids it is made of
+    for p, objs in groups:
+        nm = p.get("name") or (p["type"] == "wheel" and p.get("name"))
+        if nm: own.setdefault(nm, set()).add(p.get("id", nm))
+    def hits(o):
+        A = bvh([o]); mine = own.get(o.name, {o.name}); out = {}
+        for pid, _, T in trees:  # static parts, as built
+            if pid in mine: continue
+            n = len(A.overlap(T))
+            if n: out[pid] = out.get(pid, 0) + n
+        for m in meshes:  # other moving parts where they are now
+            if m is o or m is body or m.parent is o or o.parent is m or m.name in own.get(o.name, ()): continue
+            n = len(A.overlap(bvh([m])))
+            if n: out[m.name] = out.get(m.name, 0) + n
+        return out
+    bad = 0
+    for o in meshes:
+        moves = []
+        if "steer_axis" in o: moves += [(bl(o["steer_axis"]), o["steer_limit"])]
+        if "tilt_axis" in o: moves += [(bl(o["tilt_axis"]), o["tilt_limit"])]
+        if o.get("joint") == "pendulum": moves += [(Vector((1, 0, 0)), o["swing_limit"]), (Vector((0, 1, 0)), o["swing_limit"])]
+        if not moves: continue
+        rest = hits(o); mw = o.matrix_world.copy(); t = mw.translation.copy()
+        stops = {}
+        for q in spec["parts"]:
+            if q.get("name"): stops.setdefault(q["name"], set()).update(q.get("stops", []))
+        kids = [c for c in meshes if c.parent is o]
+        for ax, lim in moves:
+            for sgn in (1, -1):
+                o.matrix_world = Matrix.Translation(t) @ Matrix.Rotation(math.radians(sgn * lim), 4, ax) @ Matrix.Translation(-t) @ mw
+                bpy.context.view_layer.update()
+                for pid, n in hits(o).items():
+                    r = rest.get(pid, 0)
+                    if n > r * 1.3 + 8 and pid not in stops.get(o.name, ()):
+                        bad += 1
+                        print(f"CLASH AT LIMIT {o.name} turned {sgn * lim} about {tuple(round(c, 2) for c in ax)} into {pid}: {n} face pairs (at rest {r})")
+        o.matrix_world = mw; bpy.context.view_layer.update()
+    print(f"LIMIT CLASHES {bad}")
+limits_check()
 
 # ---------------------------------------------------------------- game mesh: decimate, then bake the detail onto it
 def budget(name):

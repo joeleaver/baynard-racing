@@ -75,6 +75,15 @@ and win collisions.
   objects pivoting at their hubs, and the wood grain, clay surface and crease shading are baked into one texture.
   The generated meshes were only ever a shape guide: their paint was baked in, their wheels fused, and their
   geometry messy.
+- **What moves, and how far,** is recorded on each moving part in the kart's GLB, for the game to drive.
+  Every wheel spins (`spin_axis`). Front wheels steer (`steer_axis`, `steer_limit`, 25° by default), and the
+  steering wheel turns with the steering (`axis`). Danglers swing (`joint: pendulum`, `swing_limit`); for
+  example, Mabel's cowbell, with its clapper riding inside it. The builder turns every part to the ends of
+  its travel and checks it hits nothing it shouldn't.
+- **Exception, Duvet's wheelbarrow:** its single front wheel is held fixed between the handles, so it
+  doesn't steer. It leans into turns instead (`tilt_axis` along the kart's length, `tilt_limit` 12°): the
+  game tilts it from the steering input, while the kart's handling does the turning. Other three-wheelers
+  need the same treatment if their front wheel sits in a fixed fork.
 - Parts can be swapped (body, wheels, glider-style extra) and they change the stats. Cosmetic paint
   on top.
 

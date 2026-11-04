@@ -7,7 +7,9 @@ karts are modelled from parts instead. Units are metres; the kart faces -Y, +X i
 ground is z = 0. --fast skips the texture bake (for checking shapes and clashes).
 
 Spec (paths relative to the spec file):
-  colours   {name: {"rgb": [r, g, b] sRGB 0-1, "kind": "clay" | "wood" | "rubber" | "metal"}}
+  colours   {name: {"rgb": [r, g, b] sRGB 0-1, "kind": "clay" | "wood" | "rubber" | "metal" | "rust"}}
+            "dirt": 0-1 adds patches of dried mud and dust (mud: [r, g, b] sets their colour)
+            rust ignores rgb and paints patchy orange, brown and iron grey (rust_stops overrides the patches)
   parts     list of parts, each {"type": ..., "colour": ..., "id": label} plus:
     wheel   pos [x, y, z] hub centre, radius, width, hub (colour), name (wheel_FL/FR/RL/RR/F/R), lugs (count of
             chevron tread lugs; 0 gives a smooth balloon tyre with a groove round the middle)
@@ -19,6 +21,13 @@ Spec (paths relative to the spec file):
     torus   centre, radius, thickness, tilt [rx, ry, rz] degrees
     disc    centre, radius, depth, tilt (a rounded cylinder along X before the tilt)
     ball    centre, radius, scale [x, y, z] (optional)
+    tub     rings [[z, half-length, half-width, centre y], ...] from the bottom up, power (outline squareness,
+            default 2.6), thickness (wall, default 0.03): a hollow open-topped shell such as a bathtub
+    pipe_end  centre (the tube's end), radius (the tube's), lean (degrees about X), flare, wall, depth: the open
+            mouth of an exhaust; give its tube "open_end": true
+  tube      "closed": true makes a loop (a rolled rim round a tub)
+  wheel     "style": "drum" gives a tall drum tyre with soft shoulders instead of a balloon
+            "cap": a colour gives a plain disc hub with a separate centre cap in that colour
   Parts that share a "fuse" label are melted into one soft piece (voxel remesh and smoothing), the way a clay
   seat is one lump rather than glued blocks.
   Parts may list "touches": ids they are meant to meet. Every other overlap between parts is reported as a CLASH,
@@ -28,6 +37,7 @@ Spec (paths relative to the spec file):
   which way it turns (spec frame) and goes into the GLB as an extra, in the GLB's Y-up frame.
   Wheels carry extras too, in the GLB's frame: spin_axis [1, 0, 0] and, for front wheels (name ending F, FL or
   FR), steer_axis [0, 1, 0].
+  view      camera angle for the 3/4 render, to match the concept (default 140: front to the left)
   lumps     clay lumpiness in metres (default 0.0025): a soft hand-made wobble on every surface
   texture   atlas size (default 2048); loose copies of the maps go to workspace/karts/<folder>/ unless
             texture_dir says otherwise
@@ -78,7 +88,7 @@ def ramp(nt, src, stops):
     return r.outputs[0]
 
 
-def make_material(kind):
+def make_material(kind, dirt=0.0):
     """A procedural material for baking: the part's tint (vertex colour Col) shaded with grain for its kind."""
     m = bpy.data.materials.new(kind); m.use_nodes = True
     nt = m.node_tree; L = nt.links.new
@@ -89,11 +99,14 @@ def make_material(kind):
     mot = node(nt, "ShaderNodeTexNoise"); mot.inputs["Scale"].default_value = 7; mot.inputs["Detail"].default_value = 3
     L(geo, mot.inputs["Vector"])
     mot_k = ramp(nt, mot.outputs["Fac"], [(0.3, 0.9), (0.7, 1.07)])
-    sand = node(nt, "ShaderNodeTexNoise"); sand.inputs["Scale"].default_value = 260
-    sand.inputs["Detail"].default_value = 2; L(geo, sand.inputs["Vector"])
-    height = sand.outputs["Fac"]; strength = 0.18
+    sand = node(nt, "ShaderNodeTexNoise"); sand.inputs["Scale"].default_value = 170
+    sand.inputs["Detail"].default_value = 3; L(geo, sand.inputs["Vector"])
+    height = sand.outputs["Fac"]; strength = 0.32
     tint = node(nt, "ShaderNodeMix", data_type="RGBA", blend_type="MULTIPLY"); tint.inputs["Factor"].default_value = 1
     L(col, tint.inputs[6]); L(mot_k, tint.inputs[7]); out = tint.outputs[2]
+    grit = node(nt, "ShaderNodeMix", data_type="RGBA", blend_type="MULTIPLY"); grit.inputs["Factor"].default_value = 1
+    L(out, grit.inputs[6]); L(ramp(nt, sand.outputs["Fac"], [(0.35, 0.9), (0.65, 1.06)]), grit.inputs[7])
+    out = grit.outputs[2]  # the sandy grain shows a little in the colour too, as on a clay model
     if kind == "wood":
         rest = node(nt, "ShaderNodeAttribute", attribute_name="rest").outputs["Vector"]
         sq = node(nt, "ShaderNodeVectorMath", operation="MULTIPLY"); sq.inputs[1].default_value = (0.12, 1, 1)
@@ -116,6 +129,38 @@ def make_material(kind):
         L(sand.outputs["Fac"], h.inputs[0]); L(groove, h.inputs[2]); height = h.outputs[0]; strength = 0.45
     if kind == "rubber":
         strength = 0.25
+    if kind == "rust":
+        pat = node(nt, "ShaderNodeTexNoise"); pat.inputs["Scale"].default_value = 5.5
+        pat.inputs["Detail"].default_value = 9; pat.inputs["Roughness"].default_value = 0.62
+        L(geo, pat.inputs["Vector"])
+        rr = node(nt, "ShaderNodeValToRGB"); el = rr.color_ramp.elements
+        stops = spec.get("rust_stops", [(0.0, (0.17, 0.13, 0.11)), (0.36, (0.33, 0.2, 0.13)), (0.47, (0.6, 0.3, 0.12)),
+                                         (0.56, (0.44, 0.26, 0.15)), (0.66, (0.36, 0.34, 0.33)), (1.0, (0.2, 0.16, 0.14))])
+        el[0].position, el[0].color = stops[0][0], (*lin(stops[0][1]), 1)
+        el[1].position, el[1].color = stops[-1][0], (*lin(stops[-1][1]), 1)
+        for pos, cc in stops[1:-1]:
+            el.new(pos).color = (*lin(cc), 1)
+        L(pat.outputs["Fac"], rr.inputs[0])
+        fine = node(nt, "ShaderNodeTexNoise"); fine.inputs["Scale"].default_value = 30; fine.inputs["Detail"].default_value = 6
+        L(geo, fine.inputs["Vector"])
+        fine_k = ramp(nt, fine.outputs["Fac"], [(0.3, 0.72), (0.5, 1.0), (0.7, 1.22)])
+        mm = node(nt, "ShaderNodeMix", data_type="RGBA", blend_type="MULTIPLY"); mm.inputs["Factor"].default_value = 1
+        L(rr.outputs[0], mm.inputs[6]); L(fine_k, mm.inputs[7]); out = mm.outputs[2]
+        pit = node(nt, "ShaderNodeTexNoise"); pit.inputs["Scale"].default_value = 90; pit.inputs["Detail"].default_value = 4
+        L(geo, pit.inputs["Vector"])
+        h = node(nt, "ShaderNodeMath", operation="MULTIPLY_ADD"); h.inputs[1].default_value = 0.6
+        L(pit.outputs["Fac"], h.inputs[0]); L(sand.outputs["Fac"], h.inputs[2]); height = h.outputs[0]; strength = 0.6
+    if dirt:  # dried mud and dust in patches, more of it the higher dirt is (0-1)
+        mud = node(nt, "ShaderNodeTexNoise"); mud.inputs["Scale"].default_value = 9
+        mud.inputs["Detail"].default_value = 7; mud.inputs["Roughness"].default_value = 0.7; L(geo, mud.inputs["Vector"])
+        lo = 0.62 - 0.3 * dirt
+        mask = ramp(nt, mud.outputs["Fac"], [(lo, 0.0), (lo + 0.12, 0.85), (1.0, 1.0)])
+        mm = node(nt, "ShaderNodeMix", data_type="RGBA", blend_type="MIX")
+        L(mask, mm.inputs["Factor"]); L(out, mm.inputs[6])
+        mudc = lin(spec.get("mud", [0.4, 0.31, 0.22])); mm.inputs[7].default_value = (*mudc, 1)
+        gr = node(nt, "ShaderNodeMix", data_type="RGBA", blend_type="MULTIPLY"); gr.inputs["Factor"].default_value = 1
+        L(mm.outputs[2], gr.inputs[6]); L(ramp(nt, sand.outputs["Fac"], [(0.3, 0.85), (0.7, 1.1)]), gr.inputs[7])
+        out = gr.outputs[2]
     L(out, b.inputs["Base Color"])
     bump = node(nt, "ShaderNodeBump"); bump.inputs["Strength"].default_value = strength
     bump.inputs["Distance"].default_value = 0.002
@@ -124,9 +169,10 @@ def make_material(kind):
 
 
 MATS = {}
-def material(kind):
-    if kind not in MATS: MATS[kind] = make_material(kind)
-    return MATS[kind]
+def material(kind, dirt=0.0):
+    key = (kind, dirt)
+    if key not in MATS: MATS[key] = make_material(kind, dirt)
+    return MATS[key]
 
 
 # ---------------------------------------------------------------- geometry helpers
@@ -152,7 +198,8 @@ CLOUDS = bpy.data.textures.new("lumps", "CLOUDS"); CLOUDS.noise_scale = 0.09
 
 def finish(o, colour_name, subdiv=2, vary=0.0, lumps=None):
     rgb, kind = colour(colour_name)
-    o.data.materials.clear(); o.data.materials.append(material(kind))
+    c = spec["colours"][colour_name]; dirt = c.get("dirt", 0.0) if isinstance(c, dict) else 0.0
+    o.data.materials.clear(); o.data.materials.append(material(kind, dirt))
     if subdiv:
         s = o.modifiers.new("subd", "SUBSURF"); s.levels = s.render_levels = subdiv
     lumps = LUMPS if lumps is None else lumps
@@ -258,11 +305,12 @@ def part_planks(p, i):
 def part_tube(p, i):
     cu = bpy.data.curves.new(f"tube{i}", "CURVE"); cu.dimensions = "3D"
     cu.bevel_depth = p["radius"]; cu.bevel_resolution = 4; cu.use_fill_caps = True
-    pts = p["points"]; smooth = p.get("smooth", False)
+    pts = p["points"]; closed = p.get("closed", False); smooth = p.get("smooth", False) or closed
     sp = cu.splines.new("NURBS" if smooth else "POLY")
     sp.points.add(len(pts) - 1)
     for q, v in zip(sp.points, pts): q.co = (*v, 1)
-    if smooth: sp.use_endpoint_u = True; sp.order_u = 3; sp.resolution_u = 10
+    if smooth: sp.use_endpoint_u = not closed; sp.order_u = 3; sp.resolution_u = 10
+    if closed: sp.use_cyclic_u = True
     o = bpy.data.objects.new(f"tube{i}", cu); scene.collection.objects.link(o)
     bpy.ops.object.select_all(action="DESELECT")
     bpy.context.view_layer.objects.active = o; o.select_set(True)
@@ -270,7 +318,8 @@ def part_tube(p, i):
     o = bpy.context.view_layer.objects.active
     set_rest(o, Matrix())
     parts = [o]
-    ends = [pts[0], pts[-1]] if smooth else pts  # rounded ends, and balls at the bends of jointed tubes
+    ends = [] if closed else [pts[0], pts[-1]] if smooth else pts  # rounded ends; balls at jointed bends
+    if p.get("open_end") and ends: ends = ends[:-1]  # a pipe_end part finishes this end instead
     for v in ends:
         bm = bmesh.new(); bmesh.ops.create_uvsphere(bm, u_segments=16, v_segments=10, radius=p["radius"] * 1.0)
         bmesh.ops.translate(bm, vec=Vector(v), verts=bm.verts); b = new_obj(f"joint{i}", bm); set_rest(b, Matrix())
@@ -311,6 +360,46 @@ def part_ball(p, i):
     return finish(o, p["colour"], 0)
 
 
+def part_pipe_end(p, i):
+    """The open mouth of a pipe: a flared lip round a hollow, set on the end of a tube. centre is the tube's end,
+    radius the tube's, lean tips it forward/back about X (degrees from upright), flare widens the lip."""
+    r = p["radius"]; f = p.get("flare", 1.25); t = p.get("wall", 0.22) * r; d = p.get("depth", 1.0) * r
+    R = r * f; ri = r - t
+    prof = [(-0.9 * r, 0), (-0.9 * r, r * 1.02), (0.1 * r, r * 1.05), (0.3 * r, R * 0.96), (0.45 * r, R),
+            (0.58 * r, R * 0.95), (0.62 * r, (R + ri) / 2), (0.55 * r, ri * 1.05), (0.4 * r, ri), (-d, ri), (-d, 0)]
+    o = lathe(f"pipe_end{i}", prof, 40)
+    M = Matrix.Translation(Vector(p["centre"])) @ Matrix.Rotation(math.radians(p.get("lean", 0)), 4, "X") \
+        @ Matrix.Rotation(math.radians(-90), 4, "Y")
+    o.data.transform(M)
+    return finish(o, p["colour"], 1, lumps=LUMPS * 0.5)
+
+
+def part_tub(p, i):
+    """A hollow tub: rounded outlines (superellipses) stacked from the bottom up, closed at the bottom, open at the
+    top, with walls of the given thickness. rings: [[z, half-length (y), half-width (x), centre y], ...]."""
+    n_pow = p.get("power", 2.6); segs = p.get("segments", 64); e = 2.0 / n_pow
+    bm = bmesh.new(); rings = []
+    for z, a, b, cy in p["rings"]:
+        ring = []
+        for k in range(segs):
+            t = 2 * math.pi * k / segs; ct, st = math.cos(t), math.sin(t)
+            ring.append(bm.verts.new((b * math.copysign(abs(ct) ** e, ct), cy + a * math.copysign(abs(st) ** e, st), z)))
+        rings.append(ring)
+    for A, B in zip(rings, rings[1:]):
+        for k in range(segs):
+            bm.faces.new((A[k], A[(k + 1) % segs], B[(k + 1) % segs], B[k]))
+    z0, _, _, cy0 = p["rings"][0]
+    c = bm.verts.new((0, cy0, z0 - p.get("sag", 0.01)))
+    for k in range(segs):
+        bm.faces.new((c, rings[0][(k + 1) % segs], rings[0][k]))
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+    o = new_obj(f"tub{i}", bm); set_rest(o, Matrix())
+    sd = o.modifiers.new("solid", "SOLIDIFY"); sd.thickness = p.get("thickness", 0.03); sd.offset = -1
+    sd.use_even_offset = True
+    bpy.context.view_layer.objects.active = o; bpy.ops.object.modifier_apply(modifier=sd.name)
+    return finish(o, p["colour"], p.get("subdiv", 2))
+
+
 def part_wheel(p, i):
     r, w = p["radius"], p["width"]; h = w / 2
     side = 1 if p["pos"][0] > 0 else -1  # hub faces outward
@@ -324,6 +413,14 @@ def part_wheel(p, i):
         if not n and abs(x) < h * 0.12: rr -= r * 0.025 * (1 - abs(x) / (h * 0.12))
         sec.append((x, rr))
     sec = [(-h * 0.92, r * 0.5)] + sec + [(h * 0.92, r * 0.5)] + [(-h * 0.92, r * 0.5)]
+    if p.get("style") == "drum":  # a tall drum with soft shoulders, like a wooden cart wheel
+        sec = []
+        for k in range(13):
+            t = math.pi / 2 * k / 12; sh = h * 0.42
+            sec.append((-h + sh - sh * math.cos(t), r - sh + sh * math.sin(t)))
+        sec = [(-h * 0.92, r * 0.5), (-h, r - h * 0.42)] + sec + [(x, rr) for x, rr in reversed([(-x, rr) for x, rr in sec])] + \
+              [(h, r - h * 0.42), (h * 0.92, r * 0.5)]
+        sec = sec + [sec[0]]
     tyre = lathe(p["name"], sec[:-1] + [sec[0]], 48)
     finish(tyre, p["colour"], 1, lumps=LUMPS * 0.6)
     parts = [tyre]
@@ -338,9 +435,16 @@ def part_wheel(p, i):
     prof = [(-h * 0.6, 0), (-h * 0.6, R * 0.95), (h * 0.55, R * 0.95), (h * 0.72, R * 0.9), (h * 0.78, R * 0.78),
             (h * 0.66, R * 0.66), (h * 0.52, R * 0.55), (h * 0.5, R * 0.36), (h * 0.7, R * 0.32), (h * 0.9, R * 0.22),
             (h * 0.96, R * 0.1), (h * 0.97, 0)]
+    if p.get("cap"):  # a plain disc hub with a separate centre cap in its own colour
+        prof = [(-h * 0.6, 0), (-h * 0.6, R * 0.95), (h * 0.55, R * 0.95), (h * 0.7, R * 0.85), (h * 0.72, 0)]
     hub = lathe(p["name"] + "_hub", [(side * x, rr) for x, rr in prof], 40)
     finish(hub, p["hub"], 1, lumps=0)
-    o = join(parts + [hub], p["name"])
+    parts.append(hub)
+    if p.get("cap"):
+        cap = cylinder(p["name"] + "_cap", R * 0.38, h * 0.5, R * 0.15, 24)
+        cap.data.transform(Matrix.Translation((side * h * 0.82, 0, 0)))
+        parts.append(finish(cap, p["cap"], 1, lumps=0))
+    o = join(parts, p["name"])
     o.location = p["pos"]
     return o
 
@@ -372,7 +476,7 @@ def fuse(objs, name, colour_name, voxel=0.009, faces=6000):
 
 # ---------------------------------------------------------------- build
 BUILD = {"box": part_box, "planks": part_planks, "tube": part_tube, "torus": part_torus, "disc": part_disc,
-         "ball": part_ball, "wheel": part_wheel}
+         "ball": part_ball, "wheel": part_wheel, "tub": part_tub, "pipe_end": part_pipe_end}
 made_parts = []  # (spec part, [objects])
 for i, p in enumerate(spec["parts"]):
     made = BUILD[p["type"]](p, i)
@@ -399,7 +503,9 @@ def bvh(objs):
 
 
 bpy.context.view_layer.update()
-trees = [(p.get("id", p["type"] + str(k)), set(p.get("touches", [])), bvh(objs)) for k, (p, objs) in enumerate(groups)]
+TOUCH = {}  # parts sharing an id share what they may touch
+for k, (p, objs) in enumerate(groups): TOUCH.setdefault(p.get("id", p["type"] + str(k)), set()).update(p.get("touches", []))
+trees = [(p.get("id", p["type"] + str(k)), TOUCH[p.get("id", p["type"] + str(k))], bvh(objs)) for k, (p, objs) in enumerate(groups)]
 clashes = 0
 for a in range(len(trees)):
     for b in range(a + 1, len(trees)):
@@ -531,7 +637,7 @@ if render:
     cam = bpy.data.objects.new("cam", bpy.data.cameras.new("cam")); cam.data.lens = 85
     sc.collection.objects.link(cam); sc.camera = cam
     ctr = Vector((0, 0, 0.33))
-    for n, a, el in (("q", 140, 14), ("side", 270, 3), ("front", 180, 5), ("back", 40, 22), ("top", 180, 75)):
+    for n, a, el in (("q", spec.get("view", 140), 14), ("side", 270, 3), ("front", 180, 5), ("back", 40, 22), ("top", 180, 75)):
         r = math.radians(a); e = math.radians(el); d = 5.2
         cam.location = ctr + Vector((d * math.sin(r) * math.cos(e), d * math.cos(r) * math.cos(e), d * math.sin(e)))
         cam.rotation_euler = (math.radians(90) - e, 0, math.radians(180) - r)

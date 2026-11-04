@@ -1,0 +1,848 @@
+{
+ "about": "Puddles' cast-iron bathtub kart, measured off concept.webp and turnaround.webp (about 1.3 m nose to tail).",
+ "length": 1.3,
+ "seed": 5,
+ "colours": {
+  "rust": {
+   "rgb": [
+    0.5,
+    0.3,
+    0.18
+   ],
+   "kind": "rust"
+  },
+  "enamel": {
+   "rgb": [
+    0.9,
+    0.84,
+    0.7
+   ],
+   "kind": "clay"
+  },
+  "seat": {
+   "rgb": [
+    0.3,
+    0.21,
+    0.16
+   ],
+   "kind": "clay"
+  },
+  "tyre": {
+   "rgb": [
+    0.3,
+    0.25,
+    0.21
+   ],
+   "kind": "rubber",
+   "dirt": 0.6
+  },
+  "hub": {
+   "rgb": [
+    0.82,
+    0.78,
+    0.68
+   ],
+   "kind": "clay",
+   "dirt": 0.45
+  },
+  "cap": {
+   "rgb": [
+    0.3,
+    0.23,
+    0.18
+   ],
+   "kind": "clay",
+   "dirt": 0.3
+  },
+  "iron": {
+   "rgb": [
+    0.24,
+    0.2,
+    0.18
+   ],
+   "kind": "clay"
+  }
+ },
+ "parts": [
+  {
+   "type": "wheel",
+   "id": "wheel_FL",
+   "name": "wheel_FL",
+   "pos": [
+    0.4,
+    -0.39,
+    0.165
+   ],
+   "radius": 0.165,
+   "width": 0.16,
+   "colour": "tyre",
+   "hub": "hub",
+   "cap": "cap",
+   "style": "drum"
+  },
+  {
+   "type": "wheel",
+   "id": "wheel_FR",
+   "name": "wheel_FR",
+   "pos": [
+    -0.4,
+    -0.39,
+    0.165
+   ],
+   "radius": 0.165,
+   "width": 0.16,
+   "colour": "tyre",
+   "hub": "hub",
+   "cap": "cap",
+   "style": "drum"
+  },
+  {
+   "type": "wheel",
+   "id": "wheel_RL",
+   "name": "wheel_RL",
+   "pos": [
+    0.4,
+    0.4,
+    0.165
+   ],
+   "radius": 0.165,
+   "width": 0.16,
+   "colour": "tyre",
+   "hub": "hub",
+   "cap": "cap",
+   "style": "drum"
+  },
+  {
+   "type": "wheel",
+   "id": "wheel_RR",
+   "name": "wheel_RR",
+   "pos": [
+    -0.4,
+    0.4,
+    0.165
+   ],
+   "radius": 0.165,
+   "width": 0.16,
+   "colour": "tyre",
+   "hub": "hub",
+   "cap": "cap",
+   "style": "drum"
+  },
+  {
+   "type": "tube",
+   "id": "front_beam",
+   "colour": "rust",
+   "radius": 0.035,
+   "points": [
+    [
+     -0.36,
+     -0.39,
+     0.165
+    ],
+    [
+     0.36,
+     -0.39,
+     0.165
+    ]
+   ],
+   "touches": [
+    "wheel_FL",
+    "wheel_FR"
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "rear_beam",
+   "colour": "rust",
+   "radius": 0.035,
+   "points": [
+    [
+     -0.36,
+     0.4,
+     0.165
+    ],
+    [
+     0.36,
+     0.4,
+     0.165
+    ]
+   ],
+   "touches": [
+    "wheel_RL",
+    "wheel_RR"
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "rail_L",
+   "colour": "rust",
+   "radius": 0.03,
+   "points": [
+    [
+     0.1,
+     -0.39,
+     0.165
+    ],
+    [
+     0.1,
+     0.4,
+     0.165
+    ]
+   ],
+   "touches": [
+    "front_beam",
+    "rear_beam"
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "rail_R",
+   "colour": "rust",
+   "radius": 0.03,
+   "points": [
+    [
+     -0.1,
+     -0.39,
+     0.165
+    ],
+    [
+     -0.1,
+     0.4,
+     0.165
+    ]
+   ],
+   "touches": [
+    "front_beam",
+    "rear_beam"
+   ]
+  },
+  {
+   "type": "box",
+   "id": "knuckles",
+   "colour": "rust",
+   "centre": [
+    0.29,
+    -0.39,
+    0.2
+   ],
+   "size": [
+    0.07,
+    0.1,
+    0.13
+   ],
+   "bevel": 0.03,
+   "touches": [
+    "front_beam",
+    "tub"
+   ]
+  },
+  {
+   "type": "box",
+   "id": "knuckles",
+   "colour": "rust",
+   "centre": [
+    -0.29,
+    -0.39,
+    0.2
+   ],
+   "size": [
+    0.07,
+    0.1,
+    0.13
+   ],
+   "bevel": 0.03,
+   "touches": [
+    "front_beam",
+    "tub"
+   ]
+  },
+  {
+   "type": "box",
+   "id": "knuckles",
+   "colour": "rust",
+   "centre": [
+    0.29,
+    0.4,
+    0.2
+   ],
+   "size": [
+    0.07,
+    0.1,
+    0.13
+   ],
+   "bevel": 0.03,
+   "touches": [
+    "rear_beam",
+    "tub",
+    "exhaust"
+   ]
+  },
+  {
+   "type": "box",
+   "id": "knuckles",
+   "colour": "rust",
+   "centre": [
+    -0.29,
+    0.4,
+    0.2
+   ],
+   "size": [
+    0.07,
+    0.1,
+    0.13
+   ],
+   "bevel": 0.03,
+   "touches": [
+    "rear_beam",
+    "tub",
+    "exhaust"
+   ]
+  },
+  {
+   "type": "tub",
+   "id": "tub",
+   "colour": "rust",
+   "power": 2.6,
+   "thickness": 0.03,
+   "rings": [
+    [
+     0.215,
+     0.3,
+     0.17,
+     -0.07
+    ],
+    [
+     0.24,
+     0.42,
+     0.26,
+     -0.075
+    ],
+    [
+     0.31,
+     0.5,
+     0.33,
+     -0.08
+    ],
+    [
+     0.4,
+     0.54,
+     0.37,
+     -0.09
+    ],
+    [
+     0.48,
+     0.555,
+     0.385,
+     -0.09
+    ],
+    [
+     0.53,
+     0.56,
+     0.39,
+     -0.09
+    ]
+   ],
+   "touches": [
+    "rail_L",
+    "rail_R",
+    "front_beam",
+    "rear_beam",
+    "rim",
+    "seat",
+    "column"
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "rim",
+   "colour": "enamel",
+   "radius": 0.05,
+   "closed": true,
+   "points": [
+    [
+     0.375,
+     -0.09,
+     0.535
+    ],
+    [
+     0.3651,
+     0.1027,
+     0.535
+    ],
+    [
+     0.3357,
+     0.2298,
+     0.535
+    ],
+    [
+     0.2872,
+     0.3275,
+     0.535
+    ],
+    [
+     0.22,
+     0.3979,
+     0.535
+    ],
+    [
+     0.1326,
+     0.4407,
+     0.535
+    ],
+    [
+     0.0,
+     0.455,
+     0.535
+    ],
+    [
+     -0.1326,
+     0.4407,
+     0.535
+    ],
+    [
+     -0.22,
+     0.3979,
+     0.535
+    ],
+    [
+     -0.2872,
+     0.3275,
+     0.535
+    ],
+    [
+     -0.3357,
+     0.2298,
+     0.535
+    ],
+    [
+     -0.3651,
+     0.1027,
+     0.535
+    ],
+    [
+     -0.375,
+     -0.09,
+     0.535
+    ],
+    [
+     -0.3651,
+     -0.2827,
+     0.535
+    ],
+    [
+     -0.3357,
+     -0.4098,
+     0.535
+    ],
+    [
+     -0.2872,
+     -0.5075,
+     0.535
+    ],
+    [
+     -0.22,
+     -0.5779,
+     0.535
+    ],
+    [
+     -0.1326,
+     -0.6207,
+     0.535
+    ],
+    [
+     -0.0,
+     -0.635,
+     0.535
+    ],
+    [
+     0.1326,
+     -0.6207,
+     0.535
+    ],
+    [
+     0.22,
+     -0.5779,
+     0.535
+    ],
+    [
+     0.2872,
+     -0.5075,
+     0.535
+    ],
+    [
+     0.3357,
+     -0.4098,
+     0.535
+    ],
+    [
+     0.3651,
+     -0.2827,
+     0.535
+    ]
+   ],
+   "touches": [
+    "tub"
+   ]
+  },
+  {
+   "type": "box",
+   "fuse": "seat",
+   "colour": "seat",
+   "centre": [
+    0,
+    0.27,
+    0.47
+   ],
+   "size": [
+    0.38,
+    0.15,
+    0.4
+   ],
+   "bevel": 0.07,
+   "tilt": [
+    -6,
+    0,
+    0
+   ],
+   "touches": [
+    "tub"
+   ]
+  },
+  {
+   "type": "box",
+   "fuse": "seat",
+   "colour": "seat",
+   "centre": [
+    0,
+    0.1,
+    0.33
+   ],
+   "size": [
+    0.42,
+    0.3,
+    0.14
+   ],
+   "bevel": 0.06
+  },
+  {
+   "type": "tube",
+   "id": "exhaust",
+   "colour": "rust",
+   "radius": 0.07,
+   "smooth": true,
+   "points": [
+    [
+     0.21,
+     0.4,
+     0.165
+    ],
+    [
+     0.21,
+     0.53,
+     0.28
+    ],
+    [
+     0.21,
+     0.62,
+     0.6
+    ]
+   ],
+   "touches": [
+    "rear_beam",
+    "knuckles"
+   ],
+   "open_end": true
+  },
+  {
+   "type": "tube",
+   "id": "exhaust",
+   "colour": "rust",
+   "radius": 0.07,
+   "smooth": true,
+   "points": [
+    [
+     -0.21,
+     0.4,
+     0.165
+    ],
+    [
+     -0.21,
+     0.53,
+     0.28
+    ],
+    [
+     -0.21,
+     0.62,
+     0.6
+    ]
+   ],
+   "open_end": true
+  },
+  {
+   "type": "pipe_end",
+   "id": "exhaust",
+   "colour": "rust",
+   "centre": [
+    0.21,
+    0.62,
+    0.6
+   ],
+   "radius": 0.07,
+   "lean": -19,
+   "flare": 1.3,
+   "depth": 1.2
+  },
+  {
+   "type": "pipe_end",
+   "id": "exhaust",
+   "colour": "rust",
+   "centre": [
+    -0.21,
+    0.62,
+    0.6
+   ],
+   "radius": 0.07,
+   "lean": -19,
+   "flare": 1.3,
+   "depth": 1.2
+  },
+  {
+   "type": "torus",
+   "id": "exhaust",
+   "colour": "rust",
+   "centre": [
+    0.21,
+    0.58,
+    0.45
+   ],
+   "radius": 0.075,
+   "thickness": 0.018,
+   "tilt": [
+    -19,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "torus",
+   "id": "exhaust",
+   "colour": "rust",
+   "centre": [
+    -0.21,
+    0.58,
+    0.45
+   ],
+   "radius": 0.075,
+   "thickness": 0.018,
+   "tilt": [
+    -19,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "column",
+   "colour": "iron",
+   "radius": 0.03,
+   "smooth": true,
+   "points": [
+    [
+     0,
+     -0.1,
+     0.66
+    ],
+    [
+     0,
+     -0.36,
+     0.48
+    ],
+    [
+     0,
+     -0.42,
+     0.25
+    ]
+   ],
+   "touches": [
+    "tub",
+    "steering_wheel"
+   ]
+  },
+  {
+   "type": "torus",
+   "id": "steering_wheel",
+   "name": "steering_wheel",
+   "pivot": [
+    0,
+    -0.1,
+    0.66
+   ],
+   "axis": [
+    0,
+    0.819,
+    0.574
+   ],
+   "colour": "iron",
+   "centre": [
+    0,
+    -0.1,
+    0.66
+   ],
+   "radius": 0.165,
+   "thickness": 0.03,
+   "tilt": [
+    -55,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "ball",
+   "id": "steering_wheel",
+   "name": "steering_wheel",
+   "pivot": [
+    0,
+    -0.1,
+    0.66
+   ],
+   "colour": "iron",
+   "centre": [
+    0,
+    -0.1,
+    0.66
+   ],
+   "radius": 0.05,
+   "scale": [
+    1,
+    1,
+    0.75
+   ],
+   "tilt": [
+    -55,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "steering_wheel",
+   "name": "steering_wheel",
+   "pivot": [
+    0,
+    -0.1,
+    0.66
+   ],
+   "colour": "iron",
+   "radius": 0.02,
+   "points": [
+    [
+     -0.15,
+     -0.1,
+     0.66
+    ],
+    [
+     0.15,
+     -0.1,
+     0.66
+    ]
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "steering_wheel",
+   "name": "steering_wheel",
+   "pivot": [
+    0,
+    -0.1,
+    0.66
+   ],
+   "colour": "iron",
+   "radius": 0.02,
+   "points": [
+    [
+     0,
+     -0.1,
+     0.66
+    ],
+    [
+     0.0,
+     -0.0139,
+     0.5372
+    ]
+   ]
+  }
+ ],
+ "out": "kart.glb",
+ "view": 220,
+ "rust_stops": [
+  [
+   0.0,
+   [
+    0.14,
+    0.12,
+    0.11
+   ]
+  ],
+  [
+   0.32,
+   [
+    0.22,
+    0.19,
+    0.17
+   ]
+  ],
+  [
+   0.44,
+   [
+    0.3,
+    0.24,
+    0.2
+   ]
+  ],
+  [
+   0.5,
+   [
+    0.44,
+    0.26,
+    0.14
+   ]
+  ],
+  [
+   0.55,
+   [
+    0.33,
+    0.23,
+    0.17
+   ]
+  ],
+  [
+   0.62,
+   [
+    0.37,
+    0.35,
+    0.33
+   ]
+  ],
+  [
+   0.7,
+   [
+    0.24,
+    0.21,
+    0.19
+   ]
+  ],
+  [
+   1.0,
+   [
+    0.16,
+    0.14,
+    0.13
+   ]
+  ]
+ ],
+ "mud": [
+  0.42,
+  0.33,
+  0.24
+ ]
+}

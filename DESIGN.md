@@ -134,6 +134,9 @@ Farm-themed, readable at a glance:
   reference of neutral lines, then performed with Fish Audio Drama 3 for the race callouts. Every line lives
   in [`audio/dialogue/racers.json`](audio/dialogue/racers.json): the reference lines, the callouts by race
   moment, and the performed versions marked up with the stressed words.
+- **Callouts in the game:** every line has several good takes; the game picks one at random (or rotates) each
+  time it plays. `audio/callouts/<racer>.json` lists them, each with Opus audio and its mouth curves (per-frame
+  ARKit jaw and mouth weights) so the beak or jaw moves with the line.
 
 ## What this shows off in Playweft
 

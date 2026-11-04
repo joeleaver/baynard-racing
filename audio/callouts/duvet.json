@@ -1,0 +1,701 @@
+{
+ "name": "Duvet",
+ "note": "Pick any take at random (or rotate). Audio is Opus; .mouth.json is per-frame ARKit mouth weights (jawOpen drives the beak/jaw).",
+ "moments": {
+  "drift_boost": [
+   {
+    "text": "Whoa. That was fast.",
+    "takes": [
+     {
+      "audio": "duvet/drift-boost-1-1.ogg",
+      "seconds": 2.74,
+      "mouth": "duvet/drift-boost-1-1.mouth.json"
+     },
+     {
+      "audio": "duvet/drift-boost-1-2.ogg",
+      "seconds": 3.39,
+      "mouth": "duvet/drift-boost-1-2.mouth.json"
+     },
+     {
+      "audio": "duvet/drift-boost-1-3.ogg",
+      "seconds": 2.42,
+      "mouth": "duvet/drift-boost-1-3.mouth.json"
+     },
+     {
+      "audio": "duvet/drift-boost-1-4.ogg",
+      "seconds": 2.23,
+      "mouth": "duvet/drift-boost-1-4.mouth.json"
+     },
+     {
+      "audio": "duvet/drift-boost-1-5.ogg",
+      "seconds": 2.79,
+      "mouth": "duvet/drift-boost-1-5.mouth.json"
+     },
+     {
+      "audio": "duvet/drift-boost-1-6.ogg",
+      "seconds": 2.93,
+      "mouth": "duvet/drift-boost-1-6.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Mm. Nice.",
+    "takes": [
+     {
+      "audio": "duvet/drift-boost-2-1.ogg",
+      "seconds": 2.18,
+      "mouth": "duvet/drift-boost-2-1.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Oh, that felt good.",
+    "takes": [
+     {
+      "audio": "duvet/drift-boost-3-1.ogg",
+      "seconds": 2.18,
+      "mouth": "duvet/drift-boost-3-1.mouth.json"
+     },
+     {
+      "audio": "duvet/drift-boost-3-2.ogg",
+      "seconds": 1.72,
+      "mouth": "duvet/drift-boost-3-2.mouth.json"
+     },
+     {
+      "audio": "duvet/drift-boost-3-3.ogg",
+      "seconds": 2.32,
+      "mouth": "duvet/drift-boost-3-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "hit": [
+   {
+    "text": "Oof. That was a bit rude.",
+    "takes": [
+     {
+      "audio": "duvet/hit-1-1.ogg",
+      "seconds": 2.37,
+      "mouth": "duvet/hit-1-1.mouth.json"
+     },
+     {
+      "audio": "duvet/hit-1-2.ogg",
+      "seconds": 2.51,
+      "mouth": "duvet/hit-1-2.mouth.json"
+     },
+     {
+      "audio": "duvet/hit-1-3.ogg",
+      "seconds": 2.6,
+      "mouth": "duvet/hit-1-3.mouth.json"
+     },
+     {
+      "audio": "duvet/hit-1-4.ogg",
+      "seconds": 2.28,
+      "mouth": "duvet/hit-1-4.mouth.json"
+     },
+     {
+      "audio": "duvet/hit-1-5.ogg",
+      "seconds": 2.51,
+      "mouth": "duvet/hit-1-5.mouth.json"
+     },
+     {
+      "audio": "duvet/hit-1-6.ogg",
+      "seconds": 2.46,
+      "mouth": "duvet/hit-1-6.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Mm. Bouncy.",
+    "takes": [
+     {
+      "audio": "duvet/hit-2-1.ogg",
+      "seconds": 3.71,
+      "mouth": "duvet/hit-2-1.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Baa. Okay.",
+    "takes": [
+     {
+      "audio": "duvet/hit-3-1.ogg",
+      "seconds": 1.95,
+      "mouth": "duvet/hit-3-1.mouth.json"
+     },
+     {
+      "audio": "duvet/hit-3-2.ogg",
+      "seconds": 1.81,
+      "mouth": "duvet/hit-3-2.mouth.json"
+     },
+     {
+      "audio": "duvet/hit-3-3.ogg",
+      "seconds": 2.55,
+      "mouth": "duvet/hit-3-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "item_use": [
+   {
+    "text": "Here you go.",
+    "takes": [
+     {
+      "audio": "duvet/item-use-1-1.ogg",
+      "seconds": 1.58,
+      "mouth": "duvet/item-use-1-1.mouth.json"
+     },
+     {
+      "audio": "duvet/item-use-1-2.ogg",
+      "seconds": 1.72,
+      "mouth": "duvet/item-use-1-2.mouth.json"
+     },
+     {
+      "audio": "duvet/item-use-1-3.ogg",
+      "seconds": 1.3,
+      "mouth": "duvet/item-use-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "This is for you, I think.",
+    "takes": [
+     {
+      "audio": "duvet/item-use-2-1.ogg",
+      "seconds": 2.14,
+      "mouth": "duvet/item-use-2-1.mouth.json"
+     },
+     {
+      "audio": "duvet/item-use-2-2.ogg",
+      "seconds": 2.18,
+      "mouth": "duvet/item-use-2-2.mouth.json"
+     },
+     {
+      "audio": "duvet/item-use-2-3.ogg",
+      "seconds": 1.86,
+      "mouth": "duvet/item-use-2-3.mouth.json"
+     },
+     {
+      "audio": "duvet/item-use-2-4.ogg",
+      "seconds": 2.6,
+      "mouth": "duvet/item-use-2-4.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Oops. Did I throw that?",
+    "takes": [
+     {
+      "audio": "duvet/item-use-3-1.ogg",
+      "seconds": 2.32,
+      "mouth": "duvet/item-use-3-1.mouth.json"
+     },
+     {
+      "audio": "duvet/item-use-3-2.ogg",
+      "seconds": 1.86,
+      "mouth": "duvet/item-use-3-2.mouth.json"
+     },
+     {
+      "audio": "duvet/item-use-3-3.ogg",
+      "seconds": 2.55,
+      "mouth": "duvet/item-use-3-3.mouth.json"
+     },
+     {
+      "audio": "duvet/item-use-3-4.ogg",
+      "seconds": 4.13,
+      "mouth": "duvet/item-use-3-4.mouth.json"
+     },
+     {
+      "audio": "duvet/item-use-3-5.ogg",
+      "seconds": 2.42,
+      "mouth": "duvet/item-use-3-5.mouth.json"
+     },
+     {
+      "audio": "duvet/item-use-3-6.ogg",
+      "seconds": 3.02,
+      "mouth": "duvet/item-use-3-6.mouth.json"
+     }
+    ]
+   }
+  ],
+  "last_lap": [
+   {
+    "text": "Last lap? Already? Okay.",
+    "takes": [
+     {
+      "audio": "duvet/last-lap-1-1.ogg",
+      "seconds": 3.53,
+      "mouth": "duvet/last-lap-1-1.mouth.json"
+     },
+     {
+      "audio": "duvet/last-lap-1-2.ogg",
+      "seconds": 3.48,
+      "mouth": "duvet/last-lap-1-2.mouth.json"
+     },
+     {
+      "audio": "duvet/last-lap-1-3.ogg",
+      "seconds": 3.58,
+      "mouth": "duvet/last-lap-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "One more. Then a nap.",
+    "takes": [
+     {
+      "audio": "duvet/last-lap-2-1.ogg",
+      "seconds": 2.28,
+      "mouth": "duvet/last-lap-2-1.mouth.json"
+     },
+     {
+      "audio": "duvet/last-lap-2-2.ogg",
+      "seconds": 2.79,
+      "mouth": "duvet/last-lap-2-2.mouth.json"
+     }
+    ]
+   }
+  ],
+  "lose": [
+   {
+    "text": "That's alright. Good nap, though.",
+    "takes": [
+     {
+      "audio": "duvet/lose-1-1.ogg",
+      "seconds": 2.28,
+      "mouth": "duvet/lose-1-1.mouth.json"
+     },
+     {
+      "audio": "duvet/lose-1-2.ogg",
+      "seconds": 2.79,
+      "mouth": "duvet/lose-1-2.mouth.json"
+     },
+     {
+      "audio": "duvet/lose-1-3.ogg",
+      "seconds": 2.14,
+      "mouth": "duvet/lose-1-3.mouth.json"
+     },
+     {
+      "audio": "duvet/lose-1-4.ogg",
+      "seconds": 2.23,
+      "mouth": "duvet/lose-1-4.mouth.json"
+     },
+     {
+      "audio": "duvet/lose-1-5.ogg",
+      "seconds": 2.37,
+      "mouth": "duvet/lose-1-5.mouth.json"
+     },
+     {
+      "audio": "duvet/lose-1-6.ogg",
+      "seconds": 2.65,
+      "mouth": "duvet/lose-1-6.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Mm. Next time, maybe.",
+    "takes": [
+     {
+      "audio": "duvet/lose-2-1.ogg",
+      "seconds": 3.44,
+      "mouth": "duvet/lose-2-1.mouth.json"
+     },
+     {
+      "audio": "duvet/lose-2-2.ogg",
+      "seconds": 3.76,
+      "mouth": "duvet/lose-2-2.mouth.json"
+     },
+     {
+      "audio": "duvet/lose-2-3.ogg",
+      "seconds": 3.44,
+      "mouth": "duvet/lose-2-3.mouth.json"
+     },
+     {
+      "audio": "duvet/lose-2-4.ogg",
+      "seconds": 3.3,
+      "mouth": "duvet/lose-2-4.mouth.json"
+     }
+    ]
+   }
+  ],
+  "overtake": [
+   {
+    "text": "Oh. Sorry. Didn't see you there.",
+    "takes": [
+     {
+      "audio": "duvet/overtake-1-1.ogg",
+      "seconds": 4.13,
+      "mouth": "duvet/overtake-1-1.mouth.json"
+     },
+     {
+      "audio": "duvet/overtake-1-2.ogg",
+      "seconds": 3.3,
+      "mouth": "duvet/overtake-1-2.mouth.json"
+     },
+     {
+      "audio": "duvet/overtake-1-3.ogg",
+      "seconds": 2.55,
+      "mouth": "duvet/overtake-1-3.mouth.json"
+     },
+     {
+      "audio": "duvet/overtake-1-4.ogg",
+      "seconds": 3.67,
+      "mouth": "duvet/overtake-1-4.mouth.json"
+     },
+     {
+      "audio": "duvet/overtake-1-5.ogg",
+      "seconds": 3.34,
+      "mouth": "duvet/overtake-1-5.mouth.json"
+     },
+     {
+      "audio": "duvet/overtake-1-6.ogg",
+      "seconds": 3.48,
+      "mouth": "duvet/overtake-1-6.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Excuse me. Just drifting by.",
+    "takes": [
+     {
+      "audio": "duvet/overtake-2-1.ogg",
+      "seconds": 3.02,
+      "mouth": "duvet/overtake-2-1.mouth.json"
+     },
+     {
+      "audio": "duvet/overtake-2-2.ogg",
+      "seconds": 2.6,
+      "mouth": "duvet/overtake-2-2.mouth.json"
+     },
+     {
+      "audio": "duvet/overtake-2-3.ogg",
+      "seconds": 2.46,
+      "mouth": "duvet/overtake-2-3.mouth.json"
+     },
+     {
+      "audio": "duvet/overtake-2-4.ogg",
+      "seconds": 2.51,
+      "mouth": "duvet/overtake-2-4.mouth.json"
+     },
+     {
+      "audio": "duvet/overtake-2-5.ogg",
+      "seconds": 3.11,
+      "mouth": "duvet/overtake-2-5.mouth.json"
+     },
+     {
+      "audio": "duvet/overtake-2-6.ogg",
+      "seconds": 2.69,
+      "mouth": "duvet/overtake-2-6.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Mm. Passing.",
+    "takes": [
+     {
+      "audio": "duvet/overtake-3-1.ogg",
+      "seconds": 2.09,
+      "mouth": "duvet/overtake-3-1.mouth.json"
+     }
+    ]
+   }
+  ],
+  "overtaken": [
+   {
+    "text": "Oh, okay. Bye.",
+    "takes": [
+     {
+      "audio": "duvet/overtaken-1-1.ogg",
+      "seconds": 1.95,
+      "mouth": "duvet/overtaken-1-1.mouth.json"
+     },
+     {
+      "audio": "duvet/overtaken-1-2.ogg",
+      "seconds": 2.23,
+      "mouth": "duvet/overtaken-1-2.mouth.json"
+     },
+     {
+      "audio": "duvet/overtaken-1-3.ogg",
+      "seconds": 2.6,
+      "mouth": "duvet/overtaken-1-3.mouth.json"
+     },
+     {
+      "audio": "duvet/overtaken-1-4.ogg",
+      "seconds": 1.95,
+      "mouth": "duvet/overtaken-1-4.mouth.json"
+     },
+     {
+      "audio": "duvet/overtaken-1-5.ogg",
+      "seconds": 2.18,
+      "mouth": "duvet/overtaken-1-5.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "That's fine. I'll catch up. Eventually.",
+    "takes": [
+     {
+      "audio": "duvet/overtaken-2-1.ogg",
+      "seconds": 3.39,
+      "mouth": "duvet/overtaken-2-1.mouth.json"
+     },
+     {
+      "audio": "duvet/overtaken-2-2.ogg",
+      "seconds": 3.48,
+      "mouth": "duvet/overtaken-2-2.mouth.json"
+     },
+     {
+      "audio": "duvet/overtaken-2-3.ogg",
+      "seconds": 3.48,
+      "mouth": "duvet/overtaken-2-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Mm. Have fun.",
+    "takes": [
+     {
+      "audio": "duvet/overtaken-3-1.ogg",
+      "seconds": 2.46,
+      "mouth": "duvet/overtaken-3-1.mouth.json"
+     },
+     {
+      "audio": "duvet/overtaken-3-2.ogg",
+      "seconds": 2.23,
+      "mouth": "duvet/overtaken-3-2.mouth.json"
+     },
+     {
+      "audio": "duvet/overtaken-3-3.ogg",
+      "seconds": 2.23,
+      "mouth": "duvet/overtaken-3-3.mouth.json"
+     },
+     {
+      "audio": "duvet/overtaken-3-4.ogg",
+      "seconds": 3.34,
+      "mouth": "duvet/overtaken-3-4.mouth.json"
+     },
+     {
+      "audio": "duvet/overtaken-3-5.ogg",
+      "seconds": 5.62,
+      "mouth": "duvet/overtaken-3-5.mouth.json"
+     },
+     {
+      "audio": "duvet/overtaken-3-6.ogg",
+      "seconds": 2.65,
+      "mouth": "duvet/overtaken-3-6.mouth.json"
+     }
+    ]
+   }
+  ],
+  "race_start": [
+   {
+    "text": "Oh. Are we going? Okay.",
+    "takes": [
+     {
+      "audio": "duvet/race-start-1-1.ogg",
+      "seconds": 4.13,
+      "mouth": "duvet/race-start-1-1.mouth.json"
+     },
+     {
+      "audio": "duvet/race-start-1-2.ogg",
+      "seconds": 3.81,
+      "mouth": "duvet/race-start-1-2.mouth.json"
+     },
+     {
+      "audio": "duvet/race-start-1-3.ogg",
+      "seconds": 6.08,
+      "mouth": "duvet/race-start-1-3.mouth.json"
+     },
+     {
+      "audio": "duvet/race-start-1-4.ogg",
+      "seconds": 4.37,
+      "mouth": "duvet/race-start-1-4.mouth.json"
+     },
+     {
+      "audio": "duvet/race-start-1-5.ogg",
+      "seconds": 4.64,
+      "mouth": "duvet/race-start-1-5.mouth.json"
+     },
+     {
+      "audio": "duvet/race-start-1-6.ogg",
+      "seconds": 4.46,
+      "mouth": "duvet/race-start-1-6.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Mm. Here we go, I suppose.",
+    "takes": [
+     {
+      "audio": "duvet/race-start-2-1.ogg",
+      "seconds": 3.11,
+      "mouth": "duvet/race-start-2-1.mouth.json"
+     },
+     {
+      "audio": "duvet/race-start-2-2.ogg",
+      "seconds": 3.99,
+      "mouth": "duvet/race-start-2-2.mouth.json"
+     },
+     {
+      "audio": "duvet/race-start-2-3.ogg",
+      "seconds": 2.88,
+      "mouth": "duvet/race-start-2-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Right. Off we pootle.",
+    "takes": [
+     {
+      "audio": "duvet/race-start-3-1.ogg",
+      "seconds": 2.14,
+      "mouth": "duvet/race-start-3-1.mouth.json"
+     },
+     {
+      "audio": "duvet/race-start-3-2.ogg",
+      "seconds": 1.95,
+      "mouth": "duvet/race-start-3-2.mouth.json"
+     },
+     {
+      "audio": "duvet/race-start-3-3.ogg",
+      "seconds": 2.37,
+      "mouth": "duvet/race-start-3-3.mouth.json"
+     },
+     {
+      "audio": "duvet/race-start-3-4.ogg",
+      "seconds": 2.28,
+      "mouth": "duvet/race-start-3-4.mouth.json"
+     },
+     {
+      "audio": "duvet/race-start-3-5.ogg",
+      "seconds": 2.04,
+      "mouth": "duvet/race-start-3-5.mouth.json"
+     }
+    ]
+   }
+  ],
+  "taunt": [
+   {
+    "text": "You seem stressed.",
+    "takes": [
+     {
+      "audio": "duvet/taunt-1-1.ogg",
+      "seconds": 1.76,
+      "mouth": "duvet/taunt-1-1.mouth.json"
+     },
+     {
+      "audio": "duvet/taunt-1-2.ogg",
+      "seconds": 1.81,
+      "mouth": "duvet/taunt-1-2.mouth.json"
+     },
+     {
+      "audio": "duvet/taunt-1-3.ogg",
+      "seconds": 1.9,
+      "mouth": "duvet/taunt-1-3.mouth.json"
+     },
+     {
+      "audio": "duvet/taunt-1-4.ogg",
+      "seconds": 1.58,
+      "mouth": "duvet/taunt-1-4.mouth.json"
+     },
+     {
+      "audio": "duvet/taunt-1-5.ogg",
+      "seconds": 1.53,
+      "mouth": "duvet/taunt-1-5.mouth.json"
+     },
+     {
+      "audio": "duvet/taunt-1-6.ogg",
+      "seconds": 1.76,
+      "mouth": "duvet/taunt-1-6.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Have you tried lying down?",
+    "takes": [
+     {
+      "audio": "duvet/taunt-2-1.ogg",
+      "seconds": 2.6,
+      "mouth": "duvet/taunt-2-1.mouth.json"
+     },
+     {
+      "audio": "duvet/taunt-2-2.ogg",
+      "seconds": 2.42,
+      "mouth": "duvet/taunt-2-2.mouth.json"
+     },
+     {
+      "audio": "duvet/taunt-2-3.ogg",
+      "seconds": 2.65,
+      "mouth": "duvet/taunt-2-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "win": [
+   {
+    "text": "Oh. I won. That's nice. Can I sleep now?",
+    "takes": [
+     {
+      "audio": "duvet/win-1-1.ogg",
+      "seconds": 4.92,
+      "mouth": "duvet/win-1-1.mouth.json"
+     },
+     {
+      "audio": "duvet/win-1-2.ogg",
+      "seconds": 4.74,
+      "mouth": "duvet/win-1-2.mouth.json"
+     },
+     {
+      "audio": "duvet/win-1-3.ogg",
+      "seconds": 5.67,
+      "mouth": "duvet/win-1-3.mouth.json"
+     },
+     {
+      "audio": "duvet/win-1-4.ogg",
+      "seconds": 4.46,
+      "mouth": "duvet/win-1-4.mouth.json"
+     },
+     {
+      "audio": "duvet/win-1-5.ogg",
+      "seconds": 5.62,
+      "mouth": "duvet/win-1-5.mouth.json"
+     },
+     {
+      "audio": "duvet/win-1-6.ogg",
+      "seconds": 5.02,
+      "mouth": "duvet/win-1-6.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Mm. Told you.",
+    "takes": [
+     {
+      "audio": "duvet/win-2-1.ogg",
+      "seconds": 3.34,
+      "mouth": "duvet/win-2-1.mouth.json"
+     },
+     {
+      "audio": "duvet/win-2-2.ogg",
+      "seconds": 1.76,
+      "mouth": "duvet/win-2-2.mouth.json"
+     },
+     {
+      "audio": "duvet/win-2-3.ogg",
+      "seconds": 1.16,
+      "mouth": "duvet/win-2-3.mouth.json"
+     },
+     {
+      "audio": "duvet/win-2-4.ogg",
+      "seconds": 1.86,
+      "mouth": "duvet/win-2-4.mouth.json"
+     },
+     {
+      "audio": "duvet/win-2-5.ogg",
+      "seconds": 2.14,
+      "mouth": "duvet/win-2-5.mouth.json"
+     }
+    ]
+   }
+  ]
+ }
+}

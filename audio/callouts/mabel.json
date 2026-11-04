@@ -1,0 +1,806 @@
+{
+ "name": "Mabel",
+ "note": "Pick any take at random (or rotate). Audio is Opus; .mouth.json is per-frame ARKit mouth weights (jawOpen drives the beak/jaw).",
+ "moments": {
+  "drift_boost": [
+   {
+    "text": "And round we go.",
+    "takes": [
+     {
+      "audio": "mabel/drift-boost-1-1.ogg",
+      "seconds": 4.78,
+      "mouth": "mabel/drift-boost-1-1.mouth.json"
+     },
+     {
+      "audio": "mabel/drift-boost-1-2.ogg",
+      "seconds": 2.93,
+      "mouth": "mabel/drift-boost-1-2.mouth.json"
+     },
+     {
+      "audio": "mabel/drift-boost-1-3.ogg",
+      "seconds": 2.88,
+      "mouth": "mabel/drift-boost-1-3.mouth.json"
+     },
+     {
+      "audio": "mabel/drift-boost-1-4.ogg",
+      "seconds": 3.06,
+      "mouth": "mabel/drift-boost-1-4.mouth.json"
+     },
+     {
+      "audio": "mabel/drift-boost-1-5.ogg",
+      "seconds": 2.93,
+      "mouth": "mabel/drift-boost-1-5.mouth.json"
+     },
+     {
+      "audio": "mabel/drift-boost-1-6.ogg",
+      "seconds": 3.02,
+      "mouth": "mabel/drift-boost-1-6.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Lovely.",
+    "takes": [
+     {
+      "audio": "mabel/drift-boost-2-1.ogg",
+      "seconds": 1.86,
+      "mouth": "mabel/drift-boost-2-1.mouth.json"
+     },
+     {
+      "audio": "mabel/drift-boost-2-2.ogg",
+      "seconds": 1.49,
+      "mouth": "mabel/drift-boost-2-2.mouth.json"
+     },
+     {
+      "audio": "mabel/drift-boost-2-3.ogg",
+      "seconds": 2.09,
+      "mouth": "mabel/drift-boost-2-3.mouth.json"
+     },
+     {
+      "audio": "mabel/drift-boost-2-4.ogg",
+      "seconds": 2.37,
+      "mouth": "mabel/drift-boost-2-4.mouth.json"
+     },
+     {
+      "audio": "mabel/drift-boost-2-5.ogg",
+      "seconds": 1.58,
+      "mouth": "mabel/drift-boost-2-5.mouth.json"
+     },
+     {
+      "audio": "mabel/drift-boost-2-6.ogg",
+      "seconds": 1.35,
+      "mouth": "mabel/drift-boost-2-6.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "There she goes.",
+    "takes": [
+     {
+      "audio": "mabel/drift-boost-3-1.ogg",
+      "seconds": 2.55,
+      "mouth": "mabel/drift-boost-3-1.mouth.json"
+     },
+     {
+      "audio": "mabel/drift-boost-3-2.ogg",
+      "seconds": 2.55,
+      "mouth": "mabel/drift-boost-3-2.mouth.json"
+     },
+     {
+      "audio": "mabel/drift-boost-3-3.ogg",
+      "seconds": 3.06,
+      "mouth": "mabel/drift-boost-3-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "hit": [
+   {
+    "text": "Oh. Well, that was uncalled for.",
+    "takes": [
+     {
+      "audio": "mabel/hit-1-1.ogg",
+      "seconds": 5.2,
+      "mouth": "mabel/hit-1-1.mouth.json"
+     },
+     {
+      "audio": "mabel/hit-1-2.ogg",
+      "seconds": 5.48,
+      "mouth": "mabel/hit-1-2.mouth.json"
+     },
+     {
+      "audio": "mabel/hit-1-3.ogg",
+      "seconds": 5.29,
+      "mouth": "mabel/hit-1-3.mouth.json"
+     },
+     {
+      "audio": "mabel/hit-1-4.ogg",
+      "seconds": 4.83,
+      "mouth": "mabel/hit-1-4.mouth.json"
+     },
+     {
+      "audio": "mabel/hit-1-5.ogg",
+      "seconds": 4.64,
+      "mouth": "mabel/hit-1-5.mouth.json"
+     },
+     {
+      "audio": "mabel/hit-1-6.ogg",
+      "seconds": 4.41,
+      "mouth": "mabel/hit-1-6.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Mmm. Didn't feel a thing.",
+    "takes": [
+     {
+      "audio": "mabel/hit-2-1.ogg",
+      "seconds": 4.64,
+      "mouth": "mabel/hit-2-1.mouth.json"
+     },
+     {
+      "audio": "mabel/hit-2-2.ogg",
+      "seconds": 3.67,
+      "mouth": "mabel/hit-2-2.mouth.json"
+     },
+     {
+      "audio": "mabel/hit-2-3.ogg",
+      "seconds": 4.5,
+      "mouth": "mabel/hit-2-3.mouth.json"
+     },
+     {
+      "audio": "mabel/hit-2-4.ogg",
+      "seconds": 5.06,
+      "mouth": "mabel/hit-2-4.mouth.json"
+     },
+     {
+      "audio": "mabel/hit-2-5.ogg",
+      "seconds": 4.83,
+      "mouth": "mabel/hit-2-5.mouth.json"
+     },
+     {
+      "audio": "mabel/hit-2-6.ogg",
+      "seconds": 4.88,
+      "mouth": "mabel/hit-2-6.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Now, now.",
+    "takes": [
+     {
+      "audio": "mabel/hit-3-1.ogg",
+      "seconds": 2.69,
+      "mouth": "mabel/hit-3-1.mouth.json"
+     },
+     {
+      "audio": "mabel/hit-3-2.ogg",
+      "seconds": 2.09,
+      "mouth": "mabel/hit-3-2.mouth.json"
+     },
+     {
+      "audio": "mabel/hit-3-3.ogg",
+      "seconds": 3.9,
+      "mouth": "mabel/hit-3-3.mouth.json"
+     },
+     {
+      "audio": "mabel/hit-3-4.ogg",
+      "seconds": 3.3,
+      "mouth": "mabel/hit-3-4.mouth.json"
+     },
+     {
+      "audio": "mabel/hit-3-5.ogg",
+      "seconds": 2.6,
+      "mouth": "mabel/hit-3-5.mouth.json"
+     },
+     {
+      "audio": "mabel/hit-3-6.ogg",
+      "seconds": 3.06,
+      "mouth": "mabel/hit-3-6.mouth.json"
+     }
+    ]
+   }
+  ],
+  "item_use": [
+   {
+    "text": "There you are, dear.",
+    "takes": [
+     {
+      "audio": "mabel/item-use-1-1.ogg",
+      "seconds": 2.69,
+      "mouth": "mabel/item-use-1-1.mouth.json"
+     },
+     {
+      "audio": "mabel/item-use-1-2.ogg",
+      "seconds": 2.79,
+      "mouth": "mabel/item-use-1-2.mouth.json"
+     },
+     {
+      "audio": "mabel/item-use-1-3.ogg",
+      "seconds": 2.79,
+      "mouth": "mabel/item-use-1-3.mouth.json"
+     },
+     {
+      "audio": "mabel/item-use-1-4.ogg",
+      "seconds": 3.2,
+      "mouth": "mabel/item-use-1-4.mouth.json"
+     },
+     {
+      "audio": "mabel/item-use-1-5.ogg",
+      "seconds": 3.11,
+      "mouth": "mabel/item-use-1-5.mouth.json"
+     },
+     {
+      "audio": "mabel/item-use-1-6.ogg",
+      "seconds": 2.83,
+      "mouth": "mabel/item-use-1-6.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Something for you.",
+    "takes": [
+     {
+      "audio": "mabel/item-use-2-1.ogg",
+      "seconds": 2.28,
+      "mouth": "mabel/item-use-2-1.mouth.json"
+     },
+     {
+      "audio": "mabel/item-use-2-2.ogg",
+      "seconds": 2.93,
+      "mouth": "mabel/item-use-2-2.mouth.json"
+     },
+     {
+      "audio": "mabel/item-use-2-3.ogg",
+      "seconds": 3.11,
+      "mouth": "mabel/item-use-2-3.mouth.json"
+     },
+     {
+      "audio": "mabel/item-use-2-4.ogg",
+      "seconds": 2.93,
+      "mouth": "mabel/item-use-2-4.mouth.json"
+     },
+     {
+      "audio": "mabel/item-use-2-5.ogg",
+      "seconds": 3.58,
+      "mouth": "mabel/item-use-2-5.mouth.json"
+     },
+     {
+      "audio": "mabel/item-use-2-6.ogg",
+      "seconds": 2.09,
+      "mouth": "mabel/item-use-2-6.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Don't take it personally.",
+    "takes": [
+     {
+      "audio": "mabel/item-use-3-1.ogg",
+      "seconds": 3.62,
+      "mouth": "mabel/item-use-3-1.mouth.json"
+     },
+     {
+      "audio": "mabel/item-use-3-2.ogg",
+      "seconds": 2.74,
+      "mouth": "mabel/item-use-3-2.mouth.json"
+     },
+     {
+      "audio": "mabel/item-use-3-3.ogg",
+      "seconds": 2.42,
+      "mouth": "mabel/item-use-3-3.mouth.json"
+     },
+     {
+      "audio": "mabel/item-use-3-4.ogg",
+      "seconds": 2.69,
+      "mouth": "mabel/item-use-3-4.mouth.json"
+     },
+     {
+      "audio": "mabel/item-use-3-5.ogg",
+      "seconds": 3.02,
+      "mouth": "mabel/item-use-3-5.mouth.json"
+     },
+     {
+      "audio": "mabel/item-use-3-6.ogg",
+      "seconds": 3.2,
+      "mouth": "mabel/item-use-3-6.mouth.json"
+     }
+    ]
+   }
+  ],
+  "last_lap": [
+   {
+    "text": "Last lap. Steady now.",
+    "takes": [
+     {
+      "audio": "mabel/last-lap-1-1.ogg",
+      "seconds": 4.55,
+      "mouth": "mabel/last-lap-1-1.mouth.json"
+     },
+     {
+      "audio": "mabel/last-lap-1-2.ogg",
+      "seconds": 5.25,
+      "mouth": "mabel/last-lap-1-2.mouth.json"
+     },
+     {
+      "audio": "mabel/last-lap-1-3.ogg",
+      "seconds": 4.83,
+      "mouth": "mabel/last-lap-1-3.mouth.json"
+     },
+     {
+      "audio": "mabel/last-lap-1-4.ogg",
+      "seconds": 4.6,
+      "mouth": "mabel/last-lap-1-4.mouth.json"
+     },
+     {
+      "audio": "mabel/last-lap-1-5.ogg",
+      "seconds": 5.11,
+      "mouth": "mabel/last-lap-1-5.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Nearly home, dears.",
+    "takes": [
+     {
+      "audio": "mabel/last-lap-2-1.ogg",
+      "seconds": 3.39,
+      "mouth": "mabel/last-lap-2-1.mouth.json"
+     },
+     {
+      "audio": "mabel/last-lap-2-2.ogg",
+      "seconds": 3.44,
+      "mouth": "mabel/last-lap-2-2.mouth.json"
+     },
+     {
+      "audio": "mabel/last-lap-2-3.ogg",
+      "seconds": 3.11,
+      "mouth": "mabel/last-lap-2-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "lose": [
+   {
+    "text": "Never mind. Lovely drive, all the same.",
+    "takes": [
+     {
+      "audio": "mabel/lose-1-1.ogg",
+      "seconds": 6.36,
+      "mouth": "mabel/lose-1-1.mouth.json"
+     },
+     {
+      "audio": "mabel/lose-1-2.ogg",
+      "seconds": 6.08,
+      "mouth": "mabel/lose-1-2.mouth.json"
+     },
+     {
+      "audio": "mabel/lose-1-3.ogg",
+      "seconds": 6.87,
+      "mouth": "mabel/lose-1-3.mouth.json"
+     },
+     {
+      "audio": "mabel/lose-1-4.ogg",
+      "seconds": 5.29,
+      "mouth": "mabel/lose-1-4.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "There's always next time.",
+    "takes": [
+     {
+      "audio": "mabel/lose-2-1.ogg",
+      "seconds": 3.25,
+      "mouth": "mabel/lose-2-1.mouth.json"
+     },
+     {
+      "audio": "mabel/lose-2-2.ogg",
+      "seconds": 2.97,
+      "mouth": "mabel/lose-2-2.mouth.json"
+     },
+     {
+      "audio": "mabel/lose-2-3.ogg",
+      "seconds": 2.93,
+      "mouth": "mabel/lose-2-3.mouth.json"
+     },
+     {
+      "audio": "mabel/lose-2-4.ogg",
+      "seconds": 3.58,
+      "mouth": "mabel/lose-2-4.mouth.json"
+     },
+     {
+      "audio": "mabel/lose-2-5.ogg",
+      "seconds": 3.34,
+      "mouth": "mabel/lose-2-5.mouth.json"
+     },
+     {
+      "audio": "mabel/lose-2-6.ogg",
+      "seconds": 3.16,
+      "mouth": "mabel/lose-2-6.mouth.json"
+     }
+    ]
+   }
+  ],
+  "overtake": [
+   {
+    "text": "Excuse me, love.",
+    "takes": [
+     {
+      "audio": "mabel/overtake-1-1.ogg",
+      "seconds": 3.25,
+      "mouth": "mabel/overtake-1-1.mouth.json"
+     },
+     {
+      "audio": "mabel/overtake-1-2.ogg",
+      "seconds": 2.51,
+      "mouth": "mabel/overtake-1-2.mouth.json"
+     },
+     {
+      "audio": "mabel/overtake-1-3.ogg",
+      "seconds": 2.79,
+      "mouth": "mabel/overtake-1-3.mouth.json"
+     },
+     {
+      "audio": "mabel/overtake-1-4.ogg",
+      "seconds": 2.46,
+      "mouth": "mabel/overtake-1-4.mouth.json"
+     },
+     {
+      "audio": "mabel/overtake-1-5.ogg",
+      "seconds": 3.58,
+      "mouth": "mabel/overtake-1-5.mouth.json"
+     },
+     {
+      "audio": "mabel/overtake-1-6.ogg",
+      "seconds": 3.06,
+      "mouth": "mabel/overtake-1-6.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Mind yourself, coming past.",
+    "takes": [
+     {
+      "audio": "mabel/overtake-2-1.ogg",
+      "seconds": 3.76,
+      "mouth": "mabel/overtake-2-1.mouth.json"
+     },
+     {
+      "audio": "mabel/overtake-2-2.ogg",
+      "seconds": 3.95,
+      "mouth": "mabel/overtake-2-2.mouth.json"
+     },
+     {
+      "audio": "mabel/overtake-2-3.ogg",
+      "seconds": 3.67,
+      "mouth": "mabel/overtake-2-3.mouth.json"
+     },
+     {
+      "audio": "mabel/overtake-2-4.ogg",
+      "seconds": 3.81,
+      "mouth": "mabel/overtake-2-4.mouth.json"
+     },
+     {
+      "audio": "mabel/overtake-2-5.ogg",
+      "seconds": 3.95,
+      "mouth": "mabel/overtake-2-5.mouth.json"
+     },
+     {
+      "audio": "mabel/overtake-2-6.ogg",
+      "seconds": 3.34,
+      "mouth": "mabel/overtake-2-6.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Pardon me, dear.",
+    "takes": [
+     {
+      "audio": "mabel/overtake-3-1.ogg",
+      "seconds": 1.67,
+      "mouth": "mabel/overtake-3-1.mouth.json"
+     },
+     {
+      "audio": "mabel/overtake-3-2.ogg",
+      "seconds": 1.9,
+      "mouth": "mabel/overtake-3-2.mouth.json"
+     },
+     {
+      "audio": "mabel/overtake-3-3.ogg",
+      "seconds": 2.23,
+      "mouth": "mabel/overtake-3-3.mouth.json"
+     },
+     {
+      "audio": "mabel/overtake-3-4.ogg",
+      "seconds": 2.28,
+      "mouth": "mabel/overtake-3-4.mouth.json"
+     },
+     {
+      "audio": "mabel/overtake-3-5.ogg",
+      "seconds": 2.32,
+      "mouth": "mabel/overtake-3-5.mouth.json"
+     }
+    ]
+   }
+  ],
+  "overtaken": [
+   {
+    "text": "Off you go, then. I'll see you shortly.",
+    "takes": [
+     {
+      "audio": "mabel/overtaken-1-1.ogg",
+      "seconds": 4.5,
+      "mouth": "mabel/overtaken-1-1.mouth.json"
+     },
+     {
+      "audio": "mabel/overtaken-1-2.ogg",
+      "seconds": 5.67,
+      "mouth": "mabel/overtaken-1-2.mouth.json"
+     },
+     {
+      "audio": "mabel/overtaken-1-3.ogg",
+      "seconds": 5.9,
+      "mouth": "mabel/overtaken-1-3.mouth.json"
+     },
+     {
+      "audio": "mabel/overtaken-1-4.ogg",
+      "seconds": 5.43,
+      "mouth": "mabel/overtaken-1-4.mouth.json"
+     },
+     {
+      "audio": "mabel/overtaken-1-5.ogg",
+      "seconds": 5.9,
+      "mouth": "mabel/overtaken-1-5.mouth.json"
+     },
+     {
+      "audio": "mabel/overtaken-1-6.ogg",
+      "seconds": 4.32,
+      "mouth": "mabel/overtaken-1-6.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "No rush.",
+    "takes": [
+     {
+      "audio": "mabel/overtaken-2-1.ogg",
+      "seconds": 2.23,
+      "mouth": "mabel/overtaken-2-1.mouth.json"
+     },
+     {
+      "audio": "mabel/overtaken-2-2.ogg",
+      "seconds": 1.9,
+      "mouth": "mabel/overtaken-2-2.mouth.json"
+     },
+     {
+      "audio": "mabel/overtaken-2-3.ogg",
+      "seconds": 2.09,
+      "mouth": "mabel/overtaken-2-3.mouth.json"
+     },
+     {
+      "audio": "mabel/overtaken-2-4.ogg",
+      "seconds": 2.18,
+      "mouth": "mabel/overtaken-2-4.mouth.json"
+     },
+     {
+      "audio": "mabel/overtaken-2-5.ogg",
+      "seconds": 1.86,
+      "mouth": "mabel/overtaken-2-5.mouth.json"
+     },
+     {
+      "audio": "mabel/overtaken-2-6.ogg",
+      "seconds": 1.86,
+      "mouth": "mabel/overtaken-2-6.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Enjoy it while it lasts, dear.",
+    "takes": [
+     {
+      "audio": "mabel/overtaken-3-1.ogg",
+      "seconds": 4.41,
+      "mouth": "mabel/overtaken-3-1.mouth.json"
+     },
+     {
+      "audio": "mabel/overtaken-3-2.ogg",
+      "seconds": 3.81,
+      "mouth": "mabel/overtaken-3-2.mouth.json"
+     },
+     {
+      "audio": "mabel/overtaken-3-3.ogg",
+      "seconds": 4.6,
+      "mouth": "mabel/overtaken-3-3.mouth.json"
+     },
+     {
+      "audio": "mabel/overtaken-3-4.ogg",
+      "seconds": 3.44,
+      "mouth": "mabel/overtaken-3-4.mouth.json"
+     },
+     {
+      "audio": "mabel/overtaken-3-5.ogg",
+      "seconds": 5.29,
+      "mouth": "mabel/overtaken-3-5.mouth.json"
+     },
+     {
+      "audio": "mabel/overtaken-3-6.ogg",
+      "seconds": 3.53,
+      "mouth": "mabel/overtaken-3-6.mouth.json"
+     }
+    ]
+   }
+  ],
+  "race_start": [
+   {
+    "text": "Off we go, then.",
+    "takes": [
+     {
+      "audio": "mabel/race-start-1-1.ogg",
+      "seconds": 1.95,
+      "mouth": "mabel/race-start-1-1.mouth.json"
+     },
+     {
+      "audio": "mabel/race-start-1-2.ogg",
+      "seconds": 2.83,
+      "mouth": "mabel/race-start-1-2.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Nice and steady.",
+    "takes": [
+     {
+      "audio": "mabel/race-start-2-1.ogg",
+      "seconds": 2.28,
+      "mouth": "mabel/race-start-2-1.mouth.json"
+     },
+     {
+      "audio": "mabel/race-start-2-2.ogg",
+      "seconds": 2.97,
+      "mouth": "mabel/race-start-2-2.mouth.json"
+     },
+     {
+      "audio": "mabel/race-start-2-3.ogg",
+      "seconds": 2.04,
+      "mouth": "mabel/race-start-2-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Here we go, dears.",
+    "takes": [
+     {
+      "audio": "mabel/race-start-3-1.ogg",
+      "seconds": 2.79,
+      "mouth": "mabel/race-start-3-1.mouth.json"
+     },
+     {
+      "audio": "mabel/race-start-3-2.ogg",
+      "seconds": 2.42,
+      "mouth": "mabel/race-start-3-2.mouth.json"
+     },
+     {
+      "audio": "mabel/race-start-3-3.ogg",
+      "seconds": 2.6,
+      "mouth": "mabel/race-start-3-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "taunt": [
+   {
+    "text": "You'll wear yourself out, rushing like that.",
+    "takes": [
+     {
+      "audio": "mabel/taunt-1-1.ogg",
+      "seconds": 4.69,
+      "mouth": "mabel/taunt-1-1.mouth.json"
+     },
+     {
+      "audio": "mabel/taunt-1-2.ogg",
+      "seconds": 5.34,
+      "mouth": "mabel/taunt-1-2.mouth.json"
+     },
+     {
+      "audio": "mabel/taunt-1-3.ogg",
+      "seconds": 5.85,
+      "mouth": "mabel/taunt-1-3.mouth.json"
+     },
+     {
+      "audio": "mabel/taunt-1-4.ogg",
+      "seconds": 5.11,
+      "mouth": "mabel/taunt-1-4.mouth.json"
+     },
+     {
+      "audio": "mabel/taunt-1-5.ogg",
+      "seconds": 5.48,
+      "mouth": "mabel/taunt-1-5.mouth.json"
+     },
+     {
+      "audio": "mabel/taunt-1-6.ogg",
+      "seconds": 6.27,
+      "mouth": "mabel/taunt-1-6.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Slow down, dear. You'll miss the view.",
+    "takes": [
+     {
+      "audio": "mabel/taunt-2-1.ogg",
+      "seconds": 5.29,
+      "mouth": "mabel/taunt-2-1.mouth.json"
+     },
+     {
+      "audio": "mabel/taunt-2-2.ogg",
+      "seconds": 6.36,
+      "mouth": "mabel/taunt-2-2.mouth.json"
+     },
+     {
+      "audio": "mabel/taunt-2-3.ogg",
+      "seconds": 6.18,
+      "mouth": "mabel/taunt-2-3.mouth.json"
+     },
+     {
+      "audio": "mabel/taunt-2-4.ogg",
+      "seconds": 5.62,
+      "mouth": "mabel/taunt-2-4.mouth.json"
+     },
+     {
+      "audio": "mabel/taunt-2-5.ogg",
+      "seconds": 5.2,
+      "mouth": "mabel/taunt-2-5.mouth.json"
+     },
+     {
+      "audio": "mabel/taunt-2-6.ogg",
+      "seconds": 6.32,
+      "mouth": "mabel/taunt-2-6.mouth.json"
+     }
+    ]
+   }
+  ],
+  "win": [
+   {
+    "text": "Told you, dears. Steady wins.",
+    "takes": [
+     {
+      "audio": "mabel/win-1-1.ogg",
+      "seconds": 3.62,
+      "mouth": "mabel/win-1-1.mouth.json"
+     },
+     {
+      "audio": "mabel/win-1-2.ogg",
+      "seconds": 4.09,
+      "mouth": "mabel/win-1-2.mouth.json"
+     },
+     {
+      "audio": "mabel/win-1-3.ogg",
+      "seconds": 4.64,
+      "mouth": "mabel/win-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Well, isn't that nice.",
+    "takes": [
+     {
+      "audio": "mabel/win-2-1.ogg",
+      "seconds": 3.44,
+      "mouth": "mabel/win-2-1.mouth.json"
+     },
+     {
+      "audio": "mabel/win-2-2.ogg",
+      "seconds": 3.76,
+      "mouth": "mabel/win-2-2.mouth.json"
+     },
+     {
+      "audio": "mabel/win-2-3.ogg",
+      "seconds": 3.53,
+      "mouth": "mabel/win-2-3.mouth.json"
+     }
+    ]
+   }
+  ]
+ }
+}

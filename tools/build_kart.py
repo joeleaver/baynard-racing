@@ -44,7 +44,10 @@ Spec (paths relative to the spec file):
   so a steering column through a board shows up before anyone sees a render.
   Any non-wheel part may carry "name" and "pivot" [x, y, z]: parts sharing a name become one moving object with
   its origin at the pivot (e.g. "steering_wheel", which the game turns with the steering). "axis" [x, y, z] says
-  which way it turns (spec frame) and goes into the GLB as an extra, in the GLB's Y-up frame.
+  which way it turns (spec frame) and goes into the GLB as an extra, in the GLB's Y-up frame. "joint":
+  "pendulum" with "swing" (degrees) marks something that hangs from its pivot and swings, such as a bell, for
+  the game to animate or drive with physics. "parent" names another moving part this one rides on, such as a
+  clapper inside a swinging bell.
   Wheels carry extras too, in the GLB's frame: spin_axis [1, 0, 0] and, for front wheels (name ending F, FL or
   FR), steer_axis [0, 1, 0].
   view      camera angle for the 3/4 render, to match the concept (default 140: front to the left)
@@ -716,11 +719,18 @@ for name, (p, objs) in named.items():
     o = join(objs, name); piv = Vector(p["pivot"])
     o.data.transform(Matrix.Translation(-piv)); o.location = piv
     if p.get("axis"): o["axis"] = gl(p["axis"])
+    if p.get("joint"): o["joint"] = p["joint"]  # e.g. "pendulum": hangs from its pivot and swings freely
+    if p.get("swing"): o["swing_limit"] = p["swing"]  # degrees it may swing from hanging straight down
     movers.append(o)
 moving = wheels + movers
 meshes = [body] + moving
 root = bpy.data.objects.new("kart", None); scene.collection.objects.link(root)
 for o in meshes: o.parent = root
+bpy.context.view_layer.update()
+for name, (p, objs) in named.items():  # a moving part can ride on another (a clapper inside a swinging bell)
+    if p.get("parent"):
+        o, par = bpy.data.objects[name], bpy.data.objects[p["parent"]]
+        mw = o.matrix_world.copy(); o.parent = par; o.matrix_world = mw
 bpy.context.view_layer.update()
 tris = sum(len(f.vertices) - 2 for o in meshes for f in o.data.polygons)
 print(f"KART {os.path.basename(spec_path)}: body {len(body.data.polygons)} faces, {len(moving)} moving parts, {tris} triangles")
@@ -746,6 +756,10 @@ if not fast:
             bpy.context.view_layer.objects.active = lo
             d = lo.modifiers.new("dec", "DECIMATE"); d.ratio = want / tris; bpy.ops.object.modifier_apply(modifier=d.name)
         highs.append(o); lows.append(lo)
+    low_of = {h: l for h, l in zip(highs, lows)}
+    for l in lows:  # a copy still hangs from the original's parent: move it onto the parent's copy
+        if l.parent in low_of:
+            mw = l.matrix_world.copy(); l.parent = low_of[l.parent]; l.matrix_world = mw
     bpy.ops.object.select_all(action="DESELECT")
     for o in lows: o.select_set(True)
     bpy.context.view_layer.objects.active = lows[0]

@@ -48,6 +48,8 @@ Spec (paths relative to the spec file):
             "cap": a colour gives a plain disc hub with a separate centre cap in that colour
   Parts that share a "fuse" label are melted into one soft piece (voxel remesh and smoothing), the way a clay
   seat is one lump rather than glued blocks.
+  Every part must also connect to the rest of the kart: anything joined to nothing (an axle stopping short of
+  its wheel) is reported as FLOATING.
   Parts may list "touches": ids they are meant to meet. Every other overlap between parts is reported as a CLASH,
   so a steering column through a board shows up before anyone sees a render.
   Any non-wheel part may carry "name" and "pivot" [x, y, z]: parts sharing a name become one moving object with
@@ -796,6 +798,39 @@ for a in range(len(trees)):
         if hits:
             clashes += 1; print(f"CLASH {ia} x {ib}: {len(hits)} face pairs")
 print(f"CLASHES {clashes}")
+
+
+# ---------------------------------------------------------------- nothing floating
+def connectivity(tol=0.004):
+    """Parts that touch (or come within tol) are joined; every part must join up with the rest of the kart.
+    Reports each group of parts that is connected to nothing else: an axle that stops short of its wheel,
+    a bracket hanging in the air."""
+    info = []
+    for k, (p, objs) in enumerate(groups):
+        pid = p.get("id", p.get("name", p["type"] + str(k)))
+        vs = [o.matrix_world @ v.co for o in objs for v in o.data.vertices]
+        lo = Vector([min(v[a] for v in vs) for a in range(3)]); hi = Vector([max(v[a] for v in vs) for a in range(3)])
+        step = max(1, len(vs) // 700)
+        info.append((pid, vs[::step], lo, hi, trees[k][2]))
+    n = len(info); parent = list(range(n))
+    def find(a):
+        while parent[a] != a: parent[a] = parent[parent[a]]; a = parent[a]
+        return a
+    for a in range(n):
+        for b in range(a + 1, n):
+            if find(a) == find(b): continue
+            _, va, la, ha, Ta = info[a]; _, vb, lb, hb, Tb = info[b]
+            if any(la[i] > hb[i] + tol or lb[i] > ha[i] + tol for i in range(3)): continue
+            if Ta.overlap(Tb) or any(Tb.find_nearest(v, tol)[0] is not None for v in va) \
+                    or any(Ta.find_nearest(v, tol)[0] is not None for v in vb):
+                parent[find(a)] = find(b)
+    comps = {}
+    for k in range(n): comps.setdefault(find(k), []).append(info[k][0])
+    main = max(comps.values(), key=len)
+    loose = [sorted(set(c)) for c in comps.values() if c is not main]
+    for c in loose: print("FLOATING " + ", ".join(c))
+    print(f"FLOATING GROUPS {len(loose)}")
+connectivity()
 
 # ---------------------------------------------------------------- assemble moving parts
 body, wheels, named = [], [], {}

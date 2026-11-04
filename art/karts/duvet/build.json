@@ -699,6 +699,74 @@
     90,
     0
    ]
+  },
+  {
+   "type": "tube",
+   "id": "cleats",
+   "colour": "wood",
+   "radius": 0.016,
+   "points": [
+    [
+     -0.235,
+     -0.06,
+     0.203
+    ],
+    [
+     0.235,
+     -0.06,
+     0.203
+    ]
+   ],
+   "touches": [
+    "handles",
+    "tray"
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "cleats",
+   "colour": "wood",
+   "radius": 0.016,
+   "points": [
+    [
+     -0.235,
+     0.2,
+     0.203
+    ],
+    [
+     0.235,
+     0.2,
+     0.203
+    ]
+   ],
+   "touches": [
+    "handles",
+    "tray"
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "steering_wheel",
+   "name": "steering_wheel",
+   "pivot": [
+    0,
+    -0.04,
+    0.56
+   ],
+   "colour": "wheel",
+   "radius": 0.016,
+   "points": [
+    [
+     -0.1,
+     -0.04,
+     0.56
+    ],
+    [
+     0.1,
+     -0.04,
+     0.56
+    ]
+   ]
   }
  ],
  "out": "kart.glb"

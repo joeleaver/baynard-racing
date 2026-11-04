@@ -123,7 +123,9 @@
    "colour": "tyre",
    "hub": "hub",
    "cap": "cap",
-   "style": "drum"
+   "style": "drum",
+   "stub": 0.049,
+   "stub_colour": "chrome"
   },
   {
    "type": "wheel",
@@ -139,7 +141,9 @@
    "colour": "tyre",
    "hub": "hub",
    "cap": "cap",
-   "style": "drum"
+   "style": "drum",
+   "stub": 0.049,
+   "stub_colour": "chrome"
   },
   {
    "type": "wheel",
@@ -280,12 +284,12 @@
    "radius": 0.03,
    "points": [
     [
-     -0.37,
+     -0.41,
      0.45,
      0.2
     ],
     [
-     0.37,
+     0.41,
      0.45,
      0.2
     ]
@@ -1828,6 +1832,28 @@
    "joint": "pendulum",
    "swing": 15,
    "parent": "bell"
+  },
+  {
+   "type": "box",
+   "id": "churn_mount",
+   "colour": "chrome",
+   "centre": [
+    0.03,
+    -0.42,
+    0.184
+   ],
+   "size": [
+    0.3,
+    0.2,
+    0.02
+   ],
+   "bevel": 0.008,
+   "touches": [
+    "churn",
+    "axles",
+    "fins",
+    "frame"
+   ]
   }
  ],
  "out": "kart.glb",

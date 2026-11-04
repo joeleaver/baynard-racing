@@ -129,7 +129,9 @@
    "colour": "tyre",
    "hub": "hub",
    "cap": "cap",
-   "style": "drum"
+   "style": "drum",
+   "stub": 0.097,
+   "stub_colour": "iron"
   },
   {
    "type": "wheel",
@@ -145,7 +147,9 @@
    "colour": "tyre",
    "hub": "hub",
    "cap": "cap",
-   "style": "drum"
+   "style": "drum",
+   "stub": 0.097,
+   "stub_colour": "iron"
   },
   {
    "type": "wheel",

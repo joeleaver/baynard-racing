@@ -1,0 +1,1879 @@
+{
+ "about": "Max's red racer, a ride-on mower at heart, with number 1 (heavy class), measured off concept.webp and turnaround.webp (0.95 m wheelbase). Behind the seat: a lawnmower grass catcher and the muffler stack.",
+ "length": 1.6,
+ "seed": 19,
+ "view": 140,
+ "colours": {
+  "red": {
+   "rgb": [
+    0.74,
+    0.05,
+    0.04
+   ],
+   "kind": "clay",
+   "roughness": 0.42
+  },
+  "grey": {
+   "rgb": [
+    0.62,
+    0.61,
+    0.6
+   ],
+   "kind": "metal",
+   "roughness": 0.4
+  },
+  "frame": {
+   "rgb": [
+    0.45,
+    0.44,
+    0.44
+   ],
+   "kind": "metal",
+   "roughness": 0.4
+  },
+  "engine": {
+   "rgb": [
+    0.5,
+    0.48,
+    0.46
+   ],
+   "kind": "metal",
+   "roughness": 0.45,
+   "dirt": 0.2
+  },
+  "chrome": {
+   "rgb": [
+    0.86,
+    0.86,
+    0.86
+   ],
+   "kind": "metal",
+   "roughness": 0.15
+  },
+  "cream": {
+   "rgb": [
+    0.9,
+    0.8,
+    0.58
+   ],
+   "kind": "clay"
+  },
+  "white": {
+   "rgb": [
+    0.95,
+    0.94,
+    0.92
+   ],
+   "kind": "clay"
+  },
+  "black": {
+   "rgb": [
+    0.08,
+    0.08,
+    0.08
+   ],
+   "kind": "clay"
+  },
+  "tyre": {
+   "rgb": [
+    0.2,
+    0.19,
+    0.19
+   ],
+   "kind": "rubber",
+   "dirt": 0.15
+  },
+  "hub": {
+   "rgb": [
+    0.72,
+    0.72,
+    0.72
+   ],
+   "kind": "metal",
+   "roughness": 0.3
+  },
+  "cap": {
+   "rgb": [
+    0.25,
+    0.25,
+    0.25
+   ],
+   "kind": "metal"
+  },
+  "wheel": {
+   "rgb": [
+    0.1,
+    0.1,
+    0.1
+   ],
+   "kind": "rubber"
+  },
+  "tab": {
+   "rgb": [
+    0.42,
+    0.26,
+    0.17
+   ],
+   "kind": "clay"
+  },
+  "rubber": {
+   "rgb": [
+    0.12,
+    0.11,
+    0.11
+   ],
+   "kind": "rubber"
+  },
+  "steel": {
+   "rgb": [
+    0.5,
+    0.5,
+    0.5
+   ],
+   "kind": "metal",
+   "roughness": 0.25,
+   "dirt": 0.1
+  },
+  "canvas": {
+   "rgb": [
+    0.8,
+    0.7,
+    0.5
+   ],
+   "kind": "clay",
+   "dirt": 0.15
+  },
+  "strap": {
+   "rgb": [
+    0.42,
+    0.3,
+    0.2
+   ],
+   "kind": "clay"
+  },
+  "bagcloth": {
+   "rgb": [
+    0.42,
+    0.47,
+    0.36
+   ],
+   "kind": "clay",
+   "dirt": 0.12
+  },
+  "lid": {
+   "rgb": [
+    0.24,
+    0.26,
+    0.24
+   ],
+   "kind": "clay",
+   "roughness": 0.5
+  }
+ },
+ "parts": [
+  {
+   "type": "wheel",
+   "id": "wheel_FL",
+   "name": "wheel_FL",
+   "pos": [
+    0.435,
+    -0.46,
+    0.135
+   ],
+   "radius": 0.135,
+   "width": 0.15,
+   "colour": "tyre",
+   "hub": "hub",
+   "cap": "cap",
+   "style": "drum"
+  },
+  {
+   "type": "wheel",
+   "id": "wheel_FR",
+   "name": "wheel_FR",
+   "pos": [
+    -0.435,
+    -0.46,
+    0.135
+   ],
+   "radius": 0.135,
+   "width": 0.15,
+   "colour": "tyre",
+   "hub": "hub",
+   "cap": "cap",
+   "style": "drum"
+  },
+  {
+   "type": "wheel",
+   "id": "wheel_RL",
+   "name": "wheel_RL",
+   "pos": [
+    0.46,
+    0.48,
+    0.18
+   ],
+   "radius": 0.18,
+   "width": 0.22,
+   "colour": "tyre",
+   "hub": "hub",
+   "cap": "cap",
+   "style": "drum"
+  },
+  {
+   "type": "wheel",
+   "id": "wheel_RR",
+   "name": "wheel_RR",
+   "pos": [
+    -0.46,
+    0.48,
+    0.18
+   ],
+   "radius": 0.18,
+   "width": 0.22,
+   "colour": "tyre",
+   "hub": "hub",
+   "cap": "cap",
+   "style": "drum"
+  },
+  {
+   "type": "tube",
+   "id": "frame",
+   "colour": "frame",
+   "radius": 0.022,
+   "points": [
+    [
+     0.2,
+     -0.68,
+     0.1
+    ],
+    [
+     0.2,
+     0.84,
+     0.1
+    ]
+   ],
+   "touches": [
+    "axles",
+    "floor",
+    "nose",
+    "seat",
+    "tray",
+    "catcher",
+    "pod_L",
+    "pod_R",
+    "pod_skirt_L",
+    "pod_skirt_R",
+    "crossmember",
+    "nose_skirt"
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "frame",
+   "colour": "frame",
+   "radius": 0.022,
+   "points": [
+    [
+     -0.2,
+     -0.68,
+     0.1
+    ],
+    [
+     -0.2,
+     0.84,
+     0.1
+    ]
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "frame",
+   "colour": "frame",
+   "radius": 0.02,
+   "points": [
+    [
+     -0.2,
+     -0.1,
+     0.1
+    ],
+    [
+     -0.26,
+     -0.1,
+     0.13
+    ]
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "frame",
+   "colour": "frame",
+   "radius": 0.02,
+   "points": [
+    [
+     0.2,
+     -0.1,
+     0.1
+    ],
+    [
+     0.26,
+     -0.1,
+     0.13
+    ]
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "axles",
+   "colour": "frame",
+   "radius": 0.025,
+   "points": [
+    [
+     -0.34,
+     -0.46,
+     0.135
+    ],
+    [
+     0.34,
+     -0.46,
+     0.135
+    ]
+   ],
+   "touches": [
+    "wheel_FL",
+    "wheel_FR",
+    "frame",
+    "nose"
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "axles",
+   "colour": "frame",
+   "radius": 0.03,
+   "points": [
+    [
+     -0.37,
+     0.48,
+     0.18
+    ],
+    [
+     0.37,
+     0.48,
+     0.18
+    ]
+   ],
+   "touches": [
+    "wheel_RL",
+    "wheel_RR",
+    "frame"
+   ]
+  },
+  {
+   "type": "box",
+   "id": "floor",
+   "colour": "frame",
+   "centre": [
+    0,
+    -0.1,
+    0.1
+   ],
+   "size": [
+    0.42,
+    0.8,
+    0.02
+   ],
+   "bevel": 0.008,
+   "touches": [
+    "crossmember",
+    "seat",
+    "frame",
+    "column",
+    "nose"
+   ]
+  },
+  {
+   "type": "box",
+   "fuse": "seat",
+   "colour": "red",
+   "centre": [
+    0,
+    -0.02,
+    0.24
+   ],
+   "size": [
+    0.4,
+    0.38,
+    0.1
+   ],
+   "bevel": 0.05,
+   "touches": [
+    "floor",
+    "frame",
+    "pod_L",
+    "pod_R",
+    "exhaust",
+    "chute",
+    "tabs"
+   ]
+  },
+  {
+   "type": "box",
+   "fuse": "seat",
+   "colour": "red",
+   "centre": [
+    0,
+    0.19,
+    0.42
+   ],
+   "size": [
+    0.4,
+    0.1,
+    0.36
+   ],
+   "bevel": 0.05,
+   "tilt": [
+    -25,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "torus",
+   "id": "steering_wheel",
+   "name": "steering_wheel",
+   "pivot": [
+    0,
+    -0.22,
+    0.56
+   ],
+   "axis": [
+    0,
+    0.8192,
+    0.5736
+   ],
+   "colour": "wheel",
+   "centre": [
+    0,
+    -0.22,
+    0.56
+   ],
+   "radius": 0.13,
+   "thickness": 0.026,
+   "tilt": [
+    -55,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "ball",
+   "id": "steering_wheel",
+   "name": "steering_wheel",
+   "pivot": [
+    0,
+    -0.22,
+    0.56
+   ],
+   "colour": "wheel",
+   "centre": [
+    0,
+    -0.22,
+    0.56
+   ],
+   "radius": 0.04,
+   "scale": [
+    1,
+    1,
+    0.8
+   ],
+   "tilt": [
+    -55,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "steering_wheel",
+   "name": "steering_wheel",
+   "pivot": [
+    0,
+    -0.22,
+    0.56
+   ],
+   "colour": "wheel",
+   "radius": 0.016,
+   "points": [
+    [
+     -0.12,
+     -0.22,
+     0.56
+    ],
+    [
+     0.12,
+     -0.22,
+     0.56
+    ]
+   ]
+  },
+  {
+   "type": "box",
+   "fuse": "nose",
+   "colour": "red",
+   "centre": [
+    0,
+    -0.81,
+    0.225
+   ],
+   "size": [
+    0.42,
+    0.12,
+    0.192
+   ],
+   "bevel": 0.05,
+   "tilt": [
+    -63.43,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "box",
+   "fuse": "nose",
+   "colour": "red",
+   "centre": [
+    0,
+    -0.71,
+    0.29
+   ],
+   "size": [
+    0.405,
+    0.12,
+    0.208
+   ],
+   "bevel": 0.05,
+   "tilt": [
+    -51.34,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "box",
+   "fuse": "nose",
+   "colour": "red",
+   "centre": [
+    0,
+    -0.615,
+    0.38
+   ],
+   "size": [
+    0.39,
+    0.12,
+    0.215
+   ],
+   "bevel": 0.05,
+   "tilt": [
+    -41.99,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "box",
+   "fuse": "nose",
+   "colour": "red",
+   "centre": [
+    0,
+    -0.53,
+    0.49
+   ],
+   "size": [
+    0.375,
+    0.12,
+    0.224
+   ],
+   "bevel": 0.05,
+   "tilt": [
+    -33.69,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "box",
+   "fuse": "nose",
+   "colour": "red",
+   "centre": [
+    0,
+    -0.47,
+    0.59
+   ],
+   "size": [
+    0.36,
+    0.12,
+    0.169
+   ],
+   "bevel": 0.05,
+   "tilt": [
+    -26.57,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "turned",
+   "id": "roundel",
+   "colour": "white",
+   "centre": [
+    0.0,
+    -0.5891,
+    0.5294
+   ],
+   "axis": [
+    0,
+    -0.8321,
+    0.5547
+   ],
+   "subdiv": 1,
+   "profile": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0.1
+    ],
+    [
+     0.012,
+     0.1
+    ],
+    [
+     0.016,
+     0.086
+    ],
+    [
+     0.016,
+     0
+    ]
+   ],
+   "touches": [
+    "nose"
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "roundel",
+   "colour": "black",
+   "radius": 0.016,
+   "points": [
+    [
+     0.013,
+     -0.6414,
+     0.494
+    ],
+    [
+     0.013,
+     -0.5729,
+     0.5968
+    ]
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "roundel",
+   "colour": "black",
+   "radius": 0.015,
+   "points": [
+    [
+     0.013,
+     -0.5729,
+     0.5968
+    ],
+    [
+     -0.0364,
+     -0.5917,
+     0.5687
+    ]
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "roundel",
+   "colour": "black",
+   "radius": 0.015,
+   "points": [
+    [
+     -0.039,
+     -0.6429,
+     0.4919
+    ],
+    [
+     0.0598,
+     -0.6429,
+     0.4919
+    ]
+   ]
+  },
+  {
+   "type": "box",
+   "fuse": "seat",
+   "colour": "red",
+   "centre": [
+    0.18,
+    0.04,
+    0.31
+   ],
+   "size": [
+    0.06,
+    0.34,
+    0.13
+   ],
+   "bevel": 0.028
+  },
+  {
+   "type": "box",
+   "fuse": "seat",
+   "colour": "red",
+   "centre": [
+    -0.18,
+    0.04,
+    0.31
+   ],
+   "size": [
+    0.06,
+    0.34,
+    0.13
+   ],
+   "bevel": 0.028
+  },
+  {
+   "type": "box",
+   "fuse": "seat",
+   "colour": "red",
+   "centre": [
+    0,
+    0.07,
+    0.17
+   ],
+   "size": [
+    0.2,
+    0.3,
+    0.1
+   ],
+   "bevel": 0.05
+  },
+  {
+   "type": "box",
+   "id": "tabs",
+   "colour": "tab",
+   "centre": [
+    0.215,
+    0.3,
+    0.47
+   ],
+   "size": [
+    0.03,
+    0.08,
+    0.18
+   ],
+   "bevel": 0.012,
+   "tilt": [
+    -25,
+    0,
+    0
+   ],
+   "touches": [
+    "seat"
+   ]
+  },
+  {
+   "type": "box",
+   "id": "tabs",
+   "colour": "tab",
+   "centre": [
+    -0.215,
+    0.3,
+    0.47
+   ],
+   "size": [
+    0.03,
+    0.08,
+    0.18
+   ],
+   "bevel": 0.012,
+   "tilt": [
+    -25,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "box",
+   "fuse": "nose",
+   "colour": "red",
+   "centre": [
+    0,
+    -0.77,
+    0.165
+   ],
+   "size": [
+    0.5,
+    0.3,
+    0.155
+   ],
+   "bevel": 0.075,
+   "touches": [
+    "frame",
+    "axles",
+    "floor",
+    "skids",
+    "column",
+    "roundel"
+   ]
+  },
+  {
+   "type": "ball",
+   "fuse": "nose",
+   "colour": "red",
+   "centre": [
+    0.25,
+    -0.77,
+    0.165
+   ],
+   "radius": 0.15,
+   "scale": [
+    1,
+    1,
+    0.52
+   ]
+  },
+  {
+   "type": "ball",
+   "fuse": "nose",
+   "colour": "red",
+   "centre": [
+    -0.25,
+    -0.77,
+    0.165
+   ],
+   "radius": 0.15,
+   "scale": [
+    1,
+    1,
+    0.52
+   ]
+  },
+  {
+   "type": "ball",
+   "fuse": "nose",
+   "colour": "red",
+   "centre": [
+    0,
+    -0.8,
+    0.2
+   ],
+   "radius": 0.2,
+   "scale": [
+    1.6,
+    0.7,
+    0.35
+   ]
+  },
+  {
+   "type": "turned",
+   "id": "stack",
+   "colour": "rubber",
+   "centre": [
+    0.27,
+    0.34,
+    0.41
+   ],
+   "axis": [
+    0.0,
+    0.8412,
+    0.5408
+   ],
+   "profile": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0.04
+    ],
+    [
+     0.012,
+     0.045
+    ],
+    [
+     0.05,
+     0.045
+    ],
+    [
+     0.062,
+     0.038
+    ],
+    [
+     0.062,
+     0
+    ]
+   ],
+   "touches": [
+    "exhaust"
+   ]
+  },
+  {
+   "type": "turned",
+   "id": "stack",
+   "colour": "steel",
+   "centre": [
+    0.27,
+    0.34,
+    0.41
+   ],
+   "axis": [
+    0.0,
+    0.8412,
+    0.5408
+   ],
+   "profile": [
+    [
+     0.058,
+     0
+    ],
+    [
+     0.058,
+     0.032
+    ],
+    [
+     0.1,
+     0.032
+    ],
+    [
+     0.13,
+     0.07
+    ],
+    [
+     0.15,
+     0.086
+    ],
+    [
+     0.37,
+     0.088
+    ],
+    [
+     0.375,
+     0.095
+    ],
+    [
+     0.405,
+     0.095
+    ],
+    [
+     0.41,
+     0.086
+    ],
+    [
+     0.44,
+     0.08
+    ],
+    [
+     0.48,
+     0.058
+    ],
+    [
+     0.5,
+     0.035
+    ],
+    [
+     0.5,
+     0.028
+    ],
+    [
+     0.55,
+     0.028
+    ],
+    [
+     0.553,
+     0.022
+    ],
+    [
+     0.535,
+     0.02
+    ],
+    [
+     0.45,
+     0.02
+    ],
+    [
+     0.45,
+     0
+    ]
+   ],
+   "touches": [
+    "exhaust"
+   ]
+  },
+  {
+   "type": "box",
+   "fuse": "seat",
+   "colour": "red",
+   "centre": [
+    0,
+    0.3,
+    0.4
+   ],
+   "size": [
+    0.38,
+    0.12,
+    0.3
+   ],
+   "bevel": 0.05
+  },
+  {
+   "type": "tube",
+   "id": "crossmember",
+   "colour": "frame",
+   "radius": 0.02,
+   "points": [
+    [
+     -0.2,
+     -0.58,
+     0.1
+    ],
+    [
+     0.2,
+     -0.58,
+     0.1
+    ]
+   ],
+   "touches": [
+    "frame",
+    "floor",
+    "column",
+    "nose"
+   ]
+  },
+  {
+   "type": "box",
+   "id": "column",
+   "colour": "frame",
+   "centre": [
+    0,
+    -0.58,
+    0.135
+   ],
+   "size": [
+    0.08,
+    0.08,
+    0.06
+   ],
+   "bevel": 0.02,
+   "touches": [
+    "crossmember",
+    "floor",
+    "steering_wheel",
+    "nose"
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "column",
+   "colour": "frame",
+   "radius": 0.02,
+   "points": [
+    [
+     0,
+     -0.57,
+     0.15
+    ],
+    [
+     0,
+     -0.22,
+     0.56
+    ]
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "column",
+   "colour": "frame",
+   "radius": 0.012,
+   "points": [
+    [
+     0.15,
+     -0.58,
+     0.1
+    ],
+    [
+     0.02,
+     -0.45,
+     0.33
+    ]
+   ]
+  },
+  {
+   "type": "box",
+   "fuse": "nose_skirt",
+   "colour": "grey",
+   "centre": [
+    0,
+    -0.77,
+    0.09
+   ],
+   "size": [
+    0.52,
+    0.32,
+    0.05
+   ],
+   "bevel": 0.024,
+   "touches": [
+    "nose",
+    "frame",
+    "crossmember",
+    "axles"
+   ]
+  },
+  {
+   "type": "disc",
+   "fuse": "nose_skirt",
+   "colour": "grey",
+   "centre": [
+    0.255,
+    -0.77,
+    0.09
+   ],
+   "radius": 0.16,
+   "depth": 0.05,
+   "bevel": 0.022,
+   "tilt": [
+    0,
+    90,
+    0
+   ]
+  },
+  {
+   "type": "disc",
+   "fuse": "nose_skirt",
+   "colour": "grey",
+   "centre": [
+    -0.255,
+    -0.77,
+    0.09
+   ],
+   "radius": 0.16,
+   "depth": 0.05,
+   "bevel": 0.022,
+   "tilt": [
+    0,
+    90,
+    0
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "exhaust",
+   "colour": "rubber",
+   "radius": 0.028,
+   "smooth": true,
+   "points": [
+    [
+     0.17,
+     0.32,
+     0.31
+    ],
+    [
+     0.23,
+     0.34,
+     0.36
+    ],
+    [
+     0.265,
+     0.352,
+     0.402
+    ]
+   ],
+   "touches": [
+    "seat",
+    "stack"
+   ]
+  },
+  {
+   "type": "box",
+   "id": "tray",
+   "colour": "frame",
+   "centre": [
+    -0.08,
+    0.67,
+    0.115
+   ],
+   "size": [
+    0.36,
+    0.3,
+    0.02
+   ],
+   "bevel": 0.008,
+   "touches": [
+    "frame",
+    "catcher"
+   ]
+  },
+  {
+   "type": "tub",
+   "id": "catcher",
+   "colour": "bagcloth",
+   "power": 5.0,
+   "thickness": 0.014,
+   "offset_x": -0.08,
+   "rings": [
+    [
+     0.13,
+     0.12,
+     0.15,
+     0.665
+    ],
+    [
+     0.2,
+     0.13,
+     0.165,
+     0.665
+    ],
+    [
+     0.4,
+     0.14,
+     0.18,
+     0.665
+    ],
+    [
+     0.64,
+     0.145,
+     0.19,
+     0.665
+    ]
+   ],
+   "touches": [
+    "rim",
+    "lid",
+    "chute",
+    "tray"
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "rim",
+   "colour": "frame",
+   "radius": 0.012,
+   "closed": true,
+   "points": [
+    [
+     0.113,
+     0.665,
+     0.643
+    ],
+    [
+     0.1115,
+     0.742,
+     0.643
+    ],
+    [
+     0.107,
+     0.7658,
+     0.643
+    ],
+    [
+     0.0993,
+     0.782,
+     0.643
+    ],
+    [
+     0.088,
+     0.7938,
+     0.643
+    ],
+    [
+     0.0726,
+     0.8025,
+     0.643
+    ],
+    [
+     0.0514,
+     0.8084,
+     0.643
+    ],
+    [
+     0.0204,
+     0.8119,
+     0.643
+    ],
+    [
+     -0.08,
+     0.813,
+     0.643
+    ],
+    [
+     -0.1804,
+     0.8119,
+     0.643
+    ],
+    [
+     -0.2114,
+     0.8084,
+     0.643
+    ],
+    [
+     -0.2326,
+     0.8025,
+     0.643
+    ],
+    [
+     -0.248,
+     0.7938,
+     0.643
+    ],
+    [
+     -0.2593,
+     0.782,
+     0.643
+    ],
+    [
+     -0.267,
+     0.7658,
+     0.643
+    ],
+    [
+     -0.2715,
+     0.742,
+     0.643
+    ],
+    [
+     -0.273,
+     0.665,
+     0.643
+    ],
+    [
+     -0.2715,
+     0.588,
+     0.643
+    ],
+    [
+     -0.267,
+     0.5642,
+     0.643
+    ],
+    [
+     -0.2593,
+     0.548,
+     0.643
+    ],
+    [
+     -0.248,
+     0.5362,
+     0.643
+    ],
+    [
+     -0.2326,
+     0.5275,
+     0.643
+    ],
+    [
+     -0.2114,
+     0.5216,
+     0.643
+    ],
+    [
+     -0.1804,
+     0.5181,
+     0.643
+    ],
+    [
+     -0.08,
+     0.517,
+     0.643
+    ],
+    [
+     0.0204,
+     0.5181,
+     0.643
+    ],
+    [
+     0.0514,
+     0.5216,
+     0.643
+    ],
+    [
+     0.0726,
+     0.5275,
+     0.643
+    ],
+    [
+     0.088,
+     0.5362,
+     0.643
+    ],
+    [
+     0.0993,
+     0.548,
+     0.643
+    ],
+    [
+     0.107,
+     0.5642,
+     0.643
+    ],
+    [
+     0.1115,
+     0.588,
+     0.643
+    ]
+   ],
+   "touches": [
+    "catcher",
+    "lid"
+   ]
+  },
+  {
+   "type": "box",
+   "id": "lid",
+   "colour": "lid",
+   "centre": [
+    -0.08,
+    0.665,
+    0.668
+   ],
+   "size": [
+    0.41,
+    0.31,
+    0.04
+   ],
+   "bevel": 0.018,
+   "touches": [
+    "rim",
+    "catcher",
+    "handle"
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "handle",
+   "colour": "lid",
+   "radius": 0.014,
+   "smooth": true,
+   "points": [
+    [
+     -0.18,
+     0.665,
+     0.685
+    ],
+    [
+     -0.175,
+     0.665,
+     0.745
+    ],
+    [
+     0.015,
+     0.665,
+     0.745
+    ],
+    [
+     0.020000000000000004,
+     0.665,
+     0.685
+    ]
+   ],
+   "touches": [
+    "lid"
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "chute",
+   "colour": "rubber",
+   "radius": 0.042,
+   "smooth": true,
+   "points": [
+    [
+     -0.08,
+     0.355,
+     0.3
+    ],
+    [
+     -0.08,
+     0.44,
+     0.34
+    ],
+    [
+     -0.08,
+     0.53,
+     0.36
+    ]
+   ],
+   "touches": [
+    "seat",
+    "catcher",
+    "frame"
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "catcher",
+   "colour": "frame",
+   "radius": 0.008,
+   "points": [
+    [
+     -0.222,
+     0.557,
+     0.135
+    ],
+    [
+     -0.26,
+     0.53,
+     0.64
+    ]
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "catcher",
+   "colour": "frame",
+   "radius": 0.008,
+   "points": [
+    [
+     -0.222,
+     0.773,
+     0.135
+    ],
+    [
+     -0.26,
+     0.8,
+     0.64
+    ]
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "catcher",
+   "colour": "frame",
+   "radius": 0.008,
+   "points": [
+    [
+     0.062,
+     0.557,
+     0.135
+    ],
+    [
+     0.1,
+     0.53,
+     0.64
+    ]
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "catcher",
+   "colour": "frame",
+   "radius": 0.008,
+   "points": [
+    [
+     0.062,
+     0.773,
+     0.135
+    ],
+    [
+     0.1,
+     0.8,
+     0.64
+    ]
+   ]
+  },
+  {
+   "type": "box",
+   "fuse": "pod_L",
+   "colour": "red",
+   "centre": [
+    0.33,
+    0.0,
+    0.2
+   ],
+   "size": [
+    0.15,
+    0.36,
+    0.19
+   ],
+   "bevel": 0.07,
+   "touches": [
+    "frame",
+    "pod_skirt_L",
+    "pods"
+   ]
+  },
+  {
+   "type": "ball",
+   "fuse": "pod_L",
+   "colour": "red",
+   "centre": [
+    0.33,
+    0.18,
+    0.2
+   ],
+   "radius": 0.095,
+   "scale": [
+    0.82,
+    1.15,
+    1.0
+   ]
+  },
+  {
+   "type": "ball",
+   "fuse": "pod_L",
+   "colour": "red",
+   "centre": [
+    0.33,
+    -0.18,
+    0.2
+   ],
+   "radius": 0.095,
+   "scale": [
+    0.82,
+    1.15,
+    1.0
+   ]
+  },
+  {
+   "type": "ball",
+   "fuse": "pod_L",
+   "colour": "red",
+   "centre": [
+    0.338,
+    0.0,
+    0.2
+   ],
+   "radius": 0.12,
+   "scale": [
+    0.7,
+    1.9,
+    0.8
+   ]
+  },
+  {
+   "type": "box",
+   "fuse": "pod_skirt_L",
+   "colour": "grey",
+   "centre": [
+    0.33,
+    0.0,
+    0.105
+   ],
+   "size": [
+    0.17,
+    0.4,
+    0.055
+   ],
+   "bevel": 0.026,
+   "touches": [
+    "frame"
+   ]
+  },
+  {
+   "type": "disc",
+   "fuse": "pod_skirt_L",
+   "colour": "grey",
+   "centre": [
+    0.33,
+    0.2,
+    0.105
+   ],
+   "radius": 0.085,
+   "depth": 0.055,
+   "bevel": 0.024,
+   "tilt": [
+    0,
+    90,
+    0
+   ]
+  },
+  {
+   "type": "disc",
+   "fuse": "pod_skirt_L",
+   "colour": "grey",
+   "centre": [
+    0.33,
+    -0.2,
+    0.105
+   ],
+   "radius": 0.085,
+   "depth": 0.055,
+   "bevel": 0.024,
+   "tilt": [
+    0,
+    90,
+    0
+   ]
+  },
+  {
+   "type": "ball",
+   "id": "pods",
+   "colour": "grey",
+   "centre": [
+    0.42,
+    0.17,
+    0.2
+   ],
+   "radius": 0.016,
+   "scale": [
+    0.5,
+    1,
+    1
+   ],
+   "touches": [
+    "pod_L"
+   ]
+  },
+  {
+   "type": "box",
+   "fuse": "pod_R",
+   "colour": "red",
+   "centre": [
+    -0.33,
+    0.0,
+    0.2
+   ],
+   "size": [
+    0.15,
+    0.36,
+    0.19
+   ],
+   "bevel": 0.07,
+   "touches": [
+    "frame",
+    "pod_skirt_R",
+    "pods"
+   ]
+  },
+  {
+   "type": "ball",
+   "fuse": "pod_R",
+   "colour": "red",
+   "centre": [
+    -0.33,
+    0.18,
+    0.2
+   ],
+   "radius": 0.095,
+   "scale": [
+    0.82,
+    1.15,
+    1.0
+   ]
+  },
+  {
+   "type": "ball",
+   "fuse": "pod_R",
+   "colour": "red",
+   "centre": [
+    -0.33,
+    -0.18,
+    0.2
+   ],
+   "radius": 0.095,
+   "scale": [
+    0.82,
+    1.15,
+    1.0
+   ]
+  },
+  {
+   "type": "ball",
+   "fuse": "pod_R",
+   "colour": "red",
+   "centre": [
+    -0.338,
+    0.0,
+    0.2
+   ],
+   "radius": 0.12,
+   "scale": [
+    0.7,
+    1.9,
+    0.8
+   ]
+  },
+  {
+   "type": "box",
+   "fuse": "pod_skirt_R",
+   "colour": "grey",
+   "centre": [
+    -0.33,
+    0.0,
+    0.105
+   ],
+   "size": [
+    0.17,
+    0.4,
+    0.055
+   ],
+   "bevel": 0.026,
+   "touches": [
+    "frame"
+   ]
+  },
+  {
+   "type": "disc",
+   "fuse": "pod_skirt_R",
+   "colour": "grey",
+   "centre": [
+    -0.33,
+    0.2,
+    0.105
+   ],
+   "radius": 0.085,
+   "depth": 0.055,
+   "bevel": 0.024,
+   "tilt": [
+    0,
+    90,
+    0
+   ]
+  },
+  {
+   "type": "disc",
+   "fuse": "pod_skirt_R",
+   "colour": "grey",
+   "centre": [
+    -0.33,
+    -0.2,
+    0.105
+   ],
+   "radius": 0.085,
+   "depth": 0.055,
+   "bevel": 0.024,
+   "tilt": [
+    0,
+    90,
+    0
+   ]
+  },
+  {
+   "type": "ball",
+   "id": "pods",
+   "colour": "grey",
+   "centre": [
+    -0.42,
+    0.17,
+    0.2
+   ],
+   "radius": 0.016,
+   "scale": [
+    0.5,
+    1,
+    1
+   ],
+   "touches": [
+    "pod_R"
+   ]
+  }
+ ],
+ "out": "kart.glb"
+}

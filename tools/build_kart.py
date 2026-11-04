@@ -29,7 +29,7 @@ Spec (paths relative to the spec file):
     disc    centre, radius, depth, tilt (a rounded cylinder along X before the tilt)
     ball    centre, radius, scale [x, y, z] (optional)
     tub     rings [[z, half-length, half-width, centre y], ...] from the bottom up, power (outline squareness,
-            default 2.6), thickness (wall, default 0.03): a hollow open-topped shell such as a bathtub
+            default 2.6), thickness (wall, default 0.03), offset_x: a hollow open-topped shell such as a bathtub
     pipe_end  centre (the tube's end), radius (the tube's), lean (degrees about X), flare, wall, depth: the open
             mouth of an exhaust; give its tube "open_end": true
     can     centre, axis, length, radius, ridges, ridge_depth (fraction of radius), open (the +axis end is open
@@ -651,18 +651,19 @@ def part_tub(p, i):
     """A hollow tub: rounded outlines (superellipses) stacked from the bottom up, closed at the bottom, open at the
     top, with walls of the given thickness. rings: [[z, half-length (y), half-width (x), centre y], ...]."""
     n_pow = p.get("power", 2.6); segs = p.get("segments", 64); e = 2.0 / n_pow
+    ox = p.get("offset_x", 0.0)
     bm = bmesh.new(); rings = []
     for z, a, b, cy in p["rings"]:
         ring = []
         for k in range(segs):
             t = 2 * math.pi * k / segs; ct, st = math.cos(t), math.sin(t)
-            ring.append(bm.verts.new((b * math.copysign(abs(ct) ** e, ct), cy + a * math.copysign(abs(st) ** e, st), z)))
+            ring.append(bm.verts.new((ox + b * math.copysign(abs(ct) ** e, ct), cy + a * math.copysign(abs(st) ** e, st), z)))
         rings.append(ring)
     for A, B in zip(rings, rings[1:]):
         for k in range(segs):
             bm.faces.new((A[k], A[(k + 1) % segs], B[(k + 1) % segs], B[k]))
     z0, _, _, cy0 = p["rings"][0]
-    c = bm.verts.new((0, cy0, z0 - p.get("sag", 0.01)))
+    c = bm.verts.new((ox, cy0, z0 - p.get("sag", 0.01)))
     for k in range(segs):
         bm.faces.new((c, rings[0][(k + 1) % segs], rings[0][k]))
     bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
@@ -1003,7 +1004,7 @@ if render:
     cam = bpy.data.objects.new("cam", bpy.data.cameras.new("cam")); cam.data.lens = 85
     sc.collection.objects.link(cam); sc.camera = cam
     ctr = Vector((0, 0, 0.33))
-    for n, a, el in (("q", spec.get("view", 140), 14), ("side", 270, 3), ("left", 90, 3), ("front", 180, 5), ("back", 40, 22), ("top", 180, 75)):
+    for n, a, el in (("q", spec.get("view", 140), 14), ("side", 270, 3), ("left", 90, 3), ("front", 180, 5), ("rear", 0, 5), ("back", 40, 22), ("top", 180, 75)):
         r = math.radians(a); e = math.radians(el); d = 5.2
         cam.location = ctr + Vector((d * math.sin(r) * math.cos(e), d * math.cos(r) * math.cos(e), d * math.sin(e)))
         cam.rotation_euler = (math.radians(90) - e, 0, math.radians(180) - r)

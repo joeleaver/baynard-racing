@@ -1,0 +1,486 @@
+{
+ "name": "Puddles",
+ "note": "Pick any take at random (or rotate). Audio is Opus; .mouth.json is per-frame ARKit mouth weights (jawOpen drives the beak/jaw).",
+ "moments": {
+  "drift_boost": [
+   {
+    "text": "Wheee!",
+    "takes": [
+     {
+      "audio": "puddles/drift-boost-1-1.ogg",
+      "seconds": 0.6,
+      "mouth": "puddles/drift-boost-1-1.mouth.json"
+     },
+     {
+      "audio": "puddles/drift-boost-1-2.ogg",
+      "seconds": 1.72,
+      "mouth": "puddles/drift-boost-1-2.mouth.json"
+     },
+     {
+      "audio": "puddles/drift-boost-1-3.ogg",
+      "seconds": 0.74,
+      "mouth": "puddles/drift-boost-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Sliiiide!",
+    "takes": [
+     {
+      "audio": "puddles/drift-boost-2-1.ogg",
+      "seconds": 1.9,
+      "mouth": "puddles/drift-boost-2-1.mouth.json"
+     },
+     {
+      "audio": "puddles/drift-boost-2-2.ogg",
+      "seconds": 1.72,
+      "mouth": "puddles/drift-boost-2-2.mouth.json"
+     },
+     {
+      "audio": "puddles/drift-boost-2-3.ogg",
+      "seconds": 1.39,
+      "mouth": "puddles/drift-boost-2-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Look at her go!",
+    "takes": [
+     {
+      "audio": "puddles/drift-boost-3-1.ogg",
+      "seconds": 1.81,
+      "mouth": "puddles/drift-boost-3-1.mouth.json"
+     },
+     {
+      "audio": "puddles/drift-boost-3-2.ogg",
+      "seconds": 1.58,
+      "mouth": "puddles/drift-boost-3-2.mouth.json"
+     }
+    ]
+   }
+  ],
+  "hit": [
+   {
+    "text": "Oof! That tickled!",
+    "takes": [
+     {
+      "audio": "puddles/hit-1-1.ogg",
+      "seconds": 4.27,
+      "mouth": "puddles/hit-1-1.mouth.json"
+     },
+     {
+      "audio": "puddles/hit-1-2.ogg",
+      "seconds": 3.3,
+      "mouth": "puddles/hit-1-2.mouth.json"
+     },
+     {
+      "audio": "puddles/hit-1-3.ogg",
+      "seconds": 2.97,
+      "mouth": "puddles/hit-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Whoa! Bit of a wobble!",
+    "takes": [
+     {
+      "audio": "puddles/hit-2-1.ogg",
+      "seconds": 2.14,
+      "mouth": "puddles/hit-2-1.mouth.json"
+     },
+     {
+      "audio": "puddles/hit-2-2.ogg",
+      "seconds": 1.67,
+      "mouth": "puddles/hit-2-2.mouth.json"
+     },
+     {
+      "audio": "puddles/hit-2-3.ogg",
+      "seconds": 2.14,
+      "mouth": "puddles/hit-2-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Oink! Good shot!",
+    "takes": [
+     {
+      "audio": "puddles/hit-3-1.ogg",
+      "seconds": 2.18,
+      "mouth": "puddles/hit-3-1.mouth.json"
+     }
+    ]
+   }
+  ],
+  "item_use": [
+   {
+    "text": "Mud pie, special delivery!",
+    "takes": [
+     {
+      "audio": "puddles/item-use-1-1.ogg",
+      "seconds": 2.83,
+      "mouth": "puddles/item-use-1-1.mouth.json"
+     },
+     {
+      "audio": "puddles/item-use-1-2.ogg",
+      "seconds": 3.02,
+      "mouth": "puddles/item-use-1-2.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Here, have a present!",
+    "takes": [
+     {
+      "audio": "puddles/item-use-2-1.ogg",
+      "seconds": 2.42,
+      "mouth": "puddles/item-use-2-1.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Catch!",
+    "takes": [
+     {
+      "audio": "puddles/item-use-3-1.ogg",
+      "seconds": 1.25,
+      "mouth": "puddles/item-use-3-1.mouth.json"
+     }
+    ]
+   }
+  ],
+  "last_lap": [
+   {
+    "text": "Last lap! Let's make it a messy one!",
+    "takes": [
+     {
+      "audio": "puddles/last-lap-1-1.ogg",
+      "seconds": 3.81,
+      "mouth": "puddles/last-lap-1-1.mouth.json"
+     },
+     {
+      "audio": "puddles/last-lap-1-2.ogg",
+      "seconds": 3.99,
+      "mouth": "puddles/last-lap-1-2.mouth.json"
+     },
+     {
+      "audio": "puddles/last-lap-1-3.ogg",
+      "seconds": 3.67,
+      "mouth": "puddles/last-lap-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Final lap, full tub!",
+    "takes": [
+     {
+      "audio": "puddles/last-lap-2-1.ogg",
+      "seconds": 2.14,
+      "mouth": "puddles/last-lap-2-1.mouth.json"
+     },
+     {
+      "audio": "puddles/last-lap-2-2.ogg",
+      "seconds": 2.97,
+      "mouth": "puddles/last-lap-2-2.mouth.json"
+     },
+     {
+      "audio": "puddles/last-lap-2-3.ogg",
+      "seconds": 2.28,
+      "mouth": "puddles/last-lap-2-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "lose": [
+   {
+    "text": "Ah, who cares, that was brilliant!",
+    "takes": [
+     {
+      "audio": "puddles/lose-1-1.ogg",
+      "seconds": 3.81,
+      "mouth": "puddles/lose-1-1.mouth.json"
+     },
+     {
+      "audio": "puddles/lose-1-2.ogg",
+      "seconds": 3.9,
+      "mouth": "puddles/lose-1-2.mouth.json"
+     },
+     {
+      "audio": "puddles/lose-1-3.ogg",
+      "seconds": 3.99,
+      "mouth": "puddles/lose-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Again! Let's go again!",
+    "takes": [
+     {
+      "audio": "puddles/lose-2-1.ogg",
+      "seconds": 3.44,
+      "mouth": "puddles/lose-2-1.mouth.json"
+     },
+     {
+      "audio": "puddles/lose-2-2.ogg",
+      "seconds": 2.88,
+      "mouth": "puddles/lose-2-2.mouth.json"
+     },
+     {
+      "audio": "puddles/lose-2-3.ogg",
+      "seconds": 2.79,
+      "mouth": "puddles/lose-2-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "overtake": [
+   {
+    "text": "Beep beep! Coming through!",
+    "takes": [
+     {
+      "audio": "puddles/overtake-1-1.ogg",
+      "seconds": 2.37,
+      "mouth": "puddles/overtake-1-1.mouth.json"
+     },
+     {
+      "audio": "puddles/overtake-1-2.ogg",
+      "seconds": 2.09,
+      "mouth": "puddles/overtake-1-2.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "See you later!",
+    "takes": [
+     {
+      "audio": "puddles/overtake-2-1.ogg",
+      "seconds": 3.39,
+      "mouth": "puddles/overtake-2-1.mouth.json"
+     },
+     {
+      "audio": "puddles/overtake-2-2.ogg",
+      "seconds": 2.83,
+      "mouth": "puddles/overtake-2-2.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Mind the splash!",
+    "takes": [
+     {
+      "audio": "puddles/overtake-3-1.ogg",
+      "seconds": 1.76,
+      "mouth": "puddles/overtake-3-1.mouth.json"
+     },
+     {
+      "audio": "puddles/overtake-3-2.ogg",
+      "seconds": 1.81,
+      "mouth": "puddles/overtake-3-2.mouth.json"
+     },
+     {
+      "audio": "puddles/overtake-3-3.ogg",
+      "seconds": 1.76,
+      "mouth": "puddles/overtake-3-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "overtaken": [
+   {
+    "text": "Ooh, nice one!",
+    "takes": [
+     {
+      "audio": "puddles/overtaken-1-1.ogg",
+      "seconds": 1.81,
+      "mouth": "puddles/overtaken-1-1.mouth.json"
+     },
+     {
+      "audio": "puddles/overtaken-1-2.ogg",
+      "seconds": 1.72,
+      "mouth": "puddles/overtaken-1-2.mouth.json"
+     },
+     {
+      "audio": "puddles/overtaken-1-3.ogg",
+      "seconds": 2.0,
+      "mouth": "puddles/overtaken-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Go on then, I'll catch you!",
+    "takes": [
+     {
+      "audio": "puddles/overtaken-2-1.ogg",
+      "seconds": 2.42,
+      "mouth": "puddles/overtaken-2-1.mouth.json"
+     },
+     {
+      "audio": "puddles/overtaken-2-2.ogg",
+      "seconds": 2.28,
+      "mouth": "puddles/overtaken-2-2.mouth.json"
+     },
+     {
+      "audio": "puddles/overtaken-2-3.ogg",
+      "seconds": 2.23,
+      "mouth": "puddles/overtaken-2-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Hey, save some road for me!",
+    "takes": [
+     {
+      "audio": "puddles/overtaken-3-1.ogg",
+      "seconds": 2.6,
+      "mouth": "puddles/overtaken-3-1.mouth.json"
+     }
+    ]
+   }
+  ],
+  "race_start": [
+   {
+    "text": "Wahey! Here we go!",
+    "takes": [
+     {
+      "audio": "puddles/race-start-1-1.ogg",
+      "seconds": 2.46,
+      "mouth": "puddles/race-start-1-1.mouth.json"
+     },
+     {
+      "audio": "puddles/race-start-1-2.ogg",
+      "seconds": 2.23,
+      "mouth": "puddles/race-start-1-2.mouth.json"
+     },
+     {
+      "audio": "puddles/race-start-1-3.ogg",
+      "seconds": 2.51,
+      "mouth": "puddles/race-start-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Let's get muddy!",
+    "takes": [
+     {
+      "audio": "puddles/race-start-2-1.ogg",
+      "seconds": 1.81,
+      "mouth": "puddles/race-start-2-1.mouth.json"
+     },
+     {
+      "audio": "puddles/race-start-2-2.ogg",
+      "seconds": 2.28,
+      "mouth": "puddles/race-start-2-2.mouth.json"
+     },
+     {
+      "audio": "puddles/race-start-2-3.ogg",
+      "seconds": 1.76,
+      "mouth": "puddles/race-start-2-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Hold on to your tails!",
+    "takes": [
+     {
+      "audio": "puddles/race-start-3-1.ogg",
+      "seconds": 2.09,
+      "mouth": "puddles/race-start-3-1.mouth.json"
+     },
+     {
+      "audio": "puddles/race-start-3-2.ogg",
+      "seconds": 2.18,
+      "mouth": "puddles/race-start-3-2.mouth.json"
+     },
+     {
+      "audio": "puddles/race-start-3-3.ogg",
+      "seconds": 1.9,
+      "mouth": "puddles/race-start-3-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "taunt": [
+   {
+    "text": "Come on, get a bit dirty!",
+    "takes": [
+     {
+      "audio": "puddles/taunt-1-1.ogg",
+      "seconds": 2.97,
+      "mouth": "puddles/taunt-1-1.mouth.json"
+     },
+     {
+      "audio": "puddles/taunt-1-2.ogg",
+      "seconds": 2.93,
+      "mouth": "puddles/taunt-1-2.mouth.json"
+     },
+     {
+      "audio": "puddles/taunt-1-3.ogg",
+      "seconds": 2.37,
+      "mouth": "puddles/taunt-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Too clean, that's your problem!",
+    "takes": [
+     {
+      "audio": "puddles/taunt-2-1.ogg",
+      "seconds": 3.11,
+      "mouth": "puddles/taunt-2-1.mouth.json"
+     },
+     {
+      "audio": "puddles/taunt-2-2.ogg",
+      "seconds": 2.74,
+      "mouth": "puddles/taunt-2-2.mouth.json"
+     },
+     {
+      "audio": "puddles/taunt-2-3.ogg",
+      "seconds": 3.11,
+      "mouth": "puddles/taunt-2-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "win": [
+   {
+    "text": "I won! Mud baths for everyone!",
+    "takes": [
+     {
+      "audio": "puddles/win-1-1.ogg",
+      "seconds": 4.04,
+      "mouth": "puddles/win-1-1.mouth.json"
+     },
+     {
+      "audio": "puddles/win-1-2.ogg",
+      "seconds": 3.9,
+      "mouth": "puddles/win-1-2.mouth.json"
+     },
+     {
+      "audio": "puddles/win-1-3.ogg",
+      "seconds": 3.48,
+      "mouth": "puddles/win-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Best. Day. Ever!",
+    "takes": [
+     {
+      "audio": "puddles/win-2-1.ogg",
+      "seconds": 2.51,
+      "mouth": "puddles/win-2-1.mouth.json"
+     },
+     {
+      "audio": "puddles/win-2-2.ogg",
+      "seconds": 3.11,
+      "mouth": "puddles/win-2-2.mouth.json"
+     },
+     {
+      "audio": "puddles/win-2-3.ogg",
+      "seconds": 2.74,
+      "mouth": "puddles/win-2-3.mouth.json"
+     }
+    ]
+   }
+  ]
+ }
+}

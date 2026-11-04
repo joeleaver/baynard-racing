@@ -1,0 +1,596 @@
+{
+ "name": "Marmalade",
+ "note": "Pick any take at random (or rotate). Audio is Opus; .mouth.json is per-frame ARKit mouth weights (jawOpen drives the beak/jaw).",
+ "moments": {
+  "drift_boost": [
+   {
+    "text": "Flawless.",
+    "takes": [
+     {
+      "audio": "marmalade/drift-boost-1-1.ogg",
+      "seconds": 1.16,
+      "mouth": "marmalade/drift-boost-1-1.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Mm. Lovely line.",
+    "takes": [
+     {
+      "audio": "marmalade/drift-boost-2-1.ogg",
+      "seconds": 1.95,
+      "mouth": "marmalade/drift-boost-2-1.mouth.json"
+     },
+     {
+      "audio": "marmalade/drift-boost-2-2.ogg",
+      "seconds": 2.37,
+      "mouth": "marmalade/drift-boost-2-2.mouth.json"
+     },
+     {
+      "audio": "marmalade/drift-boost-2-3.ogg",
+      "seconds": 3.16,
+      "mouth": "marmalade/drift-boost-2-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "As intended.",
+    "takes": [
+     {
+      "audio": "marmalade/drift-boost-3-1.ogg",
+      "seconds": 1.39,
+      "mouth": "marmalade/drift-boost-3-1.mouth.json"
+     },
+     {
+      "audio": "marmalade/drift-boost-3-2.ogg",
+      "seconds": 1.25,
+      "mouth": "marmalade/drift-boost-3-2.mouth.json"
+     },
+     {
+      "audio": "marmalade/drift-boost-3-3.ogg",
+      "seconds": 1.16,
+      "mouth": "marmalade/drift-boost-3-3.mouth.json"
+     },
+     {
+      "audio": "marmalade/drift-boost-3-4.ogg",
+      "seconds": 1.39,
+      "mouth": "marmalade/drift-boost-3-4.mouth.json"
+     },
+     {
+      "audio": "marmalade/drift-boost-3-5.ogg",
+      "seconds": 1.11,
+      "mouth": "marmalade/drift-boost-3-5.mouth.json"
+     },
+     {
+      "audio": "marmalade/drift-boost-3-6.ogg",
+      "seconds": 1.53,
+      "mouth": "marmalade/drift-boost-3-6.mouth.json"
+     }
+    ]
+   }
+  ],
+  "hit": [
+   {
+    "text": "Hsss! My fur!",
+    "takes": [
+     {
+      "audio": "marmalade/hit-1-1.ogg",
+      "seconds": 2.51,
+      "mouth": "marmalade/hit-1-1.mouth.json"
+     },
+     {
+      "audio": "marmalade/hit-1-2.ogg",
+      "seconds": 2.79,
+      "mouth": "marmalade/hit-1-2.mouth.json"
+     },
+     {
+      "audio": "marmalade/hit-1-3.ogg",
+      "seconds": 5.02,
+      "mouth": "marmalade/hit-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Unnecessary.",
+    "takes": [
+     {
+      "audio": "marmalade/hit-2-1.ogg",
+      "seconds": 1.44,
+      "mouth": "marmalade/hit-2-1.mouth.json"
+     },
+     {
+      "audio": "marmalade/hit-2-2.ogg",
+      "seconds": 1.39,
+      "mouth": "marmalade/hit-2-2.mouth.json"
+     },
+     {
+      "audio": "marmalade/hit-2-3.ogg",
+      "seconds": 1.67,
+      "mouth": "marmalade/hit-2-3.mouth.json"
+     },
+     {
+      "audio": "marmalade/hit-2-4.ogg",
+      "seconds": 1.39,
+      "mouth": "marmalade/hit-2-4.mouth.json"
+     },
+     {
+      "audio": "marmalade/hit-2-5.ogg",
+      "seconds": 1.58,
+      "mouth": "marmalade/hit-2-5.mouth.json"
+     },
+     {
+      "audio": "marmalade/hit-2-6.ogg",
+      "seconds": 1.44,
+      "mouth": "marmalade/hit-2-6.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "How common.",
+    "takes": [
+     {
+      "audio": "marmalade/hit-3-1.ogg",
+      "seconds": 2.18,
+      "mouth": "marmalade/hit-3-1.mouth.json"
+     },
+     {
+      "audio": "marmalade/hit-3-2.ogg",
+      "seconds": 1.11,
+      "mouth": "marmalade/hit-3-2.mouth.json"
+     },
+     {
+      "audio": "marmalade/hit-3-3.ogg",
+      "seconds": 1.39,
+      "mouth": "marmalade/hit-3-3.mouth.json"
+     },
+     {
+      "audio": "marmalade/hit-3-4.ogg",
+      "seconds": 1.21,
+      "mouth": "marmalade/hit-3-4.mouth.json"
+     },
+     {
+      "audio": "marmalade/hit-3-5.ogg",
+      "seconds": 1.44,
+      "mouth": "marmalade/hit-3-5.mouth.json"
+     }
+    ]
+   }
+  ],
+  "item_use": [
+   {
+    "text": "For you. Don't mention it.",
+    "takes": [
+     {
+      "audio": "marmalade/item-use-1-1.ogg",
+      "seconds": 2.51,
+      "mouth": "marmalade/item-use-1-1.mouth.json"
+     },
+     {
+      "audio": "marmalade/item-use-1-2.ogg",
+      "seconds": 3.16,
+      "mouth": "marmalade/item-use-1-2.mouth.json"
+     },
+     {
+      "audio": "marmalade/item-use-1-3.ogg",
+      "seconds": 2.83,
+      "mouth": "marmalade/item-use-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Oops.",
+    "takes": [
+     {
+      "audio": "marmalade/item-use-2-1.ogg",
+      "seconds": 0.84,
+      "mouth": "marmalade/item-use-2-1.mouth.json"
+     },
+     {
+      "audio": "marmalade/item-use-2-2.ogg",
+      "seconds": 0.7,
+      "mouth": "marmalade/item-use-2-2.mouth.json"
+     },
+     {
+      "audio": "marmalade/item-use-2-3.ogg",
+      "seconds": 0.74,
+      "mouth": "marmalade/item-use-2-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Precision delivery.",
+    "takes": [
+     {
+      "audio": "marmalade/item-use-3-1.ogg",
+      "seconds": 1.58,
+      "mouth": "marmalade/item-use-3-1.mouth.json"
+     },
+     {
+      "audio": "marmalade/item-use-3-2.ogg",
+      "seconds": 1.72,
+      "mouth": "marmalade/item-use-3-2.mouth.json"
+     },
+     {
+      "audio": "marmalade/item-use-3-3.ogg",
+      "seconds": 1.86,
+      "mouth": "marmalade/item-use-3-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "last_lap": [
+   {
+    "text": "Last lap. Time to be brilliant.",
+    "takes": [
+     {
+      "audio": "marmalade/last-lap-1-1.ogg",
+      "seconds": 3.58,
+      "mouth": "marmalade/last-lap-1-1.mouth.json"
+     },
+     {
+      "audio": "marmalade/last-lap-1-2.ogg",
+      "seconds": 3.48,
+      "mouth": "marmalade/last-lap-1-2.mouth.json"
+     },
+     {
+      "audio": "marmalade/last-lap-1-3.ogg",
+      "seconds": 3.95,
+      "mouth": "marmalade/last-lap-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Final lap. Purr.",
+    "takes": [
+     {
+      "audio": "marmalade/last-lap-2-1.ogg",
+      "seconds": 2.46,
+      "mouth": "marmalade/last-lap-2-1.mouth.json"
+     },
+     {
+      "audio": "marmalade/last-lap-2-2.ogg",
+      "seconds": 2.69,
+      "mouth": "marmalade/last-lap-2-2.mouth.json"
+     },
+     {
+      "audio": "marmalade/last-lap-2-3.ogg",
+      "seconds": 2.69,
+      "mouth": "marmalade/last-lap-2-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "lose": [
+   {
+    "text": "I wasn't really trying.",
+    "takes": [
+     {
+      "audio": "marmalade/lose-1-1.ogg",
+      "seconds": 2.18,
+      "mouth": "marmalade/lose-1-1.mouth.json"
+     },
+     {
+      "audio": "marmalade/lose-1-2.ogg",
+      "seconds": 1.86,
+      "mouth": "marmalade/lose-1-2.mouth.json"
+     },
+     {
+      "audio": "marmalade/lose-1-3.ogg",
+      "seconds": 2.32,
+      "mouth": "marmalade/lose-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Statistically, I was due a bad day.",
+    "takes": [
+     {
+      "audio": "marmalade/lose-2-1.ogg",
+      "seconds": 3.44,
+      "mouth": "marmalade/lose-2-1.mouth.json"
+     },
+     {
+      "audio": "marmalade/lose-2-2.ogg",
+      "seconds": 3.34,
+      "mouth": "marmalade/lose-2-2.mouth.json"
+     },
+     {
+      "audio": "marmalade/lose-2-3.ogg",
+      "seconds": 3.3,
+      "mouth": "marmalade/lose-2-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "overtake": [
+   {
+    "text": "Excuse me.",
+    "takes": [
+     {
+      "audio": "marmalade/overtake-1-1.ogg",
+      "seconds": 1.21,
+      "mouth": "marmalade/overtake-1-1.mouth.json"
+     },
+     {
+      "audio": "marmalade/overtake-1-2.ogg",
+      "seconds": 1.3,
+      "mouth": "marmalade/overtake-1-2.mouth.json"
+     },
+     {
+      "audio": "marmalade/overtake-1-3.ogg",
+      "seconds": 1.62,
+      "mouth": "marmalade/overtake-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Too slow.",
+    "takes": [
+     {
+      "audio": "marmalade/overtake-2-1.ogg",
+      "seconds": 1.44,
+      "mouth": "marmalade/overtake-2-1.mouth.json"
+     },
+     {
+      "audio": "marmalade/overtake-2-2.ogg",
+      "seconds": 1.39,
+      "mouth": "marmalade/overtake-2-2.mouth.json"
+     },
+     {
+      "audio": "marmalade/overtake-2-3.ogg",
+      "seconds": 1.35,
+      "mouth": "marmalade/overtake-2-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Mm. Pass.",
+    "takes": [
+     {
+      "audio": "marmalade/overtake-3-1.ogg",
+      "seconds": 2.28,
+      "mouth": "marmalade/overtake-3-1.mouth.json"
+     },
+     {
+      "audio": "marmalade/overtake-3-2.ogg",
+      "seconds": 1.72,
+      "mouth": "marmalade/overtake-3-2.mouth.json"
+     },
+     {
+      "audio": "marmalade/overtake-3-3.ogg",
+      "seconds": 2.79,
+      "mouth": "marmalade/overtake-3-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "overtaken": [
+   {
+    "text": "How tiresome.",
+    "takes": [
+     {
+      "audio": "marmalade/overtaken-1-1.ogg",
+      "seconds": 2.6,
+      "mouth": "marmalade/overtaken-1-1.mouth.json"
+     },
+     {
+      "audio": "marmalade/overtaken-1-2.ogg",
+      "seconds": 1.53,
+      "mouth": "marmalade/overtaken-1-2.mouth.json"
+     },
+     {
+      "audio": "marmalade/overtaken-1-3.ogg",
+      "seconds": 1.53,
+      "mouth": "marmalade/overtaken-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Enjoy it. Briefly.",
+    "takes": [
+     {
+      "audio": "marmalade/overtaken-2-1.ogg",
+      "seconds": 2.46,
+      "mouth": "marmalade/overtaken-2-1.mouth.json"
+     },
+     {
+      "audio": "marmalade/overtaken-2-2.ogg",
+      "seconds": 2.18,
+      "mouth": "marmalade/overtaken-2-2.mouth.json"
+     },
+     {
+      "audio": "marmalade/overtaken-2-3.ogg",
+      "seconds": 2.51,
+      "mouth": "marmalade/overtaken-2-3.mouth.json"
+     },
+     {
+      "audio": "marmalade/overtaken-2-4.ogg",
+      "seconds": 2.51,
+      "mouth": "marmalade/overtaken-2-4.mouth.json"
+     },
+     {
+      "audio": "marmalade/overtaken-2-5.ogg",
+      "seconds": 3.85,
+      "mouth": "marmalade/overtaken-2-5.mouth.json"
+     },
+     {
+      "audio": "marmalade/overtaken-2-6.ogg",
+      "seconds": 2.37,
+      "mouth": "marmalade/overtaken-2-6.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Hmph.",
+    "takes": [
+     {
+      "audio": "marmalade/overtaken-3-1.ogg",
+      "seconds": 2.14,
+      "mouth": "marmalade/overtaken-3-1.mouth.json"
+     },
+     {
+      "audio": "marmalade/overtaken-3-2.ogg",
+      "seconds": 0.42,
+      "mouth": "marmalade/overtaken-3-2.mouth.json"
+     },
+     {
+      "audio": "marmalade/overtaken-3-3.ogg",
+      "seconds": 4.55,
+      "mouth": "marmalade/overtaken-3-3.mouth.json"
+     },
+     {
+      "audio": "marmalade/overtaken-3-4.ogg",
+      "seconds": 1.9,
+      "mouth": "marmalade/overtaken-3-4.mouth.json"
+     },
+     {
+      "audio": "marmalade/overtaken-3-5.ogg",
+      "seconds": 1.58,
+      "mouth": "marmalade/overtaken-3-5.mouth.json"
+     },
+     {
+      "audio": "marmalade/overtaken-3-6.ogg",
+      "seconds": 1.11,
+      "mouth": "marmalade/overtaken-3-6.mouth.json"
+     }
+    ]
+   }
+  ],
+  "race_start": [
+   {
+    "text": "Purrfect.",
+    "takes": [
+     {
+      "audio": "marmalade/race-start-1-1.ogg",
+      "seconds": 1.44,
+      "mouth": "marmalade/race-start-1-1.mouth.json"
+     },
+     {
+      "audio": "marmalade/race-start-1-2.ogg",
+      "seconds": 0.79,
+      "mouth": "marmalade/race-start-1-2.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Watch and learn.",
+    "takes": [
+     {
+      "audio": "marmalade/race-start-2-1.ogg",
+      "seconds": 2.04,
+      "mouth": "marmalade/race-start-2-1.mouth.json"
+     },
+     {
+      "audio": "marmalade/race-start-2-2.ogg",
+      "seconds": 1.44,
+      "mouth": "marmalade/race-start-2-2.mouth.json"
+     },
+     {
+      "audio": "marmalade/race-start-2-3.ogg",
+      "seconds": 1.49,
+      "mouth": "marmalade/race-start-2-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Let's be tidy about this.",
+    "takes": [
+     {
+      "audio": "marmalade/race-start-3-1.ogg",
+      "seconds": 2.74,
+      "mouth": "marmalade/race-start-3-1.mouth.json"
+     },
+     {
+      "audio": "marmalade/race-start-3-2.ogg",
+      "seconds": 2.23,
+      "mouth": "marmalade/race-start-3-2.mouth.json"
+     },
+     {
+      "audio": "marmalade/race-start-3-3.ogg",
+      "seconds": 2.14,
+      "mouth": "marmalade/race-start-3-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "taunt": [
+   {
+    "text": "Your racing line is a mess.",
+    "takes": [
+     {
+      "audio": "marmalade/taunt-1-1.ogg",
+      "seconds": 2.32,
+      "mouth": "marmalade/taunt-1-1.mouth.json"
+     },
+     {
+      "audio": "marmalade/taunt-1-2.ogg",
+      "seconds": 2.46,
+      "mouth": "marmalade/taunt-1-2.mouth.json"
+     },
+     {
+      "audio": "marmalade/taunt-1-3.ogg",
+      "seconds": 2.42,
+      "mouth": "marmalade/taunt-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "You drive like a dog.",
+    "takes": [
+     {
+      "audio": "marmalade/taunt-2-1.ogg",
+      "seconds": 1.9,
+      "mouth": "marmalade/taunt-2-1.mouth.json"
+     },
+     {
+      "audio": "marmalade/taunt-2-2.ogg",
+      "seconds": 2.42,
+      "mouth": "marmalade/taunt-2-2.mouth.json"
+     },
+     {
+      "audio": "marmalade/taunt-2-3.ogg",
+      "seconds": 1.81,
+      "mouth": "marmalade/taunt-2-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "win": [
+   {
+    "text": "Naturally.",
+    "takes": [
+     {
+      "audio": "marmalade/win-1-1.ogg",
+      "seconds": 1.16,
+      "mouth": "marmalade/win-1-1.mouth.json"
+     },
+     {
+      "audio": "marmalade/win-1-2.ogg",
+      "seconds": 1.07,
+      "mouth": "marmalade/win-1-2.mouth.json"
+     },
+     {
+      "audio": "marmalade/win-1-3.ogg",
+      "seconds": 1.16,
+      "mouth": "marmalade/win-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "First. As it should be.",
+    "takes": [
+     {
+      "audio": "marmalade/win-2-1.ogg",
+      "seconds": 2.51,
+      "mouth": "marmalade/win-2-1.mouth.json"
+     },
+     {
+      "audio": "marmalade/win-2-2.ogg",
+      "seconds": 2.55,
+      "mouth": "marmalade/win-2-2.mouth.json"
+     }
+    ]
+   }
+  ]
+ }
+}

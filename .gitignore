@@ -1,3 +1,4 @@
 .playweft.lock
 workspace/
 *.blend1
+__pycache__/

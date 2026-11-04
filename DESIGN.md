@@ -70,6 +70,11 @@ and win collisions.
 ## Karts
 
 - Farm-built, mismatched: a tractor seat on a cart frame, a wheelbarrow kart, a milk-churn engine.
+- **Built from parts, not generated meshes.** Each kart is modelled in Blender by `tools/build_kart.py` from
+  a spec beside its concept (`art/karts/<name>/build.json`). The wheels and steering wheel are separate
+  objects pivoting at their hubs, and the wood grain, clay surface and crease shading are baked into one texture.
+  The generated meshes were only ever a shape guide: their paint was baked in, their wheels fused, and their
+  geometry messy.
 - Parts can be swapped (body, wheels, glider-style extra) and they change the stats. Cosmetic paint
   on top.
 

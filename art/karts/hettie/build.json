@@ -1,0 +1,506 @@
+{
+ "about": "Hettie's crate kart, measured off concept.webp and turnaround.webp (1.25 m nose to tail). The crate has three sides, open at the back, and the seat's cushion runs forward into it.",
+ "length": 1.25,
+ "seed": 3,
+ "colours": {
+  "wood": {
+   "rgb": [
+    0.93,
+    0.58,
+    0.22
+   ],
+   "kind": "wood"
+  },
+  "seat": {
+   "rgb": [
+    0.25,
+    0.23,
+    0.22
+   ],
+   "kind": "clay"
+  },
+  "tyre": {
+   "rgb": [
+    0.24,
+    0.22,
+    0.21
+   ],
+   "kind": "rubber"
+  },
+  "metal": {
+   "rgb": [
+    0.66,
+    0.64,
+    0.66
+   ],
+   "kind": "metal"
+  },
+  "hub": {
+   "rgb": [
+    0.76,
+    0.74,
+    0.74
+   ],
+   "kind": "metal"
+  }
+ },
+ "parts": [
+  {
+   "type": "wheel",
+   "id": "wheel_FL",
+   "name": "wheel_FL",
+   "pos": [
+    0.455,
+    -0.42,
+    0.19
+   ],
+   "radius": 0.19,
+   "width": 0.2,
+   "colour": "tyre",
+   "hub": "hub"
+  },
+  {
+   "type": "wheel",
+   "id": "wheel_FR",
+   "name": "wheel_FR",
+   "pos": [
+    -0.455,
+    -0.42,
+    0.19
+   ],
+   "radius": 0.19,
+   "width": 0.2,
+   "colour": "tyre",
+   "hub": "hub"
+  },
+  {
+   "type": "wheel",
+   "id": "wheel_RL",
+   "name": "wheel_RL",
+   "pos": [
+    0.47,
+    0.4,
+    0.22
+   ],
+   "radius": 0.22,
+   "width": 0.24,
+   "colour": "tyre",
+   "hub": "hub",
+   "lugs": 15
+  },
+  {
+   "type": "wheel",
+   "id": "wheel_RR",
+   "name": "wheel_RR",
+   "pos": [
+    -0.47,
+    0.4,
+    0.22
+   ],
+   "radius": 0.22,
+   "width": 0.24,
+   "colour": "tyre",
+   "hub": "hub",
+   "lugs": 15
+  },
+  {
+   "type": "tube",
+   "id": "front_beam",
+   "colour": "metal",
+   "radius": 0.045,
+   "points": [
+    [
+     -0.42,
+     -0.42,
+     0.19
+    ],
+    [
+     0.42,
+     -0.42,
+     0.19
+    ]
+   ],
+   "touches": [
+    "wheel_FL",
+    "wheel_FR"
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "rear_beam",
+   "colour": "metal",
+   "radius": 0.045,
+   "points": [
+    [
+     -0.43,
+     0.4,
+     0.22
+    ],
+    [
+     0.43,
+     0.4,
+     0.22
+    ]
+   ],
+   "touches": [
+    "wheel_RL",
+    "wheel_RR"
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "rail_L",
+   "colour": "metal",
+   "radius": 0.034,
+   "smooth": true,
+   "points": [
+    [
+     0.2,
+     -0.42,
+     0.19
+    ],
+    [
+     0.2,
+     -0.32,
+     0.13
+    ],
+    [
+     0.2,
+     0.28,
+     0.13
+    ],
+    [
+     0.2,
+     0.4,
+     0.22
+    ]
+   ],
+   "touches": [
+    "front_beam",
+    "rear_beam"
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "rail_R",
+   "colour": "metal",
+   "radius": 0.034,
+   "smooth": true,
+   "points": [
+    [
+     -0.2,
+     -0.42,
+     0.19
+    ],
+    [
+     -0.2,
+     -0.32,
+     0.13
+    ],
+    [
+     -0.2,
+     0.28,
+     0.13
+    ],
+    [
+     -0.2,
+     0.4,
+     0.22
+    ]
+   ],
+   "touches": [
+    "front_beam",
+    "rear_beam"
+   ]
+  },
+  {
+   "type": "disc",
+   "id": "collar",
+   "colour": "metal",
+   "centre": [
+    0,
+    -0.42,
+    0.24
+   ],
+   "radius": 0.065,
+   "depth": 0.035,
+   "tilt": [
+    0,
+    90,
+    0
+   ],
+   "touches": [
+    "front_beam",
+    "column"
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "column",
+   "colour": "metal",
+   "radius": 0.034,
+   "points": [
+    [
+     0,
+     -0.43,
+     0.2
+    ],
+    [
+     0,
+     -0.3,
+     0.72
+    ]
+   ],
+   "touches": [
+    "front_beam",
+    "steering_wheel"
+   ]
+  },
+  {
+   "type": "box",
+   "id": "floor",
+   "colour": "wood",
+   "centre": [
+    0,
+    -0.0175,
+    0.205
+   ],
+   "size": [
+    0.51,
+    0.5,
+    0.04
+   ],
+   "bevel": 0.012,
+   "touches": [
+    "crate"
+   ]
+  },
+  {
+   "type": "planks",
+   "id": "crate",
+   "colour": "wood",
+   "centre": [
+    0.29,
+    0.0175,
+    0.365
+   ],
+   "size": [
+    0.07,
+    0.465,
+    0.33
+   ],
+   "count": 2,
+   "axis": "z",
+   "gap": 0.016,
+   "bevel": 0.026,
+   "jitter": 0.5,
+   "touches": [
+    "floor"
+   ]
+  },
+  {
+   "type": "planks",
+   "id": "crate",
+   "colour": "wood",
+   "centre": [
+    -0.29,
+    0.0175,
+    0.365
+   ],
+   "size": [
+    0.07,
+    0.465,
+    0.33
+   ],
+   "count": 2,
+   "axis": "z",
+   "gap": 0.016,
+   "bevel": 0.026,
+   "jitter": 0.5
+  },
+  {
+   "type": "planks",
+   "id": "crate",
+   "colour": "wood",
+   "centre": [
+    0,
+    -0.25,
+    0.365
+   ],
+   "size": [
+    0.65,
+    0.07,
+    0.33
+   ],
+   "count": 2,
+   "axis": "z",
+   "gap": 0.016,
+   "bevel": 0.026,
+   "jitter": 0.5
+  },
+  {
+   "type": "box",
+   "fuse": "seat",
+   "colour": "seat",
+   "centre": [
+    0,
+    0.26,
+    0.33
+   ],
+   "size": [
+    0.49,
+    0.54,
+    0.22
+   ],
+   "bevel": 0.07,
+   "touches": [
+    "crate",
+    "floor",
+    "rear_beam",
+    "rail_L",
+    "rail_R"
+   ]
+  },
+  {
+   "type": "box",
+   "fuse": "seat",
+   "colour": "seat",
+   "centre": [
+    0,
+    0.27,
+    0.43
+   ],
+   "size": [
+    0.47,
+    0.5,
+    0.09
+   ],
+   "bevel": 0.04
+  },
+  {
+   "type": "box",
+   "fuse": "seat",
+   "colour": "seat",
+   "centre": [
+    0,
+    0.5,
+    0.6
+   ],
+   "size": [
+    0.58,
+    0.16,
+    0.4
+   ],
+   "bevel": 0.075,
+   "tilt": [
+    -16,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "torus",
+   "id": "steering_wheel",
+   "name": "steering_wheel",
+   "pivot": [
+    0,
+    -0.3,
+    0.72
+   ],
+   "axis": [
+    0,
+    0.819,
+    0.574
+   ],
+   "colour": "seat",
+   "centre": [
+    0,
+    -0.3,
+    0.72
+   ],
+   "radius": 0.15,
+   "thickness": 0.03,
+   "tilt": [
+    -55,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "ball",
+   "id": "steering_wheel",
+   "name": "steering_wheel",
+   "pivot": [
+    0,
+    -0.3,
+    0.72
+   ],
+   "colour": "seat",
+   "centre": [
+    0,
+    -0.3,
+    0.72
+   ],
+   "radius": 0.048,
+   "scale": [
+    1,
+    1,
+    0.75
+   ],
+   "tilt": [
+    -55,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "steering_wheel",
+   "name": "steering_wheel",
+   "pivot": [
+    0,
+    -0.3,
+    0.72
+   ],
+   "colour": "seat",
+   "radius": 0.019,
+   "points": [
+    [
+     -0.14,
+     -0.3,
+     0.72
+    ],
+    [
+     0.14,
+     -0.3,
+     0.72
+    ]
+   ]
+  },
+  {
+   "type": "tube",
+   "id": "steering_wheel",
+   "name": "steering_wheel",
+   "pivot": [
+    0,
+    -0.3,
+    0.72
+   ],
+   "colour": "seat",
+   "radius": 0.019,
+   "points": [
+    [
+     0,
+     -0.3,
+     0.72
+    ],
+    [
+     0,
+     -0.22,
+     0.605
+    ]
+   ]
+  }
+ ],
+ "out": "kart.glb"
+}

@@ -8,6 +8,7 @@ ground is z = 0. --fast skips the texture bake (for checking shapes and clashes)
 
 Spec (paths relative to the spec file):
   colours   {name: {"rgb": [r, g, b] sRGB 0-1, "kind": "clay" | "wood" | "rubber" | "metal" | "rust"}}
+            "roughness": overrides the kind's roughness (0.2 is polished chrome)
             "rust": 0-1 lets rust eat into the surface in ragged, crusty, dull patches (for tin and steel)
             "dirt": 0-1 adds patches of dried mud and dust (mud: [r, g, b] sets their colour for the whole kart;
             "dirt_rgb" on a colour sets it for that colour alone, e.g. scraps of red label on a tin)
@@ -29,6 +30,7 @@ Spec (paths relative to the spec file):
             mouth of an exhaust; give its tube "open_end": true
     can     centre, axis, length, radius, ridges, ridge_depth (fraction of radius), open (the +axis end is open
             and hollow, depth as a fraction of length): a tin can with beaded rims and dished lids
+    turned  centre, axis, profile [[t, r], ...] (t along the axis): a lathe-turned shape such as a churn or bell
     coil    centre, axis, radius, turns, pitch, wire, messy (0-1): wire wound round something
     plate   points [[x, y], ...] (a convex outline in its own plane), thickness, centre, tilt (its face is local
             +Z), corner (rounding); layers [{points, colour, raise}], marks [{points | ball, radius, colour}] and
@@ -96,12 +98,13 @@ def ramp(nt, src, stops):
     return r.outputs[0]
 
 
-def make_material(kind, dirt=0.0, dirt_rgb=None, rust=0.0):
+def make_material(kind, dirt=0.0, dirt_rgb=None, rust=0.0, rough=None):
     """A procedural material for baking: the part's tint (vertex colour Col) shaded with grain for its kind."""
     m = bpy.data.materials.new(kind); m.use_nodes = True
     nt = m.node_tree; L = nt.links.new
     b = nt.nodes["Principled BSDF"]
-    b.inputs["Roughness"].default_value = {"metal": 0.4, "rubber": 0.85, "rust": 0.88, "wood": 0.7}.get(kind, 0.75)
+    b.inputs["Roughness"].default_value = rough if rough is not None else \
+        {"metal": 0.4, "rubber": 0.85, "rust": 0.88, "wood": 0.7}.get(kind, 0.75)
     col = node(nt, "ShaderNodeVertexColor", layer_name="Col").outputs["Color"]
     geo = node(nt, "ShaderNodeNewGeometry").outputs["Position"]
     # every kind: a slow mottle in colour and a fine sandy grain in the surface, like soft modelling clay
@@ -138,6 +141,8 @@ def make_material(kind, dirt=0.0, dirt_rgb=None, rust=0.0):
         L(sand.outputs["Fac"], h.inputs[0]); L(groove, h.inputs[2]); height = h.outputs[0]; strength = 0.45
     if kind == "rubber":
         strength = 0.25
+    if rough is not None and rough < 0.35:
+        strength = 0.03  # polished: only a faint grain
     if kind == "rust":
         pat = node(nt, "ShaderNodeTexNoise"); pat.inputs["Scale"].default_value = 5.5
         pat.inputs["Detail"].default_value = 9; pat.inputs["Roughness"].default_value = 0.62
@@ -218,9 +223,9 @@ def make_material(kind, dirt=0.0, dirt_rgb=None, rust=0.0):
 
 
 MATS = {}
-def material(kind, dirt=0.0, dirt_rgb=None, rust=0.0):
-    key = (kind, dirt, tuple(dirt_rgb) if dirt_rgb else None, rust)
-    if key not in MATS: MATS[key] = make_material(kind, dirt, dirt_rgb, rust)
+def material(kind, dirt=0.0, dirt_rgb=None, rust=0.0, rough=None):
+    key = (kind, dirt, tuple(dirt_rgb) if dirt_rgb else None, rust, rough)
+    if key not in MATS: MATS[key] = make_material(kind, dirt, dirt_rgb, rust, rough)
     return MATS[key]
 
 
@@ -250,7 +255,8 @@ def finish(o, colour_name, subdiv=2, vary=0.0, lumps=None):
     c = spec["colours"][colour_name]; dirt = c.get("dirt", 0.0) if isinstance(c, dict) else 0.0
     drgb = c.get("dirt_rgb") if isinstance(c, dict) else None
     rst = c.get("rust", 0.0) if isinstance(c, dict) else 0.0
-    o.data.materials.clear(); o.data.materials.append(material(kind, dirt, drgb, rst))
+    rgh = c.get("roughness") if isinstance(c, dict) else None
+    o.data.materials.clear(); o.data.materials.append(material(kind, dirt, drgb, rst, rgh))
     if subdiv:
         s = o.modifiers.new("subd", "SUBSURF"); s.levels = s.render_levels = subdiv
     lumps = LUMPS if lumps is None else lumps
@@ -455,6 +461,14 @@ def part_can(p, i):
     return finish(o, p["colour"], 1, lumps=LUMPS * 0.5)
 
 
+def part_turned(p, i):
+    """A shape turned on a lathe: profile [[t, r], ...] runs along axis from centre (t = 0) outward; start and end
+    the profile on the axis (r = 0) to close it. For churns, bells, knobs."""
+    o = lathe(f"turned{i}", [tuple(q) for q in p["profile"]], p.get("segments", 40))
+    o.data.transform(axis_matrix(p["centre"], p.get("axis", [0, 0, 1])))
+    return finish(o, p["colour"], p.get("subdiv", 1), lumps=LUMPS * 0.5)
+
+
 def part_coil(p, i):
     """Wire wound round something: turns about axis, radius out, pitch apart, as a tube. messy (0-1) makes it
     look wound in a hurry: uneven spacing, bunched and crossing turns, varying slack and loose ends."""
@@ -645,7 +659,8 @@ def fuse(objs, name, colour_name, voxel=0.009, faces=6000):
 # ---------------------------------------------------------------- build
 BUILD = {"box": part_box, "planks": part_planks, "tube": part_tube, "torus": part_torus, "disc": part_disc,
          "ball": part_ball, "wheel": part_wheel, "tub": part_tub, "pipe_end": part_pipe_end,
-         "can": part_can, "coil": part_coil, "plate": part_plate}
+         "can": part_can, "coil": part_coil, "plate": part_plate,
+         "turned": part_turned}
 made_parts = []  # (spec part, [objects])
 for i, p in enumerate(spec["parts"]):
     made = BUILD[p["type"]](p, i)
@@ -760,7 +775,9 @@ if not fast:
     # metal map: bake each material's metalness as light, then pack it beside roughness (glTF: G rough, B metal)
     imgs["metal"] = bpy.data.images.new("kart_metal", size, size, is_data=True)
     for (kind, *_), m in MATS.items():
-        bs_ = m.node_tree.nodes["Principled BSDF"]; mv = 0.85 if kind == "metal" else 0.0
+        bs_ = m.node_tree.nodes["Principled BSDF"]
+        polished = _[3] is not None and _[3] < 0.3  # (dirt, dirt_rgb, rust, rough): polished metal is fully metal
+        mv = (1.0 if polished else 0.85) if kind == "metal" else 0.0
         bs_.inputs["Emission Color"].default_value = (mv, mv, mv, 1); bs_.inputs["Emission Strength"].default_value = 1
         rm = m.node_tree.nodes.get("rustmask")
         if rm and mv:  # rusted patches are no longer bare metal
@@ -816,8 +833,15 @@ if spec.get("out") and not fast:
 if render:
     sc = scene; sc.render.engine = "BLENDER_EEVEE"; sc.render.resolution_x = sc.render.resolution_y = 700
     wd = bpy.data.worlds.new("w"); wd.use_nodes = True
-    wd.node_tree.nodes["Background"].inputs[0].default_value = (0.8, 0.8, 0.8, 1)
-    wd.node_tree.nodes["Background"].inputs[1].default_value = 0.7; sc.world = wd
+    # a bright sky over a darker ground, so metal has something to reflect (previews only)
+    wn = wd.node_tree; bg = wn.nodes["Background"]; bg.inputs[1].default_value = 1.0
+    tc = wn.nodes.new("ShaderNodeTexCoord"); sx = wn.nodes.new("ShaderNodeSeparateXYZ")
+    wn.links.new(tc.outputs["Generated"], sx.inputs[0])
+    sky = wn.nodes.new("ShaderNodeValToRGB"); el = sky.color_ramp.elements
+    el[0].position, el[0].color = 0.45, (0.42, 0.41, 0.4, 1); el[1].position, el[1].color = 0.62, (1.0, 1.0, 1.0, 1)
+    el.new(0.5).color = (0.08, 0.08, 0.08, 1)  # a dark horizon band: what makes chrome read as chrome
+    el.new(0.53).color = (0.75, 0.75, 0.77, 1)
+    wn.links.new(sx.outputs["Z"], sky.inputs[0]); wn.links.new(sky.outputs[0], bg.inputs[0]); sc.world = wd
     sun = bpy.data.objects.new("sun", bpy.data.lights.new("sun", "SUN")); sun.data.energy = 3.2
     sun.data.angle = math.radians(15); sc.collection.objects.link(sun)
     bpy.ops.mesh.primitive_plane_add(size=20); fl = bpy.context.active_object
@@ -826,7 +850,7 @@ if render:
     cam = bpy.data.objects.new("cam", bpy.data.cameras.new("cam")); cam.data.lens = 85
     sc.collection.objects.link(cam); sc.camera = cam
     ctr = Vector((0, 0, 0.33))
-    for n, a, el in (("q", spec.get("view", 140), 14), ("side", 270, 3), ("front", 180, 5), ("back", 40, 22), ("top", 180, 75)):
+    for n, a, el in (("q", spec.get("view", 140), 14), ("side", 270, 3), ("left", 90, 3), ("front", 180, 5), ("back", 40, 22), ("top", 180, 75)):
         r = math.radians(a); e = math.radians(el); d = 5.2
         cam.location = ctr + Vector((d * math.sin(r) * math.cos(e), d * math.cos(r) * math.cos(e), d * math.sin(e)))
         cam.rotation_euler = (math.radians(90) - e, 0, math.radians(180) - r)

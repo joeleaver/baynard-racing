@@ -88,6 +88,10 @@ and win collisions.
   (`joint: oar`, sweeping up to 30° about `axis`). The game sweeps them fore and aft as he turns, and pulls
   both together on a boost. His brass bulb horn sits on the starboard gunwale within reach of his seat.
   The bulb is its own part (`joint: squash`), and the game squeezes it when he uses Honk.
+- **Exception, Marmalade's feed scoop:** no steering wheel. The top handle of her watering can is her
+  steering (`joint: steer`, swinging up to 30° about `axis`), and the game turns it from her steering
+  input. Her front wheels carry their own short axles, which turn with them into kingpin blocks on the
+  scoop.
 - Parts can be swapped (body, wheels, glider-style extra) and they change the stats. Cosmetic paint
   on top.
 

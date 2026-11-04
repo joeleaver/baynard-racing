@@ -44,6 +44,7 @@ Spec (paths relative to the spec file):
             bites [[x, y, r]] for a sign's face, artwork and teeth marks
   tube      "closed": true makes a loop (a rolled rim round a tub)
   wheel     "style": "drum" gives a tall drum tyre with soft shoulders instead of a balloon
+            "stub": length of a short axle reaching inward from the hub, part of the wheel (it steers with it)
             "cap": a colour gives a plain disc hub with a separate centre cap in that colour
   Parts that share a "fuse" label are melted into one soft piece (voxel remesh and smoothing), the way a clay
   seat is one lump rather than glued blocks.
@@ -54,7 +55,7 @@ Spec (paths relative to the spec file):
   which way it turns (spec frame) and goes into the GLB as an extra, in the GLB's Y-up frame. "joint":
   "pendulum" with "swing" (degrees) marks something that hangs from its pivot and swings, such as a bell, for
   the game to animate or drive with physics; "joint": "oar" sweeps about "axis" by up to "swing" degrees
-  (default 30); "joint": "squash" marks something the game squeezes, such as a horn bulb; "stops" lists parts it is meant to come to rest against at the
+  (default 30); "joint": "steer" marks a part that turns with the steering in place of a steering wheel; "joint": "squash" marks something the game squeezes, such as a horn bulb; "stops" lists parts it is meant to come to rest against at the
   end of its swing (a bell meeting a bumper). "parent" names another moving part this one rides on, such as a
   clapper inside a swinging bell.
   Wheels carry extras too, in the GLB's frame: spin_axis [1, 0, 0] and, for front wheels (name ending F, FL or
@@ -718,6 +719,10 @@ def part_wheel(p, i):
         cap = cylinder(p["name"] + "_cap", R * 0.38, h * 0.5, R * 0.15, 24)
         cap.data.transform(Matrix.Translation((side * h * 0.82, 0, 0)))
         parts.append(finish(cap, p["cap"], 1, lumps=0))
+    if p.get("stub"):  # a short axle inside the wheel, so it turns with a steered wheel and stays connected
+        st = cylinder(p["name"] + "_stub", p.get("stub_radius", 0.018), p["stub"], 0.004, 16)
+        st.data.transform(Matrix.Translation((-side * (p["stub"] / 2 + h * 0.3), 0, 0)))
+        parts.append(finish(st, p.get("stub_colour", p["hub"]), 0, lumps=0))
     o = join(parts, p["name"])
     o.location = p["pos"]
     return o
@@ -855,7 +860,7 @@ def limits_check():
         if "steer_axis" in o: moves += [(bl(o["steer_axis"]), o["steer_limit"])]
         if "tilt_axis" in o: moves += [(bl(o["tilt_axis"]), o["tilt_limit"])]
         if o.get("joint") == "pendulum": moves += [(Vector((1, 0, 0)), o["swing_limit"]), (Vector((0, 1, 0)), o["swing_limit"])]
-        if o.get("joint") == "oar": moves += [(bl(o["axis"]), o.get("swing_limit", 30))]
+        if o.get("joint") in ("oar", "steer"): moves += [(bl(o["axis"]), o.get("swing_limit", 30))]
         if not moves: continue
         rest = hits(o); mw = o.matrix_world.copy(); t = mw.translation.copy()
         stops = {}

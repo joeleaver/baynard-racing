@@ -84,6 +84,10 @@ and win collisions.
   doesn't steer. It leans into turns instead (`tilt_axis` along the kart's length, `tilt_limit` 12°): the
   game tilts it from the steering input, while the kart's handling does the turning. Other three-wheelers
   need the same treatment if their front wheel sits in a fixed fork.
+- **Exception, The Major's rowing boat:** no steering wheel. His two oars pivot in their rowlocks
+  (`joint: oar`, sweeping up to 30° about `axis`). The game sweeps them fore and aft as he turns, and pulls
+  both together on a boost. His brass bulb horn sits on the starboard gunwale within reach of his seat.
+  The bulb is its own part (`joint: squash`), and the game squeezes it when he uses Honk.
 - Parts can be swapped (body, wheels, glider-style extra) and they change the stats. Cosmetic paint
   on top.
 

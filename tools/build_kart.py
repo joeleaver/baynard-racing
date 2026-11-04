@@ -7,7 +7,8 @@ karts are modelled from parts instead. Units are metres; the kart faces -Y, +X i
 ground is z = 0. --fast skips the texture bake (for checking shapes and clashes).
 
 Spec (paths relative to the spec file):
-  colours   {name: {"rgb": [r, g, b] sRGB 0-1, "kind": "clay" | "wood" | "rubber" | "metal" | "rust"}}
+  colours   {name: {"rgb": [r, g, b] sRGB 0-1, "kind": "clay" | "wood" | "rubber" | "metal" | "rust" | "clinker"}}
+            clinker draws overlapping-plank lap lines on a hull
             "roughness": overrides the kind's roughness (0.2 is polished chrome)
             "rust": 0-1 lets rust eat into the surface in ragged, crusty, dull patches (for tin and steel)
             "dirt": 0-1 adds patches of dried mud and dust (mud: [r, g, b] sets their colour for the whole kart;
@@ -33,6 +34,9 @@ Spec (paths relative to the spec file):
             mouth of an exhaust; give its tube "open_end": true
     can     centre, axis, length, radius, ridges, ridge_depth (fraction of radius), open (the +axis end is open
             and hollow, depth as a fraction of length): a tin can with beaded rims and dished lids
+    hull    tables y, beam, keel, sheer as [[s, value], ...] from stern (s 0) to bow (s 1), strakes, lap,
+            bilge, thickness: a clinker-built boat hull with a transom stern and a pointed bow
+    slab    centre, axis, size [length, width, thickness], roll: a flat rounded slab, e.g. an oar blade
     turned  centre, axis, profile [[t, r], ...] (t along the axis): a lathe-turned shape such as a churn or bell
     coil    centre, axis, radius, turns, pitch, wire, messy (0-1): wire wound round something
     plate   points [[x, y], ...] (a convex outline in its own plane), thickness, centre, tilt (its face is local
@@ -49,7 +53,8 @@ Spec (paths relative to the spec file):
   its origin at the pivot (e.g. "steering_wheel", which the game turns with the steering). "axis" [x, y, z] says
   which way it turns (spec frame) and goes into the GLB as an extra, in the GLB's Y-up frame. "joint":
   "pendulum" with "swing" (degrees) marks something that hangs from its pivot and swings, such as a bell, for
-  the game to animate or drive with physics; "stops" lists parts it is meant to come to rest against at the
+  the game to animate or drive with physics; "joint": "oar" sweeps about "axis" by up to "swing" degrees
+  (default 30); "joint": "squash" marks something the game squeezes, such as a horn bulb; "stops" lists parts it is meant to come to rest against at the
   end of its swing (a bell meeting a bumper). "parent" names another moving part this one rides on, such as a
   clapper inside a swinging bell.
   Wheels carry extras too, in the GLB's frame: spin_axis [1, 0, 0] and, for front wheels (name ending F, FL or
@@ -148,6 +153,23 @@ def make_material(kind, dirt=0.0, dirt_rgb=None, rust=0.0, rough=None):
         L(sand.outputs["Fac"], h.inputs[0]); L(groove, h.inputs[2]); height = h.outputs[0]; strength = 0.45
     if kind == "rubber":
         strength = 0.25
+    if kind == "clinker":  # overlapping planks: a dark lap line and a lip at each strake edge, faint grain
+        rest = node(nt, "ShaderNodeAttribute", attribute_name="rest").outputs["Vector"]
+        sxyz = node(nt, "ShaderNodeSeparateXYZ"); L(rest, sxyz.inputs[0])
+        fr = node(nt, "ShaderNodeMath", operation="FRACT"); L(sxyz.outputs["Y"], fr.inputs[0])
+        lap = ramp(nt, fr.outputs[0], [(0.0, 0.3), (0.08, 0.55), (0.17, 1.0), (0.85, 1.0), (1.0, 1.08)])
+        streak = node(nt, "ShaderNodeTexNoise"); streak.inputs["Scale"].default_value = 2.5; streak.inputs["Detail"].default_value = 5
+        st = node(nt, "ShaderNodeCombineXYZ"); L(sxyz.outputs["X"], st.inputs["X"])
+        sy = node(nt, "ShaderNodeMath", operation="MULTIPLY"); sy.inputs[1].default_value = 6
+        L(sxyz.outputs["Y"], sy.inputs[0]); L(sy.outputs[0], st.inputs["Y"])
+        L(st.outputs[0], streak.inputs["Vector"])
+        streak_k = ramp(nt, streak.outputs["Fac"], [(0.35, 0.9), (0.65, 1.07)])
+        for k_ in (lap, streak_k):
+            mm = node(nt, "ShaderNodeMix", data_type="RGBA", blend_type="MULTIPLY"); mm.inputs["Factor"].default_value = 1
+            L(out, mm.inputs[6]); L(k_, mm.inputs[7]); out = mm.outputs[2]
+        lip = ramp(nt, fr.outputs[0], [(0.0, 0.0), (0.05, 0.0), (0.12, 1.0), (1.0, 0.75)])
+        h = node(nt, "ShaderNodeMath", operation="MULTIPLY_ADD"); h.inputs[1].default_value = 0.15
+        L(sand.outputs["Fac"], h.inputs[0]); L(lip, h.inputs[2]); height = h.outputs[0]; strength = 0.5
     if rough is not None and rough < 0.35:
         strength = 0.03  # polished: only a faint grain
     if kind == "rust":
@@ -564,6 +586,67 @@ def part_plate(p, i):
     return out
 
 
+def interp(table, s):
+    """Linear interpolation in [[s, value], ...]."""
+    for (s0, v0), (s1, v1) in zip(table, table[1:]):
+        if s0 <= s <= s1: return v0 + (v1 - v0) * (s - s0) / (s1 - s0)
+    return table[0][1] if s < table[0][0] else table[-1][1]
+
+
+def part_hull(p, i):
+    """A boat hull lofted from stern (s = 0) to bow (s = 1): tables of [s, value] give y (along the kart), beam
+    (half-width at the sheer), keel (bottom z) and sheer (top edge z). strakes overlapping planks give the
+    clinker steps; the stern is closed by a flat transom, the bow runs to a point. Walls are thickness thick."""
+    ns, nper = p.get("sections", 48), p.get("per_strake", 4)
+    N = p.get("strakes", 5); step = p.get("lap", 0.008); bilge = p.get("bilge", 0.8)
+    bm = bmesh.new(); rows = []
+    for k in range(ns + 1):
+        s_ = k / ns
+        y, b = interp(p["y"], s_), max(interp(p["beam"], s_), 1e-4)
+        zk, zs = interp(p["keel"], s_), interp(p["sheer"], s_)
+        half = []
+        for j in range(N * nper + 1):
+            f = j / (N * nper); phi = f * math.pi / 2
+            x = b * math.sin(phi) ** bilge; z = zk + (zs - zk) * (1 - math.cos(phi)) ** 1.15
+            # clinker: each strake's lower edge stands proud of the strake below, easing to flush at its top
+            u = (j % nper) / nper if j < N * nper else 1.0
+            lap = step * (1 - u) if j > 0 else 0.0
+            dx, dz = math.cos(phi), math.sin(phi)  # roughly the outward normal on this side
+            half.append((x + lap * dx * min(1, b / 0.05), z - lap * dz * 0.3))
+        prof = [(-x, z) for x, z in reversed(half[1:])] + half
+        rows.append([bm.verts.new((x, y, z)) for x, z in prof])
+    for A, B in zip(rows, rows[1:]):
+        for j in range(len(A) - 1):
+            bm.faces.new((A[j], A[j + 1], B[j + 1], B[j]))
+    bm.faces.new(list(reversed(rows[0])))  # transom
+    bmesh.ops.remove_doubles(bm, verts=bm.verts, dist=1e-5)
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+    o = new_obj(f"hull{i}", bm)
+    sd = o.modifiers.new("solid", "SOLIDIFY"); sd.thickness = p.get("thickness", 0.025); sd.offset = -1
+    sd.use_even_offset = True
+    bpy.context.view_layer.objects.active = o; bpy.ops.object.modifier_apply(modifier=sd.name)
+    # rest = (along the boat, strake number up the side, across): the "clinker" material draws a lap line at
+    # each whole strake number, which survives any decimation where the geometric laps would not
+    a = o.data.attributes.new("rest", "FLOAT_VECTOR", "POINT")
+    y0, y1 = p["y"][0][1], p["y"][-1][1]
+    for v, d in zip(o.data.vertices, a.data):
+        s_ = min(1, max(0, (v.co.y - y0) / (y1 - y0)))
+        zk, zs = interp(p["keel"], s_), interp(p["sheer"], s_)
+        t = min(1, max(0, (v.co.z - zk) / max(zs - zk, 1e-4)))
+        phi = math.acos(max(-1, min(1, 1 - t ** (1 / 1.15))))
+        d.vector = (v.co.y, phi / (math.pi / 2) * N, v.co.x)
+    return finish(o, p["colour"], p.get("subdiv", 1), lumps=LUMPS * 0.6)
+
+
+def part_slab(p, i):
+    """A flat rounded slab pointed along axis: size [length, width, thickness], roll about the axis in degrees.
+    For oar blades and the like."""
+    L, W, T = p["size"]
+    o = rounded_box(f"slab{i}", (0, 0, 0), (L, W, T), p.get("bevel", min(W, T) * 0.45))
+    o.data.transform(axis_matrix(p["centre"], p["axis"]) @ Matrix.Rotation(math.radians(p.get("roll", 0)), 4, "X"))
+    return finish(o, p["colour"], p.get("subdiv", 2))
+
+
 def part_tub(p, i):
     """A hollow tub: rounded outlines (superellipses) stacked from the bottom up, closed at the bottom, open at the
     top, with walls of the given thickness. rings: [[z, half-length (y), half-width (x), centre y], ...]."""
@@ -668,7 +751,7 @@ def fuse(objs, name, colour_name, voxel=0.009, faces=6000):
 BUILD = {"box": part_box, "planks": part_planks, "tube": part_tube, "torus": part_torus, "disc": part_disc,
          "ball": part_ball, "wheel": part_wheel, "tub": part_tub, "pipe_end": part_pipe_end,
          "can": part_can, "coil": part_coil, "plate": part_plate,
-         "turned": part_turned}
+         "turned": part_turned, "hull": part_hull, "slab": part_slab}
 made_parts = []  # (spec part, [objects])
 for i, p in enumerate(spec["parts"]):
     made = BUILD[p["type"]](p, i)
@@ -771,6 +854,7 @@ def limits_check():
         if "steer_axis" in o: moves += [(bl(o["steer_axis"]), o["steer_limit"])]
         if "tilt_axis" in o: moves += [(bl(o["tilt_axis"]), o["tilt_limit"])]
         if o.get("joint") == "pendulum": moves += [(Vector((1, 0, 0)), o["swing_limit"]), (Vector((0, 1, 0)), o["swing_limit"])]
+        if o.get("joint") == "oar": moves += [(bl(o["axis"]), o.get("swing_limit", 30))]
         if not moves: continue
         rest = hits(o); mw = o.matrix_world.copy(); t = mw.translation.copy()
         stops = {}

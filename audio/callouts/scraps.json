@@ -1,0 +1,456 @@
+{
+ "name": "Scraps",
+ "note": "Pick any take at random (or rotate). Audio is Opus; .mouth.json is per-frame ARKit mouth weights (jawOpen drives the beak/jaw).",
+ "moments": {
+  "drift_boost": [
+   {
+    "text": "Sideways is the best ways!",
+    "takes": [
+     {
+      "audio": "scraps/drift-boost-1-1.ogg",
+      "seconds": 2.23,
+      "mouth": "scraps/drift-boost-1-1.mouth.json"
+     },
+     {
+      "audio": "scraps/drift-boost-1-2.ogg",
+      "seconds": 2.83,
+      "mouth": "scraps/drift-boost-1-2.mouth.json"
+     },
+     {
+      "audio": "scraps/drift-boost-1-3.ogg",
+      "seconds": 2.28,
+      "mouth": "scraps/drift-boost-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Wheeeee!",
+    "takes": [
+     {
+      "audio": "scraps/drift-boost-2-1.ogg",
+      "seconds": 3.34,
+      "mouth": "scraps/drift-boost-2-1.mouth.json"
+     },
+     {
+      "audio": "scraps/drift-boost-2-2.ogg",
+      "seconds": 0.84,
+      "mouth": "scraps/drift-boost-2-2.mouth.json"
+     },
+     {
+      "audio": "scraps/drift-boost-2-3.ogg",
+      "seconds": 1.39,
+      "mouth": "scraps/drift-boost-2-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Scrape scrape scrape!",
+    "takes": [
+     {
+      "audio": "scraps/drift-boost-3-1.ogg",
+      "seconds": 2.42,
+      "mouth": "scraps/drift-boost-3-1.mouth.json"
+     },
+     {
+      "audio": "scraps/drift-boost-3-2.ogg",
+      "seconds": 1.62,
+      "mouth": "scraps/drift-boost-3-2.mouth.json"
+     },
+     {
+      "audio": "scraps/drift-boost-3-3.ogg",
+      "seconds": 1.76,
+      "mouth": "scraps/drift-boost-3-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "hit": [
+   {
+    "text": "Ow! Can I eat that?",
+    "takes": [
+     {
+      "audio": "scraps/hit-2-1.ogg",
+      "seconds": 2.18,
+      "mouth": "scraps/hit-2-1.mouth.json"
+     },
+     {
+      "audio": "scraps/hit-2-2.ogg",
+      "seconds": 2.88,
+      "mouth": "scraps/hit-2-2.mouth.json"
+     },
+     {
+      "audio": "scraps/hit-2-3.ogg",
+      "seconds": 2.09,
+      "mouth": "scraps/hit-2-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Whoa, that rattled my teeth!",
+    "takes": [
+     {
+      "audio": "scraps/hit-3-1.ogg",
+      "seconds": 2.93,
+      "mouth": "scraps/hit-3-1.mouth.json"
+     },
+     {
+      "audio": "scraps/hit-3-2.ogg",
+      "seconds": 2.46,
+      "mouth": "scraps/hit-3-2.mouth.json"
+     },
+     {
+      "audio": "scraps/hit-3-3.ogg",
+      "seconds": 2.69,
+      "mouth": "scraps/hit-3-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "item_use": [
+   {
+    "text": "Have some garbage!",
+    "takes": [
+     {
+      "audio": "scraps/item-use-1-1.ogg",
+      "seconds": 1.72,
+      "mouth": "scraps/item-use-1-1.mouth.json"
+     },
+     {
+      "audio": "scraps/item-use-1-2.ogg",
+      "seconds": 2.18,
+      "mouth": "scraps/item-use-1-2.mouth.json"
+     },
+     {
+      "audio": "scraps/item-use-1-3.ogg",
+      "seconds": 2.23,
+      "mouth": "scraps/item-use-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Present! Don't eat it. I would.",
+    "takes": [
+     {
+      "audio": "scraps/item-use-2-1.ogg",
+      "seconds": 2.83,
+      "mouth": "scraps/item-use-2-1.mouth.json"
+     },
+     {
+      "audio": "scraps/item-use-2-2.ogg",
+      "seconds": 2.14,
+      "mouth": "scraps/item-use-2-2.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Yoink! Yeet!",
+    "takes": [
+     {
+      "audio": "scraps/item-use-3-1.ogg",
+      "seconds": 0.79,
+      "mouth": "scraps/item-use-3-1.mouth.json"
+     }
+    ]
+   }
+  ],
+  "last_lap": [
+   {
+    "text": "Last lap! Hide the fences!",
+    "takes": [
+     {
+      "audio": "scraps/last-lap-1-1.ogg",
+      "seconds": 3.39,
+      "mouth": "scraps/last-lap-1-1.mouth.json"
+     },
+     {
+      "audio": "scraps/last-lap-1-2.ogg",
+      "seconds": 2.97,
+      "mouth": "scraps/last-lap-1-2.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "One more! Then snacks!",
+    "takes": [
+     {
+      "audio": "scraps/last-lap-2-1.ogg",
+      "seconds": 2.93,
+      "mouth": "scraps/last-lap-2-1.mouth.json"
+     },
+     {
+      "audio": "scraps/last-lap-2-2.ogg",
+      "seconds": 3.16,
+      "mouth": "scraps/last-lap-2-2.mouth.json"
+     },
+     {
+      "audio": "scraps/last-lap-2-3.ogg",
+      "seconds": 3.11,
+      "mouth": "scraps/last-lap-2-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "lose": [
+   {
+    "text": "Whatever. I ate a tyre on lap two.",
+    "takes": [
+     {
+      "audio": "scraps/lose-1-1.ogg",
+      "seconds": 3.34,
+      "mouth": "scraps/lose-1-1.mouth.json"
+     },
+     {
+      "audio": "scraps/lose-1-2.ogg",
+      "seconds": 4.04,
+      "mouth": "scraps/lose-1-2.mouth.json"
+     },
+     {
+      "audio": "scraps/lose-1-3.ogg",
+      "seconds": 3.81,
+      "mouth": "scraps/lose-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Worth it.",
+    "takes": [
+     {
+      "audio": "scraps/lose-2-1.ogg",
+      "seconds": 2.97,
+      "mouth": "scraps/lose-2-1.mouth.json"
+     },
+     {
+      "audio": "scraps/lose-2-2.ogg",
+      "seconds": 1.81,
+      "mouth": "scraps/lose-2-2.mouth.json"
+     },
+     {
+      "audio": "scraps/lose-2-3.ogg",
+      "seconds": 2.88,
+      "mouth": "scraps/lose-2-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "overtake": [
+   {
+    "text": "Bleeeh! Bye!",
+    "takes": [
+     {
+      "audio": "scraps/overtake-1-1.ogg",
+      "seconds": 1.9,
+      "mouth": "scraps/overtake-1-1.mouth.json"
+     },
+     {
+      "audio": "scraps/overtake-1-2.ogg",
+      "seconds": 1.02,
+      "mouth": "scraps/overtake-1-2.mouth.json"
+     },
+     {
+      "audio": "scraps/overtake-1-3.ogg",
+      "seconds": 1.11,
+      "mouth": "scraps/overtake-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Ha! Tasty!",
+    "takes": [
+     {
+      "audio": "scraps/overtake-2-1.ogg",
+      "seconds": 1.81,
+      "mouth": "scraps/overtake-2-1.mouth.json"
+     },
+     {
+      "audio": "scraps/overtake-2-2.ogg",
+      "seconds": 1.72,
+      "mouth": "scraps/overtake-2-2.mouth.json"
+     },
+     {
+      "audio": "scraps/overtake-2-3.ogg",
+      "seconds": 1.53,
+      "mouth": "scraps/overtake-2-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Zoom! Gone!",
+    "takes": [
+     {
+      "audio": "scraps/overtake-3-1.ogg",
+      "seconds": 1.53,
+      "mouth": "scraps/overtake-3-1.mouth.json"
+     }
+    ]
+   }
+  ],
+  "overtaken": [
+   {
+    "text": "Hey! I was gonna eat that!",
+    "takes": [
+     {
+      "audio": "scraps/overtaken-1-1.ogg",
+      "seconds": 1.95,
+      "mouth": "scraps/overtaken-1-1.mouth.json"
+     },
+     {
+      "audio": "scraps/overtaken-1-2.ogg",
+      "seconds": 3.11,
+      "mouth": "scraps/overtaken-1-2.mouth.json"
+     },
+     {
+      "audio": "scraps/overtaken-1-3.ogg",
+      "seconds": 2.28,
+      "mouth": "scraps/overtaken-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Come back here!",
+    "takes": [
+     {
+      "audio": "scraps/overtaken-2-1.ogg",
+      "seconds": 1.49,
+      "mouth": "scraps/overtaken-2-1.mouth.json"
+     },
+     {
+      "audio": "scraps/overtaken-2-2.ogg",
+      "seconds": 1.76,
+      "mouth": "scraps/overtaken-2-2.mouth.json"
+     },
+     {
+      "audio": "scraps/overtaken-2-3.ogg",
+      "seconds": 1.49,
+      "mouth": "scraps/overtaken-2-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Rude! Delicious, but rude.",
+    "takes": [
+     {
+      "audio": "scraps/overtaken-3-1.ogg",
+      "seconds": 3.3,
+      "mouth": "scraps/overtaken-3-1.mouth.json"
+     },
+     {
+      "audio": "scraps/overtaken-3-2.ogg",
+      "seconds": 3.95,
+      "mouth": "scraps/overtaken-3-2.mouth.json"
+     },
+     {
+      "audio": "scraps/overtaken-3-3.ogg",
+      "seconds": 3.16,
+      "mouth": "scraps/overtaken-3-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "race_start": [
+   {
+    "text": "Chaos time!",
+    "takes": [
+     {
+      "audio": "scraps/race-start-1-1.ogg",
+      "seconds": 1.62,
+      "mouth": "scraps/race-start-1-1.mouth.json"
+     },
+     {
+      "audio": "scraps/race-start-1-2.ogg",
+      "seconds": 1.35,
+      "mouth": "scraps/race-start-1-2.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Go go go go go!",
+    "takes": [
+     {
+      "audio": "scraps/race-start-2-1.ogg",
+      "seconds": 1.35,
+      "mouth": "scraps/race-start-2-1.mouth.json"
+     },
+     {
+      "audio": "scraps/race-start-2-2.ogg",
+      "seconds": 1.58,
+      "mouth": "scraps/race-start-2-2.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Who wants to see something stupid?",
+    "takes": [
+     {
+      "audio": "scraps/race-start-3-1.ogg",
+      "seconds": 2.04,
+      "mouth": "scraps/race-start-3-1.mouth.json"
+     },
+     {
+      "audio": "scraps/race-start-3-2.ogg",
+      "seconds": 2.28,
+      "mouth": "scraps/race-start-3-2.mouth.json"
+     },
+     {
+      "audio": "scraps/race-start-3-3.ogg",
+      "seconds": 1.95,
+      "mouth": "scraps/race-start-3-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "taunt": [
+   {
+    "text": "Your kart looks delicious.",
+    "takes": [
+     {
+      "audio": "scraps/taunt-1-1.ogg",
+      "seconds": 2.23,
+      "mouth": "scraps/taunt-1-1.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Nice bumper. Can I have it?",
+    "takes": [
+     {
+      "audio": "scraps/taunt-2-1.ogg",
+      "seconds": 3.16,
+      "mouth": "scraps/taunt-2-1.mouth.json"
+     },
+     {
+      "audio": "scraps/taunt-2-2.ogg",
+      "seconds": 3.48,
+      "mouth": "scraps/taunt-2-2.mouth.json"
+     },
+     {
+      "audio": "scraps/taunt-2-3.ogg",
+      "seconds": 3.06,
+      "mouth": "scraps/taunt-2-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "win": [
+   {
+    "text": "I won! I'm eating the trophy!",
+    "takes": [
+     {
+      "audio": "scraps/win-1-1.ogg",
+      "seconds": 3.11,
+      "mouth": "scraps/win-1-1.mouth.json"
+     },
+     {
+      "audio": "scraps/win-1-2.ogg",
+      "seconds": 2.83,
+      "mouth": "scraps/win-1-2.mouth.json"
+     },
+     {
+      "audio": "scraps/win-1-3.ogg",
+      "seconds": 2.97,
+      "mouth": "scraps/win-1-3.mouth.json"
+     }
+    ]
+   }
+  ]
+ }
+}

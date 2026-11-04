@@ -1,0 +1,561 @@
+{
+ "name": "Maximillian Gallop",
+ "note": "Pick any take at random (or rotate). Audio is Opus; .mouth.json is per-frame ARKit mouth weights (jawOpen drives the beak/jaw).",
+ "moments": {
+  "drift_boost": [
+   {
+    "text": "Magnificent!",
+    "takes": [
+     {
+      "audio": "max/drift-boost-1-1.ogg",
+      "seconds": 1.3,
+      "mouth": "max/drift-boost-1-1.mouth.json"
+     },
+     {
+      "audio": "max/drift-boost-1-2.ogg",
+      "seconds": 1.39,
+      "mouth": "max/drift-boost-1-2.mouth.json"
+     },
+     {
+      "audio": "max/drift-boost-1-3.ogg",
+      "seconds": 1.21,
+      "mouth": "max/drift-boost-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Simply flawless.",
+    "takes": [
+     {
+      "audio": "max/drift-boost-2-1.ogg",
+      "seconds": 2.0,
+      "mouth": "max/drift-boost-2-1.mouth.json"
+     },
+     {
+      "audio": "max/drift-boost-2-2.ogg",
+      "seconds": 1.86,
+      "mouth": "max/drift-boost-2-2.mouth.json"
+     },
+     {
+      "audio": "max/drift-boost-2-3.ogg",
+      "seconds": 1.58,
+      "mouth": "max/drift-boost-2-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "And that, everyone, is technique.",
+    "takes": [
+     {
+      "audio": "max/drift-boost-3-1.ogg",
+      "seconds": 2.65,
+      "mouth": "max/drift-boost-3-1.mouth.json"
+     },
+     {
+      "audio": "max/drift-boost-3-2.ogg",
+      "seconds": 2.83,
+      "mouth": "max/drift-boost-3-2.mouth.json"
+     },
+     {
+      "audio": "max/drift-boost-3-3.ogg",
+      "seconds": 3.06,
+      "mouth": "max/drift-boost-3-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "hit": [
+   {
+    "text": "My mane! Do you know how long that took?",
+    "takes": [
+     {
+      "audio": "max/hit-1-1.ogg",
+      "seconds": 3.53,
+      "mouth": "max/hit-1-1.mouth.json"
+     },
+     {
+      "audio": "max/hit-1-2.ogg",
+      "seconds": 3.02,
+      "mouth": "max/hit-1-2.mouth.json"
+     },
+     {
+      "audio": "max/hit-1-3.ogg",
+      "seconds": 2.93,
+      "mouth": "max/hit-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "How uncouth!",
+    "takes": [
+     {
+      "audio": "max/hit-2-1.ogg",
+      "seconds": 1.44,
+      "mouth": "max/hit-2-1.mouth.json"
+     },
+     {
+      "audio": "max/hit-2-2.ogg",
+      "seconds": 1.35,
+      "mouth": "max/hit-2-2.mouth.json"
+     },
+     {
+      "audio": "max/hit-2-3.ogg",
+      "seconds": 1.25,
+      "mouth": "max/hit-2-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Neigh! Unacceptable!",
+    "takes": [
+     {
+      "audio": "max/hit-3-1.ogg",
+      "seconds": 2.69,
+      "mouth": "max/hit-3-1.mouth.json"
+     },
+     {
+      "audio": "max/hit-3-2.ogg",
+      "seconds": 3.06,
+      "mouth": "max/hit-3-2.mouth.json"
+     },
+     {
+      "audio": "max/hit-3-3.ogg",
+      "seconds": 2.0,
+      "mouth": "max/hit-3-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "item_use": [
+   {
+    "text": "With the compliments of the champion.",
+    "takes": [
+     {
+      "audio": "max/item-use-1-1.ogg",
+      "seconds": 2.42,
+      "mouth": "max/item-use-1-1.mouth.json"
+     },
+     {
+      "audio": "max/item-use-1-2.ogg",
+      "seconds": 2.88,
+      "mouth": "max/item-use-1-2.mouth.json"
+     },
+     {
+      "audio": "max/item-use-1-3.ogg",
+      "seconds": 2.37,
+      "mouth": "max/item-use-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "A small gift.",
+    "takes": [
+     {
+      "audio": "max/item-use-2-1.ogg",
+      "seconds": 2.09,
+      "mouth": "max/item-use-2-1.mouth.json"
+     },
+     {
+      "audio": "max/item-use-2-2.ogg",
+      "seconds": 1.62,
+      "mouth": "max/item-use-2-2.mouth.json"
+     },
+     {
+      "audio": "max/item-use-2-3.ogg",
+      "seconds": 1.3,
+      "mouth": "max/item-use-2-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Do excuse me.",
+    "takes": [
+     {
+      "audio": "max/item-use-3-1.ogg",
+      "seconds": 2.09,
+      "mouth": "max/item-use-3-1.mouth.json"
+     },
+     {
+      "audio": "max/item-use-3-2.ogg",
+      "seconds": 2.14,
+      "mouth": "max/item-use-3-2.mouth.json"
+     },
+     {
+      "audio": "max/item-use-3-3.ogg",
+      "seconds": 2.18,
+      "mouth": "max/item-use-3-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "last_lap": [
+   {
+    "text": "Final lap. Time for the victory parade.",
+    "takes": [
+     {
+      "audio": "max/last-lap-1-1.ogg",
+      "seconds": 3.3,
+      "mouth": "max/last-lap-1-1.mouth.json"
+     },
+     {
+      "audio": "max/last-lap-1-2.ogg",
+      "seconds": 3.34,
+      "mouth": "max/last-lap-1-2.mouth.json"
+     },
+     {
+      "audio": "max/last-lap-1-3.ogg",
+      "seconds": 3.2,
+      "mouth": "max/last-lap-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Last lap! Prepare the trophy!",
+    "takes": [
+     {
+      "audio": "max/last-lap-2-1.ogg",
+      "seconds": 3.3,
+      "mouth": "max/last-lap-2-1.mouth.json"
+     },
+     {
+      "audio": "max/last-lap-2-2.ogg",
+      "seconds": 2.79,
+      "mouth": "max/last-lap-2-2.mouth.json"
+     },
+     {
+      "audio": "max/last-lap-2-3.ogg",
+      "seconds": 3.02,
+      "mouth": "max/last-lap-2-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "lose": [
+   {
+    "text": "A fluke. A complete and total fluke.",
+    "takes": [
+     {
+      "audio": "max/lose-1-1.ogg",
+      "seconds": 2.93,
+      "mouth": "max/lose-1-1.mouth.json"
+     },
+     {
+      "audio": "max/lose-1-2.ogg",
+      "seconds": 3.85,
+      "mouth": "max/lose-1-2.mouth.json"
+     },
+     {
+      "audio": "max/lose-1-3.ogg",
+      "seconds": 4.78,
+      "mouth": "max/lose-1-3.mouth.json"
+     },
+     {
+      "audio": "max/lose-1-4.ogg",
+      "seconds": 3.62,
+      "mouth": "max/lose-1-4.mouth.json"
+     },
+     {
+      "audio": "max/lose-1-5.ogg",
+      "seconds": 2.88,
+      "mouth": "max/lose-1-5.mouth.json"
+     },
+     {
+      "audio": "max/lose-1-6.ogg",
+      "seconds": 3.9,
+      "mouth": "max/lose-1-6.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "I let you have that one.",
+    "takes": [
+     {
+      "audio": "max/lose-2-1.ogg",
+      "seconds": 2.04,
+      "mouth": "max/lose-2-1.mouth.json"
+     },
+     {
+      "audio": "max/lose-2-2.ogg",
+      "seconds": 1.67,
+      "mouth": "max/lose-2-2.mouth.json"
+     },
+     {
+      "audio": "max/lose-2-3.ogg",
+      "seconds": 2.55,
+      "mouth": "max/lose-2-3.mouth.json"
+     },
+     {
+      "audio": "max/lose-2-4.ogg",
+      "seconds": 2.04,
+      "mouth": "max/lose-2-4.mouth.json"
+     },
+     {
+      "audio": "max/lose-2-5.ogg",
+      "seconds": 2.09,
+      "mouth": "max/lose-2-5.mouth.json"
+     },
+     {
+      "audio": "max/lose-2-6.ogg",
+      "seconds": 2.04,
+      "mouth": "max/lose-2-6.mouth.json"
+     }
+    ]
+   }
+  ],
+  "overtake": [
+   {
+    "text": "Pardon me, champion coming through.",
+    "takes": [
+     {
+      "audio": "max/overtake-1-1.ogg",
+      "seconds": 3.02,
+      "mouth": "max/overtake-1-1.mouth.json"
+     },
+     {
+      "audio": "max/overtake-1-2.ogg",
+      "seconds": 3.11,
+      "mouth": "max/overtake-1-2.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Do enjoy the view of my tail.",
+    "takes": [
+     {
+      "audio": "max/overtake-2-1.ogg",
+      "seconds": 2.23,
+      "mouth": "max/overtake-2-1.mouth.json"
+     },
+     {
+      "audio": "max/overtake-2-2.ogg",
+      "seconds": 2.14,
+      "mouth": "max/overtake-2-2.mouth.json"
+     },
+     {
+      "audio": "max/overtake-2-3.ogg",
+      "seconds": 2.65,
+      "mouth": "max/overtake-2-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Ta-ta!",
+    "takes": [
+     {
+      "audio": "max/overtake-3-1.ogg",
+      "seconds": 1.39,
+      "mouth": "max/overtake-3-1.mouth.json"
+     },
+     {
+      "audio": "max/overtake-3-2.ogg",
+      "seconds": 0.65,
+      "mouth": "max/overtake-3-2.mouth.json"
+     }
+    ]
+   }
+  ],
+  "overtaken": [
+   {
+    "text": "A temporary arrangement, I assure you.",
+    "takes": [
+     {
+      "audio": "max/overtaken-1-1.ogg",
+      "seconds": 2.55,
+      "mouth": "max/overtaken-1-1.mouth.json"
+     },
+     {
+      "audio": "max/overtaken-1-2.ogg",
+      "seconds": 4.92,
+      "mouth": "max/overtaken-1-2.mouth.json"
+     },
+     {
+      "audio": "max/overtaken-1-3.ogg",
+      "seconds": 2.83,
+      "mouth": "max/overtaken-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Enjoy it while it lasts!",
+    "takes": [
+     {
+      "audio": "max/overtaken-2-1.ogg",
+      "seconds": 3.06,
+      "mouth": "max/overtaken-2-1.mouth.json"
+     },
+     {
+      "audio": "max/overtaken-2-2.ogg",
+      "seconds": 1.81,
+      "mouth": "max/overtaken-2-2.mouth.json"
+     },
+     {
+      "audio": "max/overtaken-2-3.ogg",
+      "seconds": 1.95,
+      "mouth": "max/overtaken-2-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Most irregular!",
+    "takes": [
+     {
+      "audio": "max/overtaken-3-1.ogg",
+      "seconds": 1.72,
+      "mouth": "max/overtaken-3-1.mouth.json"
+     },
+     {
+      "audio": "max/overtaken-3-2.ogg",
+      "seconds": 1.3,
+      "mouth": "max/overtaken-3-2.mouth.json"
+     }
+    ]
+   }
+  ],
+  "race_start": [
+   {
+    "text": "Let the show begin!",
+    "takes": [
+     {
+      "audio": "max/race-start-1-1.ogg",
+      "seconds": 2.46,
+      "mouth": "max/race-start-1-1.mouth.json"
+     },
+     {
+      "audio": "max/race-start-1-2.ogg",
+      "seconds": 1.95,
+      "mouth": "max/race-start-1-2.mouth.json"
+     },
+     {
+      "audio": "max/race-start-1-3.ogg",
+      "seconds": 2.32,
+      "mouth": "max/race-start-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Try to keep up, everyone!",
+    "takes": [
+     {
+      "audio": "max/race-start-2-1.ogg",
+      "seconds": 1.95,
+      "mouth": "max/race-start-2-1.mouth.json"
+     },
+     {
+      "audio": "max/race-start-2-2.ogg",
+      "seconds": 1.95,
+      "mouth": "max/race-start-2-2.mouth.json"
+     },
+     {
+      "audio": "max/race-start-2-3.ogg",
+      "seconds": 2.14,
+      "mouth": "max/race-start-2-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "And they're off! Well, I am.",
+    "takes": [
+     {
+      "audio": "max/race-start-3-1.ogg",
+      "seconds": 3.71,
+      "mouth": "max/race-start-3-1.mouth.json"
+     },
+     {
+      "audio": "max/race-start-3-2.ogg",
+      "seconds": 4.13,
+      "mouth": "max/race-start-3-2.mouth.json"
+     },
+     {
+      "audio": "max/race-start-3-3.ogg",
+      "seconds": 3.53,
+      "mouth": "max/race-start-3-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "taunt": [
+   {
+    "text": "Is that the best you can do?",
+    "takes": [
+     {
+      "audio": "max/taunt-1-1.ogg",
+      "seconds": 2.46,
+      "mouth": "max/taunt-1-1.mouth.json"
+     },
+     {
+      "audio": "max/taunt-1-2.ogg",
+      "seconds": 2.42,
+      "mouth": "max/taunt-1-2.mouth.json"
+     },
+     {
+      "audio": "max/taunt-1-3.ogg",
+      "seconds": 5.67,
+      "mouth": "max/taunt-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Do try harder. It's embarrassing.",
+    "takes": [
+     {
+      "audio": "max/taunt-2-1.ogg",
+      "seconds": 3.2,
+      "mouth": "max/taunt-2-1.mouth.json"
+     },
+     {
+      "audio": "max/taunt-2-2.ogg",
+      "seconds": 3.16,
+      "mouth": "max/taunt-2-2.mouth.json"
+     },
+     {
+      "audio": "max/taunt-2-3.ogg",
+      "seconds": 3.67,
+      "mouth": "max/taunt-2-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "win": [
+   {
+    "text": "Thank you, thank you. Yes, I know.",
+    "takes": [
+     {
+      "audio": "max/win-1-1.ogg",
+      "seconds": 2.97,
+      "mouth": "max/win-1-1.mouth.json"
+     },
+     {
+      "audio": "max/win-1-2.ogg",
+      "seconds": 2.97,
+      "mouth": "max/win-1-2.mouth.json"
+     },
+     {
+      "audio": "max/win-1-3.ogg",
+      "seconds": 2.55,
+      "mouth": "max/win-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Champion once again! Was there ever any doubt?",
+    "takes": [
+     {
+      "audio": "max/win-2-1.ogg",
+      "seconds": 4.46,
+      "mouth": "max/win-2-1.mouth.json"
+     },
+     {
+      "audio": "max/win-2-2.ogg",
+      "seconds": 3.9,
+      "mouth": "max/win-2-2.mouth.json"
+     },
+     {
+      "audio": "max/win-2-3.ogg",
+      "seconds": 4.5,
+      "mouth": "max/win-2-3.mouth.json"
+     }
+    ]
+   }
+  ]
+ }
+}

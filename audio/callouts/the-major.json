@@ -1,0 +1,476 @@
+{
+ "name": "The Major",
+ "note": "Pick any take at random (or rotate). Audio is Opus; .mouth.json is per-frame ARKit mouth weights (jawOpen drives the beak/jaw).",
+ "moments": {
+  "drift_boost": [
+   {
+    "text": "Feel my wake!",
+    "takes": [
+     {
+      "audio": "the-major/drift-boost-1-1.ogg",
+      "seconds": 1.95,
+      "mouth": "the-major/drift-boost-1-1.mouth.json"
+     },
+     {
+      "audio": "the-major/drift-boost-1-2.ogg",
+      "seconds": 1.62,
+      "mouth": "the-major/drift-boost-1-2.mouth.json"
+     },
+     {
+      "audio": "the-major/drift-boost-1-3.ogg",
+      "seconds": 2.51,
+      "mouth": "the-major/drift-boost-1-3.mouth.json"
+     },
+     {
+      "audio": "the-major/drift-boost-1-4.ogg",
+      "seconds": 2.14,
+      "mouth": "the-major/drift-boost-1-4.mouth.json"
+     },
+     {
+      "audio": "the-major/drift-boost-1-5.ogg",
+      "seconds": 2.14,
+      "mouth": "the-major/drift-boost-1-5.mouth.json"
+     },
+     {
+      "audio": "the-major/drift-boost-1-6.ogg",
+      "seconds": 1.62,
+      "mouth": "the-major/drift-boost-1-6.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Ha!",
+    "takes": [
+     {
+      "audio": "the-major/drift-boost-2-1.ogg",
+      "seconds": 0.97,
+      "mouth": "the-major/drift-boost-2-1.mouth.json"
+     },
+     {
+      "audio": "the-major/drift-boost-2-2.ogg",
+      "seconds": 1.07,
+      "mouth": "the-major/drift-boost-2-2.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Onwards!",
+    "takes": [
+     {
+      "audio": "the-major/drift-boost-3-1.ogg",
+      "seconds": 1.3,
+      "mouth": "the-major/drift-boost-3-1.mouth.json"
+     }
+    ]
+   }
+  ],
+  "hit": [
+   {
+    "text": "Honk! Who did that? I will find you.",
+    "takes": [
+     {
+      "audio": "the-major/hit-1-1.ogg",
+      "seconds": 6.69,
+      "mouth": "the-major/hit-1-1.mouth.json"
+     },
+     {
+      "audio": "the-major/hit-1-2.ogg",
+      "seconds": 5.43,
+      "mouth": "the-major/hit-1-2.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Insolence!",
+    "takes": [
+     {
+      "audio": "the-major/hit-2-1.ogg",
+      "seconds": 1.53,
+      "mouth": "the-major/hit-2-1.mouth.json"
+     },
+     {
+      "audio": "the-major/hit-2-2.ogg",
+      "seconds": 1.76,
+      "mouth": "the-major/hit-2-2.mouth.json"
+     }
+    ]
+   }
+  ],
+  "item_use": [
+   {
+    "text": "Take that!",
+    "takes": [
+     {
+      "audio": "the-major/item-use-1-1.ogg",
+      "seconds": 1.49,
+      "mouth": "the-major/item-use-1-1.mouth.json"
+     },
+     {
+      "audio": "the-major/item-use-1-2.ogg",
+      "seconds": 1.35,
+      "mouth": "the-major/item-use-1-2.mouth.json"
+     },
+     {
+      "audio": "the-major/item-use-1-3.ogg",
+      "seconds": 1.58,
+      "mouth": "the-major/item-use-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "With my compliments. Hiss.",
+    "takes": [
+     {
+      "audio": "the-major/item-use-2-1.ogg",
+      "seconds": 3.16,
+      "mouth": "the-major/item-use-2-1.mouth.json"
+     },
+     {
+      "audio": "the-major/item-use-2-2.ogg",
+      "seconds": 3.58,
+      "mouth": "the-major/item-use-2-2.mouth.json"
+     },
+     {
+      "audio": "the-major/item-use-2-3.ogg",
+      "seconds": 3.9,
+      "mouth": "the-major/item-use-2-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Honk honk!",
+    "takes": [
+     {
+      "audio": "the-major/item-use-3-1.ogg",
+      "seconds": 2.0,
+      "mouth": "the-major/item-use-3-1.mouth.json"
+     },
+     {
+      "audio": "the-major/item-use-3-2.ogg",
+      "seconds": 1.76,
+      "mouth": "the-major/item-use-3-2.mouth.json"
+     }
+    ]
+   }
+  ],
+  "last_lap": [
+   {
+    "text": "Last lap. Now you will all suffer.",
+    "takes": [
+     {
+      "audio": "the-major/last-lap-1-1.ogg",
+      "seconds": 5.53,
+      "mouth": "the-major/last-lap-1-1.mouth.json"
+     },
+     {
+      "audio": "the-major/last-lap-1-2.ogg",
+      "seconds": 4.74,
+      "mouth": "the-major/last-lap-1-2.mouth.json"
+     },
+     {
+      "audio": "the-major/last-lap-1-3.ogg",
+      "seconds": 4.37,
+      "mouth": "the-major/last-lap-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "The end is near. For you.",
+    "takes": [
+     {
+      "audio": "the-major/last-lap-2-1.ogg",
+      "seconds": 4.04,
+      "mouth": "the-major/last-lap-2-1.mouth.json"
+     },
+     {
+      "audio": "the-major/last-lap-2-2.ogg",
+      "seconds": 3.53,
+      "mouth": "the-major/last-lap-2-2.mouth.json"
+     },
+     {
+      "audio": "the-major/last-lap-2-3.ogg",
+      "seconds": 3.34,
+      "mouth": "the-major/last-lap-2-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "lose": [
+   {
+    "text": "This race was rigged.",
+    "takes": [
+     {
+      "audio": "the-major/lose-1-1.ogg",
+      "seconds": 2.6,
+      "mouth": "the-major/lose-1-1.mouth.json"
+     },
+     {
+      "audio": "the-major/lose-1-2.ogg",
+      "seconds": 2.55,
+      "mouth": "the-major/lose-1-2.mouth.json"
+     },
+     {
+      "audio": "the-major/lose-1-3.ogg",
+      "seconds": 2.23,
+      "mouth": "the-major/lose-1-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "I demand a rematch. Immediately.",
+    "takes": [
+     {
+      "audio": "the-major/lose-2-1.ogg",
+      "seconds": 4.88,
+      "mouth": "the-major/lose-2-1.mouth.json"
+     },
+     {
+      "audio": "the-major/lose-2-2.ogg",
+      "seconds": 5.25,
+      "mouth": "the-major/lose-2-2.mouth.json"
+     },
+     {
+      "audio": "the-major/lose-2-3.ogg",
+      "seconds": 4.46,
+      "mouth": "the-major/lose-2-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "overtake": [
+   {
+    "text": "Honk! Beneath me!",
+    "takes": [
+     {
+      "audio": "the-major/overtake-1-1.ogg",
+      "seconds": 2.88,
+      "mouth": "the-major/overtake-1-1.mouth.json"
+     },
+     {
+      "audio": "the-major/overtake-1-2.ogg",
+      "seconds": 2.6,
+      "mouth": "the-major/overtake-1-2.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Pathetic!",
+    "takes": [
+     {
+      "audio": "the-major/overtake-2-1.ogg",
+      "seconds": 1.35,
+      "mouth": "the-major/overtake-2-1.mouth.json"
+     },
+     {
+      "audio": "the-major/overtake-2-2.ogg",
+      "seconds": 1.21,
+      "mouth": "the-major/overtake-2-2.mouth.json"
+     },
+     {
+      "audio": "the-major/overtake-2-3.ogg",
+      "seconds": 1.49,
+      "mouth": "the-major/overtake-2-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Hisss! Out!",
+    "takes": [
+     {
+      "audio": "the-major/overtake-3-1.ogg",
+      "seconds": 2.28,
+      "mouth": "the-major/overtake-3-1.mouth.json"
+     },
+     {
+      "audio": "the-major/overtake-3-2.ogg",
+      "seconds": 2.23,
+      "mouth": "the-major/overtake-3-2.mouth.json"
+     },
+     {
+      "audio": "the-major/overtake-3-3.ogg",
+      "seconds": 2.18,
+      "mouth": "the-major/overtake-3-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "overtaken": [
+   {
+    "text": "How dare you!",
+    "takes": [
+     {
+      "audio": "the-major/overtaken-1-1.ogg",
+      "seconds": 2.14,
+      "mouth": "the-major/overtaken-1-1.mouth.json"
+     },
+     {
+      "audio": "the-major/overtaken-1-2.ogg",
+      "seconds": 2.0,
+      "mouth": "the-major/overtaken-1-2.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "You will regret that!",
+    "takes": [
+     {
+      "audio": "the-major/overtaken-2-1.ogg",
+      "seconds": 2.23,
+      "mouth": "the-major/overtaken-2-1.mouth.json"
+     },
+     {
+      "audio": "the-major/overtaken-2-2.ogg",
+      "seconds": 3.25,
+      "mouth": "the-major/overtaken-2-2.mouth.json"
+     },
+     {
+      "audio": "the-major/overtaken-2-3.ogg",
+      "seconds": 2.88,
+      "mouth": "the-major/overtaken-2-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Come back and face me!",
+    "takes": [
+     {
+      "audio": "the-major/overtaken-3-1.ogg",
+      "seconds": 2.69,
+      "mouth": "the-major/overtaken-3-1.mouth.json"
+     },
+     {
+      "audio": "the-major/overtaken-3-2.ogg",
+      "seconds": 2.74,
+      "mouth": "the-major/overtaken-3-2.mouth.json"
+     },
+     {
+      "audio": "the-major/overtaken-3-3.ogg",
+      "seconds": 3.62,
+      "mouth": "the-major/overtaken-3-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "race_start": [
+   {
+    "text": "Out of my way!",
+    "takes": [
+     {
+      "audio": "the-major/race-start-1-1.ogg",
+      "seconds": 2.23,
+      "mouth": "the-major/race-start-1-1.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Move, peasants!",
+    "takes": [
+     {
+      "audio": "the-major/race-start-2-1.ogg",
+      "seconds": 1.95,
+      "mouth": "the-major/race-start-2-1.mouth.json"
+     },
+     {
+      "audio": "the-major/race-start-2-2.ogg",
+      "seconds": 1.72,
+      "mouth": "the-major/race-start-2-2.mouth.json"
+     },
+     {
+      "audio": "the-major/race-start-2-3.ogg",
+      "seconds": 1.76,
+      "mouth": "the-major/race-start-2-3.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "This road is mine!",
+    "takes": [
+     {
+      "audio": "the-major/race-start-3-1.ogg",
+      "seconds": 2.37,
+      "mouth": "the-major/race-start-3-1.mouth.json"
+     },
+     {
+      "audio": "the-major/race-start-3-2.ogg",
+      "seconds": 2.88,
+      "mouth": "the-major/race-start-3-2.mouth.json"
+     },
+     {
+      "audio": "the-major/race-start-3-3.ogg",
+      "seconds": 2.55,
+      "mouth": "the-major/race-start-3-3.mouth.json"
+     }
+    ]
+   }
+  ],
+  "taunt": [
+   {
+    "text": "Honk.",
+    "takes": [
+     {
+      "audio": "the-major/taunt-1-1.ogg",
+      "seconds": 1.07,
+      "mouth": "the-major/taunt-1-1.mouth.json"
+     },
+     {
+      "audio": "the-major/taunt-1-2.ogg",
+      "seconds": 0.97,
+      "mouth": "the-major/taunt-1-2.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "Your driving offends me.",
+    "takes": [
+     {
+      "audio": "the-major/taunt-2-1.ogg",
+      "seconds": 3.3,
+      "mouth": "the-major/taunt-2-1.mouth.json"
+     },
+     {
+      "audio": "the-major/taunt-2-2.ogg",
+      "seconds": 3.16,
+      "mouth": "the-major/taunt-2-2.mouth.json"
+     }
+    ]
+   }
+  ],
+  "win": [
+   {
+    "text": "Of course. Kneel.",
+    "takes": [
+     {
+      "audio": "the-major/win-1-1.ogg",
+      "seconds": 2.32,
+      "mouth": "the-major/win-1-1.mouth.json"
+     },
+     {
+      "audio": "the-major/win-1-2.ogg",
+      "seconds": 2.37,
+      "mouth": "the-major/win-1-2.mouth.json"
+     }
+    ]
+   },
+   {
+    "text": "The pond is mine. The county is mine. Honk!",
+    "takes": [
+     {
+      "audio": "the-major/win-2-1.ogg",
+      "seconds": 6.22,
+      "mouth": "the-major/win-2-1.mouth.json"
+     },
+     {
+      "audio": "the-major/win-2-2.ogg",
+      "seconds": 5.62,
+      "mouth": "the-major/win-2-2.mouth.json"
+     },
+     {
+      "audio": "the-major/win-2-3.ogg",
+      "seconds": 5.57,
+      "mouth": "the-major/win-2-3.mouth.json"
+     }
+    ]
+   }
+  ]
+ }
+}

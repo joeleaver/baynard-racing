@@ -1,0 +1,74 @@
+{
+ "note": "Hettie's puppet build. Run: blender -b --factory-startup --python tools/assemble_puppet.py -- art/racers/hettie/puppet.json. The piece meshes are big working files (git-ignored); fetch them from oxidegen by the versions under 'sources' into workspace/hettie/pieces/.",
+ "sources": {
+  "head": {
+   "oxidegen_version": "4fb8f2f9-b54f-4e95-9aaa-ed266b31ab52",
+   "image_version": "0910254c-7293-4fae-b215-9a99c530a48a",
+   "seed": 12
+  },
+  "body": {
+   "oxidegen_version": "eccc1bc9-2262-4c3a-bfd5-d8242faaf6dd",
+   "image_version": "1217a20d-b654-48fe-84e6-6e6b9233a887",
+   "seed": 1
+  },
+  "wing": {
+   "oxidegen_version": "0bb4695e-1893-422c-abb9-9775cc6bb367",
+   "image_version": "b4fa1d69-1d3b-47c9-984c-d07387e1b2b7",
+   "seed": 1
+  },
+  "rig_source": "hifipushie model hettie_puppet v12 export (Mixamo rig, eyes, two-piece beak with jawOpen, wattle)"
+ },
+ "rig_source": "/mnt/data/hifipushie/hettie_puppet_v12/hettie.glb",
+ "head": {
+  "glb": "../../../workspace/hettie/pieces/head.glb",
+  "z": [
+   0.425,
+   0.764
+  ],
+  "centre": [
+   0,
+   -0.065
+  ],
+  "faces": 8000,
+  "turn": 180
+ },
+ "body": {
+  "glb": "../../../workspace/hettie/pieces/body.glb",
+  "z": [
+   0,
+   0.47
+  ],
+  "centre": [
+   0,
+   0.0
+  ],
+  "faces": 8000,
+  "turn": 180
+ },
+ "wing": {
+  "glb": "../../../workspace/hettie/pieces/wing.glb",
+  "height": 0.26,
+  "centre": [
+   0.205,
+   0.03,
+   0.3
+  ],
+  "faces": 2000
+ },
+ "face": {
+  "keep": [
+   "eyes",
+   "beak",
+   "beak_lower",
+   "wattle",
+   "mouth",
+   "tongue"
+  ],
+  "anchor": [
+   0,
+   0.555
+  ]
+ },
+ "voxel": 0.004,
+ "out": "hettie.glb"
+}

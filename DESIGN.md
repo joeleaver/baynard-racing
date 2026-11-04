@@ -125,8 +125,14 @@ Farm-themed, readable at a glance:
 - **Reference sheets** for modelling: every racer and every kart has a standalone concept and a
   front / side / back turnaround in `art/racers/<name>/` and `art/karts/<name>/`. World concepts (ten scenes
   across the regions) and isolated prop concepts are in `art/world/concepts/` and `art/world/props/`.
-- **Characters** are sculpted in hifipushie (SDF clay sculpting), rigged to the standard humanoid skeleton
-  where they can be, with ARKit-named face shapes for expressions.
+- **Characters are puppets (decided 2026-11-04),** built like stop-motion puppets from separate pieces. Each
+  racer's head, body and wing (or arm) are generated as their own concept images, turned into meshes in
+  oxidegen, then rebuilt as clean game meshes with their colour baked on. The head and wings are rigid and
+  ride their own bones on the standard humanoid skeleton. The body bends at the hips and legs. The face pieces
+  (eyes, a two-piece beak or jaw that opens on `jawOpen`, wattle) come from a hifipushie build. Full ARKit face
+  rigs don't suit beaked toy characters, so the mouth is a hinge driven by the callouts' mouth curves.
+  [`tools/assemble_puppet.py`](tools/assemble_puppet.py) does the build from a `puppet.json` beside each
+  racer; Hettie is the first ([`art/racers/hettie/`](art/racers/hettie/)).
 - **Props and scenery** come from oxidegen (concept image → mesh) and are cleaned up before use.
 - **Audio:** every engine is a live sound graph that follows revs and load; animal voices for hits,
   overtakes and wins; music that follows the race (a lap-three surge, the final-lap key change).

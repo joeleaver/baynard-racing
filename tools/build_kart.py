@@ -8,7 +8,9 @@ ground is z = 0. --fast skips the texture bake (for checking shapes and clashes)
 
 Spec (paths relative to the spec file):
   colours   {name: {"rgb": [r, g, b] sRGB 0-1, "kind": "clay" | "wood" | "rubber" | "metal" | "rust"}}
-            "dirt": 0-1 adds patches of dried mud and dust (mud: [r, g, b] sets their colour)
+            "rust": 0-1 lets rust eat into the surface in ragged, crusty, dull patches (for tin and steel)
+            "dirt": 0-1 adds patches of dried mud and dust (mud: [r, g, b] sets their colour for the whole kart;
+            "dirt_rgb" on a colour sets it for that colour alone, e.g. scraps of red label on a tin)
             rust ignores rgb and paints patchy orange, brown and iron grey (rust_stops overrides the patches)
   parts     list of parts, each {"type": ..., "colour": ..., "id": label} plus:
     wheel   pos [x, y, z] hub centre, radius, width, hub (colour), name (wheel_FL/FR/RL/RR/F/R), lugs (count of
@@ -25,6 +27,12 @@ Spec (paths relative to the spec file):
             default 2.6), thickness (wall, default 0.03): a hollow open-topped shell such as a bathtub
     pipe_end  centre (the tube's end), radius (the tube's), lean (degrees about X), flare, wall, depth: the open
             mouth of an exhaust; give its tube "open_end": true
+    can     centre, axis, length, radius, ridges, ridge_depth (fraction of radius), open (the +axis end is open
+            and hollow, depth as a fraction of length): a tin can with beaded rims and dished lids
+    coil    centre, axis, radius, turns, pitch, wire, messy (0-1): wire wound round something
+    plate   points [[x, y], ...] (a convex outline in its own plane), thickness, centre, tilt (its face is local
+            +Z), corner (rounding); layers [{points, colour, raise}], marks [{points | ball, radius, colour}] and
+            bites [[x, y, r]] for a sign's face, artwork and teeth marks
   tube      "closed": true makes a loop (a rolled rim round a tub)
   wheel     "style": "drum" gives a tall drum tyre with soft shoulders instead of a balloon
             "cap": a colour gives a plain disc hub with a separate centre cap in that colour
@@ -88,11 +96,12 @@ def ramp(nt, src, stops):
     return r.outputs[0]
 
 
-def make_material(kind, dirt=0.0):
+def make_material(kind, dirt=0.0, dirt_rgb=None, rust=0.0):
     """A procedural material for baking: the part's tint (vertex colour Col) shaded with grain for its kind."""
     m = bpy.data.materials.new(kind); m.use_nodes = True
     nt = m.node_tree; L = nt.links.new
-    b = nt.nodes["Principled BSDF"]; b.inputs["Roughness"].default_value = 0.75
+    b = nt.nodes["Principled BSDF"]
+    b.inputs["Roughness"].default_value = {"metal": 0.4, "rubber": 0.85, "rust": 0.88, "wood": 0.7}.get(kind, 0.75)
     col = node(nt, "ShaderNodeVertexColor", layer_name="Col").outputs["Color"]
     geo = node(nt, "ShaderNodeNewGeometry").outputs["Position"]
     # every kind: a slow mottle in colour and a fine sandy grain in the surface, like soft modelling clay
@@ -150,14 +159,54 @@ def make_material(kind, dirt=0.0):
         L(geo, pit.inputs["Vector"])
         h = node(nt, "ShaderNodeMath", operation="MULTIPLY_ADD"); h.inputs[1].default_value = 0.6
         L(pit.outputs["Fac"], h.inputs[0]); L(sand.outputs["Fac"], h.inputs[2]); height = h.outputs[0]; strength = 0.6
+    if rust:  # rust eating into metal: ragged patches, crusty and pitted, dull where it has taken hold
+        big = node(nt, "ShaderNodeTexNoise"); big.inputs["Scale"].default_value = 3.2
+        big.inputs["Detail"].default_value = 12; big.inputs["Roughness"].default_value = 0.72
+        big.inputs["Distortion"].default_value = 0.6; L(geo, big.inputs["Vector"])
+        lo = 0.6 - 0.25 * rust
+        mask = ramp(nt, big.outputs["Fac"], [(lo, 0.0), (lo + 0.05, 1.0)])
+        mnode = node(nt, "ShaderNodeMath", operation="MULTIPLY"); mnode.name = "rustmask"
+        mnode.inputs[1].default_value = 1.0; L(mask, mnode.inputs[0]); mask = mnode.outputs[0]
+        tone = node(nt, "ShaderNodeTexNoise"); tone.inputs["Scale"].default_value = 16; tone.inputs["Detail"].default_value = 8
+        L(geo, tone.inputs["Vector"])
+        rc = node(nt, "ShaderNodeValToRGB"); el = rc.color_ramp.elements
+        stops = [(0.0, (0.2, 0.11, 0.07)), (0.38, (0.36, 0.17, 0.08)), (0.5, (0.62, 0.3, 0.1)), (0.6, (0.5, 0.25, 0.1)),
+                 (1.0, (0.24, 0.13, 0.08))]
+        el[0].position, el[0].color = stops[0][0], (*lin(stops[0][1]), 1)
+        el[1].position, el[1].color = stops[-1][0], (*lin(stops[-1][1]), 1)
+        for pos, cc in stops[1:-1]: el.new(pos).color = (*lin(cc), 1)
+        L(tone.outputs["Fac"], rc.inputs[0])
+        mx = node(nt, "ShaderNodeMix", data_type="RGBA", blend_type="MIX")
+        L(mask, mx.inputs["Factor"]); L(out, mx.inputs[6]); L(rc.outputs[0], mx.inputs[7]); out = mx.outputs[2]
+        crust = node(nt, "ShaderNodeTexNoise"); crust.inputs["Scale"].default_value = 110; crust.inputs["Detail"].default_value = 5
+        L(geo, crust.inputs["Vector"])
+        cm = node(nt, "ShaderNodeMath", operation="MULTIPLY_ADD"); L(crust.outputs["Fac"], cm.inputs[0])
+        cm.inputs[1].default_value = 0.9; cm.inputs[2].default_value = 0.35
+        cmm = node(nt, "ShaderNodeMath", operation="MULTIPLY"); L(cm.outputs[0], cmm.inputs[0]); L(mask, cmm.inputs[1])
+        hh = node(nt, "ShaderNodeMath", operation="ADD"); L(height, hh.inputs[0]); L(cmm.outputs[0], hh.inputs[1])
+        height = hh.outputs[0]; strength = max(strength, 0.5)
+        rg = node(nt, "ShaderNodeMath", operation="MULTIPLY_ADD"); L(mask, rg.inputs[0])
+        base_r = b.inputs["Roughness"].default_value; rg.inputs[1].default_value = 0.92 - base_r
+        rg.inputs[2].default_value = base_r; L(rg.outputs[0], b.inputs["Roughness"])
     if dirt:  # dried mud and dust in patches, more of it the higher dirt is (0-1)
-        mud = node(nt, "ShaderNodeTexNoise"); mud.inputs["Scale"].default_value = 9
+        mud = node(nt, "ShaderNodeTexNoise"); mud.inputs["Scale"].default_value = 4.5 if dirt_rgb else 9
         mud.inputs["Detail"].default_value = 7; mud.inputs["Roughness"].default_value = 0.7; L(geo, mud.inputs["Vector"])
         lo = 0.62 - 0.3 * dirt
-        mask = ramp(nt, mud.outputs["Fac"], [(lo, 0.0), (lo + 0.12, 0.85), (1.0, 1.0)])
+        if dirt_rgb:
+            # scraps of label or paint: blocky cells (some kept, some torn away), with ragged edges from noise
+            warp = node(nt, "ShaderNodeVectorMath", operation="ADD"); L(geo, warp.inputs[0])
+            wsc = node(nt, "ShaderNodeVectorMath", operation="SCALE"); wsc.inputs["Scale"].default_value = 0.035
+            L(mud.outputs["Color"], wsc.inputs[0]); L(wsc.outputs[0], warp.inputs[1])
+            vor = node(nt, "ShaderNodeTexVoronoi", distance="CHEBYCHEV"); vor.inputs["Scale"].default_value = 7
+            L(warp.outputs[0], vor.inputs["Vector"])
+            sep = node(nt, "ShaderNodeSeparateColor"); L(vor.outputs["Color"], sep.inputs["Color"])
+            keep = 1 - 0.75 * dirt
+            mask = ramp(nt, sep.outputs["Red"], [(keep, 0.0), (keep + 0.005, 1.0)])
+        else:
+            mask = ramp(nt, mud.outputs["Fac"], [(lo, 0.0), (lo + 0.12, 0.9), (1.0, 1.0)])
         mm = node(nt, "ShaderNodeMix", data_type="RGBA", blend_type="MIX")
         L(mask, mm.inputs["Factor"]); L(out, mm.inputs[6])
-        mudc = lin(spec.get("mud", [0.4, 0.31, 0.22])); mm.inputs[7].default_value = (*mudc, 1)
+        mudc = lin(dirt_rgb or spec.get("mud", [0.4, 0.31, 0.22])); mm.inputs[7].default_value = (*mudc, 1)
         gr = node(nt, "ShaderNodeMix", data_type="RGBA", blend_type="MULTIPLY"); gr.inputs["Factor"].default_value = 1
         L(mm.outputs[2], gr.inputs[6]); L(ramp(nt, sand.outputs["Fac"], [(0.3, 0.85), (0.7, 1.1)]), gr.inputs[7])
         out = gr.outputs[2]
@@ -169,9 +218,9 @@ def make_material(kind, dirt=0.0):
 
 
 MATS = {}
-def material(kind, dirt=0.0):
-    key = (kind, dirt)
-    if key not in MATS: MATS[key] = make_material(kind, dirt)
+def material(kind, dirt=0.0, dirt_rgb=None, rust=0.0):
+    key = (kind, dirt, tuple(dirt_rgb) if dirt_rgb else None, rust)
+    if key not in MATS: MATS[key] = make_material(kind, dirt, dirt_rgb, rust)
     return MATS[key]
 
 
@@ -199,7 +248,9 @@ CLOUDS = bpy.data.textures.new("lumps", "CLOUDS"); CLOUDS.noise_scale = 0.09
 def finish(o, colour_name, subdiv=2, vary=0.0, lumps=None):
     rgb, kind = colour(colour_name)
     c = spec["colours"][colour_name]; dirt = c.get("dirt", 0.0) if isinstance(c, dict) else 0.0
-    o.data.materials.clear(); o.data.materials.append(material(kind, dirt))
+    drgb = c.get("dirt_rgb") if isinstance(c, dict) else None
+    rst = c.get("rust", 0.0) if isinstance(c, dict) else 0.0
+    o.data.materials.clear(); o.data.materials.append(material(kind, dirt, drgb, rst))
     if subdiv:
         s = o.modifiers.new("subd", "SUBSURF"); s.levels = s.render_levels = subdiv
     lumps = LUMPS if lumps is None else lumps
@@ -374,6 +425,123 @@ def part_pipe_end(p, i):
     return finish(o, p["colour"], 1, lumps=LUMPS * 0.5)
 
 
+def axis_matrix(centre, axis):
+    """Place something built along X so that X runs along axis, centred on centre."""
+    q = Vector((1, 0, 0)).rotation_difference(Vector(axis).normalized())
+    return Matrix.Translation(Vector(centre)) @ q.to_matrix().to_4x4()
+
+
+def part_can(p, i):
+    """A tin can: ridged sides, beaded rims and dished lids with rings. centre, axis, length, radius, ridges."""
+    L, R = p["length"], p["radius"]; h = L / 2; n = p.get("ridges", 4); bead = R * 0.06
+    lid = [(-h + 0.016, 0), (-h + 0.012, R * 0.3), (-h + 0.018, R * 0.42), (-h + 0.01, R * 0.58), (-h + 0.016, R * 0.72),
+           (-h + 0.008, R * 0.86), (-h - 0.004, R * 0.96), (-h, R + bead), (-h + 0.014, R + bead * 1.2), (-h + 0.028, R)]
+    body = []
+    if n:
+        a, b = -h + 0.06, h - 0.06
+        dep = p.get("ridge_depth", 0.035)
+        for k in range(n * 6 + 1):  # rounded corrugations: a cosine bump per ridge
+            x = a + (b - a) * k / (n * 6)
+            body.append((x, R * (1 + dep * (0.5 - 0.5 * math.cos(2 * math.pi * k / 6)))))
+    if p.get("open"):  # open top (the +axis end): a rolled lip and a hollow inside, like an exhaust
+        ri = R * 0.9; dep = p.get("depth", 0.8) * L
+        top = [(h - 0.028, R), (h - 0.014, R + bead * 1.2), (h, R + bead), (h + 0.006, (R + ri) / 2 + bead * 0.4),
+               (h, ri), (h - 0.02, ri * 0.98), (h - dep, ri * 0.97), (h - dep, 0)]
+    else:
+        top = [(-x, r) for x, r in reversed(lid)]
+    prof = lid + body + top
+    o = lathe(f"can{i}", prof, 40)
+    o.data.transform(axis_matrix(p["centre"], p["axis"]))
+    return finish(o, p["colour"], 1, lumps=LUMPS * 0.5)
+
+
+def part_coil(p, i):
+    """Wire wound round something: turns about axis, radius out, pitch apart, as a tube. messy (0-1) makes it
+    look wound in a hurry: uneven spacing, bunched and crossing turns, varying slack and loose ends."""
+    ax = Vector(p["axis"]).normalized(); c = Vector(p["centre"])
+    u = ax.orthogonal().normalized(); v = ax.cross(u)
+    turns, pitch, rad = p["turns"], p["pitch"], p["radius"]; mess = p.get("messy", 0.0)
+    rnd = random.Random(spec.get("seed", 1) * 1000 + i)
+    per = 16; steps = int(turns * per); pts = []; along = -pitch * turns / 2
+    slack = [1 + mess * rnd.uniform(0.0, 0.35) for _ in range(int(turns) + 2)]
+    for k in range(steps + 1):
+        t = 2 * math.pi * k / per; turn = k // per
+        # spacing wanders: some turns bunch up, one may cross back over the last
+        along += pitch / per * (1 + mess * rnd.uniform(-1.4, 1.6))
+        sl = slack[turn] + (slack[turn + 1] - slack[turn]) * (k % per) / per
+        wob = 1 + 0.06 * math.sin(t * 1.7 + i) + mess * 0.05 * math.sin(t * 3.1 + 2 * i)
+        pt = c + ax * along + (u * math.cos(t) + v * math.sin(t)) * rad * sl * wob
+        pts.append(list(pt))
+    if mess:  # loose ends: the last bit sticks out and kinks, the first trails off
+        end = Vector(pts[-1]); out_dir = (end - (c + ax * along)).normalized()
+        for k, (o_, a_) in enumerate(((0.035, 0.01), (0.07, 0.03), (0.09, 0.06))):
+            pts.append(list(end + out_dir * o_ * (1 + mess) + ax * a_ + u.cross(out_dir) * 0.012 * (-1) ** k))
+        st = Vector(pts[0]); out0 = (st - (c - ax * pitch * turns / 2)).normalized()
+        pts.insert(0, list(st + out0 * 0.03 - ax * 0.02))
+    q = dict(p); q.update({"points": pts, "smooth": True, "radius": p["wire"]})
+    return part_tube(q, i)
+
+
+def rounded_polygon(pts, r, seg=6):
+    """Round each corner of a convex 2D polygon with an arc of radius r."""
+    out = []; n = len(pts)
+    for k in range(n):
+        a, b, c = Vector(pts[k - 1]), Vector(pts[k]), Vector(pts[(k + 1) % n])
+        d1 = (a - b).normalized(); d2 = (c - b).normalized()
+        ang = d1.angle(d2); t = r / math.tan(ang / 2)
+        p1 = b + d1 * t; p2 = b + d2 * t
+        bis = (d1 + d2).normalized(); cen = b + bis * (r / math.sin(ang / 2))
+        a1 = math.atan2(*(p1 - cen).yx); a2 = math.atan2(*(p2 - cen).yx)
+        da = (a2 - a1 + math.pi) % (2 * math.pi) - math.pi
+        for s_ in range(seg + 1):
+            aa = a1 + da * s_ / seg; out.append(cen + Vector((math.cos(aa), math.sin(aa))) * r)
+    return out
+
+
+def part_plate(p, i):
+    """A flat plate (a sign): a rounded polygon [[x, y], ...] in its own plane, thickness thick, set at centre and
+    turned by tilt (its face, local +Z, points along tilt applied to +Z). layers: smaller polygons raised on the
+    face in other colours; marks: tubes and balls on the face ([[x, y], ...] in the plate's frame); bites:
+    [[x, y, r], ...] taken out of the edge like teeth marks."""
+    M = tiltM(p); th = p["thickness"]
+    def slab(poly, z0, z1, round_r, name):
+        bm = bmesh.new()
+        ring = rounded_polygon(poly, round_r)
+        vs = [bm.verts.new((q.x, q.y, z0)) for q in ring]
+        f = bm.faces.new(vs)
+        ext = bmesh.ops.extrude_face_region(bm, geom=[f])
+        bmesh.ops.translate(bm, vec=(0, 0, z1 - z0), verts=[e for e in ext["geom"] if isinstance(e, bmesh.types.BMVert)])
+        bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+        rims = [e for e in bm.edges if len(e.link_faces) == 2 and abs(e.link_faces[0].normal.dot(e.link_faces[1].normal)) < 0.5]
+        bmesh.ops.bevel(bm, geom=rims, offset=min(0.4 * (z1 - z0), 0.012), segments=3, profile=0.5, affect="EDGES")
+        return new_obj(name, bm)
+    o = slab(p["points"], -th / 2, th / 2, p.get("corner", 0.04), f"plate{i}")
+    for k, (bx, by, br) in enumerate(p.get("bites", [])):
+        bm = bmesh.new(); bmesh.ops.create_uvsphere(bm, u_segments=20, v_segments=12, radius=br)
+        bmesh.ops.scale(bm, vec=(1, 1, th * 3 / br), verts=bm.verts)
+        bmesh.ops.translate(bm, vec=(bx, by, 0), verts=bm.verts); cutter = new_obj("bite", bm)
+        bo = o.modifiers.new("bite", "BOOLEAN"); bo.operation = "DIFFERENCE"; bo.object = cutter; bo.solver = "EXACT"
+        bpy.context.view_layer.objects.active = o; bpy.ops.object.modifier_apply(modifier=bo.name)
+        bpy.data.objects.remove(cutter)
+    o.data.transform(M); set_rest(o, Matrix())
+    out = [finish(o, p["colour"], 0, lumps=0)]
+    z = th / 2
+    for k, lay in enumerate(p.get("layers", [])):
+        lo = slab(lay["points"], z - 0.002, z + lay.get("raise", 0.006), lay.get("corner", 0.025), f"layer{i}_{k}")
+        lo.data.transform(M); set_rest(lo, Matrix()); out.append(finish(lo, lay["colour"], 0, lumps=0))
+    for k, mk in enumerate(p.get("marks", [])):
+        mz = z + mk.get("raise", 0.008)
+        if "ball" in mk:
+            q = {"centre": list(M @ Vector((*mk["ball"], mz))), "radius": mk["radius"], "colour": mk["colour"],
+                 "scale": [1, 1, 1]}
+            out.append(part_ball(q, i))
+        else:
+            q = {"points": [list(M @ Vector((x, y, mz))) for x, y in mk["points"]], "radius": mk["radius"],
+                 "colour": mk["colour"], "smooth": mk.get("smooth", False)}
+            out.extend(part_tube(q, i))
+    return out
+
+
 def part_tub(p, i):
     """A hollow tub: rounded outlines (superellipses) stacked from the bottom up, closed at the bottom, open at the
     top, with walls of the given thickness. rings: [[z, half-length (y), half-width (x), centre y], ...]."""
@@ -476,7 +644,8 @@ def fuse(objs, name, colour_name, voxel=0.009, faces=6000):
 
 # ---------------------------------------------------------------- build
 BUILD = {"box": part_box, "planks": part_planks, "tube": part_tube, "torus": part_torus, "disc": part_disc,
-         "ball": part_ball, "wheel": part_wheel, "tub": part_tub, "pipe_end": part_pipe_end}
+         "ball": part_ball, "wheel": part_wheel, "tub": part_tub, "pipe_end": part_pipe_end,
+         "can": part_can, "coil": part_coil, "plate": part_plate}
 made_parts = []  # (spec part, [objects])
 for i, p in enumerate(spec["parts"]):
     made = BUILD[p["type"]](p, i)
@@ -572,7 +741,7 @@ if not fast:
     # bake straight onto the shipped mesh: it keeps each part's tint and grain coordinates through the
     # decimation, so its own procedural material paints it with no rays cast between two meshes
     size = spec.get("texture", 2048)
-    imgs = {k: bpy.data.images.new(f"kart_{k}", size, size, is_data=(k == "normal")) for k in ("color", "normal", "ao")}
+    imgs = {k: bpy.data.images.new(f"kart_{k}", size, size, is_data=(k in ("normal", "rough"))) for k in ("color", "normal", "ao", "rough")}
     def target(img):
         for m in MATS.values():
             t = m.node_tree.nodes.get("bake") or m.node_tree.nodes.new("ShaderNodeTexImage")
@@ -584,10 +753,26 @@ if not fast:
     for o in lows: o.select_set(True)
     bpy.context.view_layer.objects.active = lows[0]
     for k, kind, samples, extra in (("color", "DIFFUSE", 4, {"pass_filter": {"COLOR"}}), ("normal", "NORMAL", 4, {}),
-                                    ("ao", "AO", 64, {})):
+                                    ("rough", "ROUGHNESS", 1, {}), ("ao", "AO", 64, {})):
         scene.cycles.samples = samples; target(imgs[k])
         bpy.ops.object.bake(type=kind, use_selected_to_active=False, **extra)
         print("BAKED", k, flush=True)
+    # metal map: bake each material's metalness as light, then pack it beside roughness (glTF: G rough, B metal)
+    imgs["metal"] = bpy.data.images.new("kart_metal", size, size, is_data=True)
+    for (kind, *_), m in MATS.items():
+        bs_ = m.node_tree.nodes["Principled BSDF"]; mv = 0.85 if kind == "metal" else 0.0
+        bs_.inputs["Emission Color"].default_value = (mv, mv, mv, 1); bs_.inputs["Emission Strength"].default_value = 1
+        rm = m.node_tree.nodes.get("rustmask")
+        if rm and mv:  # rusted patches are no longer bare metal
+            inv = m.node_tree.nodes.new("ShaderNodeMath"); inv.operation = "MULTIPLY_ADD"
+            m.node_tree.links.new(rm.outputs[0], inv.inputs[0]); inv.inputs[1].default_value = -mv; inv.inputs[2].default_value = mv
+            m.node_tree.links.new(inv.outputs[0], bs_.inputs["Emission Color"])
+    target(imgs["metal"]); scene.cycles.samples = 1
+    bpy.ops.object.bake(type="EMIT", use_selected_to_active=False); print("BAKED metal", flush=True)
+    import numpy as np
+    rgh = np.array(imgs["rough"].pixels[:]).reshape(-1, 4); met = np.array(imgs["metal"].pixels[:]).reshape(-1, 4)
+    rgh[:, 0] = 1.0; rgh[:, 2] = met[:, 0]
+    imgs["rough"].pixels.foreach_set(rgh.ravel().astype(np.float32))
     # crease shading: darken the colour where light can't reach, as clay photographs
     import numpy as np
     c = np.array(imgs["color"].pixels[:]).reshape(-1, 4); a = np.array(imgs["ao"].pixels[:]).reshape(-1, 4)[:, :1]
@@ -598,7 +783,7 @@ if not fast:
     tex_dir = os.path.join(here, spec["texture_dir"]) if "texture_dir" in spec else \
         os.path.join(repo, "workspace", "karts", os.path.basename(here))
     os.makedirs(tex_dir, exist_ok=True)
-    for k in ("color", "normal", "ao"):
+    for k in ("color", "normal", "rough", "ao"):
         im = imgs[k]; im.filepath_raw = os.path.join(tex_dir, f"kart_{k}.png"); im.file_format = "PNG"; im.save()
     # the game material: baked colour and normal, nothing procedural
     km = bpy.data.materials.new("kart"); km.use_nodes = True; nt = km.node_tree
@@ -608,6 +793,10 @@ if not fast:
     nm = nt.nodes.new("ShaderNodeNormalMap")
     nt.links.new(ci.outputs["Color"], bs.inputs["Base Color"]); nt.links.new(ni.outputs["Color"], nm.inputs["Color"])
     nt.links.new(nm.outputs["Normal"], bs.inputs["Normal"])
+    # roughness from its own map, so tin shines a little and clay stays matte (glTF reads it from green)
+    ri = nt.nodes.new("ShaderNodeTexImage"); ri.image = imgs["rough"]; ri.image.colorspace_settings.name = "Non-Color"
+    sep = nt.nodes.new("ShaderNodeSeparateColor"); nt.links.new(ri.outputs["Color"], sep.inputs["Color"])
+    nt.links.new(sep.outputs["Green"], bs.inputs["Roughness"]); nt.links.new(sep.outputs["Blue"], bs.inputs["Metallic"])
     for o in lows:
         o.data.materials.clear(); o.data.materials.append(km)
         if "Col" in o.data.color_attributes: o.data.color_attributes.remove(o.data.color_attributes["Col"])

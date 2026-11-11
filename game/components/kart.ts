@@ -14,6 +14,7 @@ pw.defineComponent("kart", {
   steerSlow: stat(0.5, "rad", "How far the front wheels turn at a crawl."),
   steerFast: stat(0.2, "rad", "How far they turn flat out."),
   grassSpeed: stat(0.55, "", "The share of top speed left on grass."),
+  padBoost: stat(0.8, "s", "How long a boost pad's boost lasts."),
 
   hop: stat(210, "N·s", "The kick up when a drift starts."),
   driftMinSpeed: stat(7, "m/s", "Slower than this, a drift ends."),

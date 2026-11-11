@@ -12,8 +12,13 @@ hill, goes light over the crest, drops through an S and rounds a hairpin banked 
 | Drift (hold with a direction; let go for a mini-turbo) | Space or Shift | right bumper or B |
 | Back on the road | R | Back |
 
+The road has surfaces of its own: dirt on the inside of the first right-hander (so the
+kart grips differently on each side), mud on the outside of the climb, ice through the S, sand on the run back
+up to the start, and a boost pad before the kicker. Each is a material saying how a tyre grips it and how hard
+it is to roll on, so the physics does the slipping and the dragging; only the boost pad is a game rule.
+
 A drift builds blue, orange and then purple sparks; letting go gives a mini-turbo that lasts longer
-the higher the tier. Grass slows the kart. Laps are counted along the track's centre line, so a
+the higher the tier. Grass slows the kart too. Laps are counted along the track's centre line, so a
 shortcut across the infield or driving the wrong way doesn't count.
 
 - `systems/kart.ts`: driving, the drift and the mini-turbo, on the engine's Vehicle and Wheels.

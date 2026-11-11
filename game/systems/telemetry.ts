@@ -1,6 +1,6 @@
 // Logs a kart's motion and each wheel's contact every tick, for any object carrying a Telemetry card:
 //   K <tick> <label> <height> <up speed> <speed> <pitch°> <roll°> <drift> <progress>
-//   W <tick> <label> <on ground> <compression> <load>
+//   W <tick> <label> <on ground> <compression> <load> <surface>
 // Runs in `react`, after physics. Nothing carries a Telemetry card in the scene as shipped; put one on
 // the kart and its wheels to measure a run.
 const label = pw.field("telemetry", "label");
@@ -26,6 +26,6 @@ pw.registerSystem("telemetry karts", { phase: "react", includeComponents: ["tele
 
 pw.registerSystem("telemetry wheels", { phase: "react", includeComponents: ["telemetry", "wheel"] }, ({ objects }) => {
   for (const w of objects) {
-    console.log(`W ${tick} ${w.get(label)} ${w.wheel.onGround ? 1 : 0} ${w.wheel.compression.toFixed(3)} ${w.wheel.load.toFixed(0)}`);
+    console.log(`W ${tick} ${w.get(label)} ${w.wheel.onGround ? 1 : 0} ${w.wheel.compression.toFixed(3)} ${w.wheel.load.toFixed(0)} ${w.wheel.surface ?? "-"}`);
   }
 });

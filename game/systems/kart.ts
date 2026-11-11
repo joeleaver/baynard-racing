@@ -7,7 +7,7 @@
 
 const K = pw.component("kart");
 const R = Object.fromEntries(
-  ["laps", "engineForce", "topSpeed", "reverseForce", "brakeForce", "steerSlow", "steerFast", "grassSpeed", "hop",
+  ["laps", "engineForce", "topSpeed", "reverseForce", "brakeForce", "steerSlow", "steerFast", "grassSpeed", "padBoost", "hop",
     "driftMinSpeed", "driftSteer", "driftRange", "driftTurn", "driftTurnRange", "driftAngle", "driftHold", "driftCarve", "tierTimes", "boostForce", "boostSpeed", "boostTimes",
     "driftDir", "charge", "boost", "held", "airborne", "speed"].map((n) => [n, K.property(n)]),
 );
@@ -50,8 +50,11 @@ pw.registerSystem("kart", { includeComponents: ["kart", "vehicle", "rigid_body",
     const airborne = onGround ? 0 : g("airborne") + dt;
     const grass = ground !== null && ground.surface === "grass";
 
-    // The engine runs out of push toward top speed (lower on grass, higher in a boost).
+    // The engine runs out of push toward top speed (lower on grass, higher in a boost). A boost pad
+    // (a face whose surface is `boost`) tops the boost up; how mud, sand and ice grip and drag is the
+    // ground's own, in physics.
     let boost = Math.max(0, g("boost") - dt);
+    if (ground !== null && ground.surface === "boost") boost = Math.max(boost, g("padBoost"));
     const top = g("topSpeed") * (grass ? g("grassSpeed") : 1) + (boost > 0 ? g("boostSpeed") : 0);
     let engine = 0;
     let brakeForce = 0;

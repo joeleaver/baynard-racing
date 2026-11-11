@@ -2,7 +2,9 @@
 
 Open it with the Playweft desktop editor (`pw-studio-desktop --open game`) and press **Play**.
 
-**First playable:** Hettie in her crate kart on the blocked-out Barnyard Loop, three laps.
+**First playable:** Hettie in her crate kart on the blocked-out Barnyard Loop, three laps. The loop starts on a low
+plateau with a kicker that throws the kart onto the road falling away below it, climbs a right-hander onto the barn
+hill, goes light over the crest, drops through an S and rounds a hairpin banked 15°.
 
 | Do | Keys | Gamepad |
 |---|---|---|
@@ -18,6 +20,9 @@ shortcut across the infield or driving the wrong way doesn't count.
 - `systems/tyres.ts`: the rear tyres' sideways grip while drifting.
 - `systems/laps.ts`: laps, the race clock and respawns.
 - `systems/chase_camera.ts`: the camera.
+- `systems/telemetry.ts`: a testing aid that logs a kart's motion and its wheels' contact every tick, for objects
+  given a Telemetry card.
 - `components/`: the cards (a kart's stats, its tyres, the camera), with every number tunable in the Inspector.
 - The kart's wheels are separate models made by `tools/split_kart.py` from `art/karts/hettie/kart.glb`.
-  The loop's layout is `tools/barnyard_loop.py`.
+  The loop's layout is `tools/barnyard_loop.py`: its road and hay walls are Sweeps with square rings (mitred
+  ones of this length can take the editor minutes and gigabytes to build).

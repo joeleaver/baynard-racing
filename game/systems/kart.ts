@@ -111,8 +111,12 @@ pw.registerSystem("kart", { includeComponents: ["kart", "vehicle", "rigid_body",
       }
     }
     if (boost > 0 && onGround) {
+      // Along the way the kart is going, not where its nose points: a drift ends with the nose turned
+      // into the corner, and a push that way would fire the kart into the inside wall.
       const f = g("boostForce");
-      body.applyForce([forward[0] * f, forward[1] * f, forward[2] * f]);
+      const going = Math.hypot(v[0], v[1], v[2]);
+      const along = going > 2 ? [v[0] / going, v[1] / going, v[2] / going] : forward;
+      body.applyForce([along[0] * f, along[1] * f, along[2] * f]);
     }
 
     kart.vehicle.engineForce = engine;

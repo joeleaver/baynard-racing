@@ -6,6 +6,8 @@
 // the finished in the order they finished, then the rest by how far round they are.
 //
 // Runs in `react`, after physics, so it reads where the kart ended up this tick.
+import { race, RACING } from "./state";
+
 const K = pw.component("kart");
 const R = Object.fromEntries(
   ["laps", "progress", "lastT", "raceTime", "lapStart", "lastLap", "bestLap", "finished", "boost", "driftDir", "charge", "clock", "startDelay", "place", "respawnAsk"].map((n) => [n, K.property(n)]),
@@ -19,7 +21,8 @@ pw.registerSystem("laps", { phase: "react", includeComponents: ["kart", "rigid_b
   const field = [];
   for (const kart of objects) {
     field.push(kart);
-    const clock = kart.get(R.clock) + dt;
+    // The race clock runs only in a race; the lobby and the results hold it.
+    const clock = kart.get(R.clock) + (race.phase === RACING ? dt : 0);
     kart.set(R.clock, clock);
     const track = kart.get(trackOf);
     if (track === null || !track.exists) continue;
@@ -51,7 +54,7 @@ pw.registerSystem("laps", { phase: "react", includeComponents: ["kart", "rigid_b
     }
     kart.set(R.progress, progress);
     kart.set(R.lastT, near.t);
-    if (finished === 0 && clock >= kart.get(R.startDelay)) kart.set(R.raceTime, time + dt);
+    if (race.phase === RACING && finished === 0 && clock >= kart.get(R.startDelay)) kart.set(R.raceTime, time + dt);
 
     // Back on the road: below the world, or asked for.
     if (at[1] < -5 || kart.get(R.respawnAsk) > 0) {

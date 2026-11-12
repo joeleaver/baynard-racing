@@ -6,6 +6,8 @@
 //
 // Runs in `act`, before physics, reading the world the last step left.
 
+import { race, RACING } from "./state";
+
 const K = pw.component("kart");
 const R = Object.fromEntries(
   ["laps", "engineForce", "topSpeed", "reverseForce", "brakeForce", "steerSlow", "steerFast", "grassSpeed", "padBoost", "hop",
@@ -27,8 +29,9 @@ pw.registerSystem("kart", { includeComponents: ["kart", "vehicle", "rigid_body"]
   const dt = objects.dt;
   for (const kart of objects) {
     const g = (n) => kart.get(R[n]);
-    // Until the lights go green every kart sits on its brakes, whatever its driver asks.
-    const waiting = g("clock") < g("startDelay");
+    // Until the lights go green, and in the lobby and the results, every kart sits on its brakes,
+    // whatever its driver asks.
+    const waiting = race.phase !== RACING || g("clock") < g("startDelay");
     const sx = waiting ? 0 : g("steerAsk");
     const throttle = waiting ? 0 : g("gasAsk");
     const braking = waiting ? 1 : g("brakeAsk");

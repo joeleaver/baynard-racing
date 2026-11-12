@@ -10,8 +10,12 @@ const brake = pw.action("drive", "brake");
 const drift = pw.action("drive", "drift");
 const respawn = pw.action("drive", "respawn");
 
+const human = K.property("human");
+
 pw.registerSystem("driver", { includeComponents: ["kart", "controls"] }, ({ objects }) => {
   for (const kart of objects) {
+    // The game drives a kart no player has (systems/rivals.ts).
+    if (kart.get(human) === 0) continue;
     const [sx, sy] = kart.get(stick) ?? [0, 0];
     kart.set(ask.steerAsk, sx);
     kart.set(ask.gasAsk, Math.max(sy, kart.get(gas) ?? 0, 0));

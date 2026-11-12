@@ -2,7 +2,8 @@
 // a point ahead (further at speed), a lane to its side, and steers for it. It reads the corners coming
 // up and takes the speed it can carry through the tightest of them, braking in time; a long corner it
 // drifts and lets go as the road straightens, for the mini-turbo. Its asks go to the kart like a
-// player's, so a rival drives the same kart by the same rules.
+// player's, so a rival drives the same kart by the same rules. A kart a player picked is theirs; every
+// other kart in the race is a rival.
 //
 // It is not a perfect driver. Its hands wander off the aim a little (a slow random drift, not a
 // jitter), and now and then it makes a mistake: it brakes late for a corner, or lets a drift go before
@@ -14,7 +15,7 @@
 const K = pw.component("kart");
 const V = pw.component("rival");
 const k = Object.fromEntries(
-  ["steerAsk", "gasAsk", "brakeAsk", "driftAsk", "respawnAsk", "laps", "topSpeed", "driftMinSpeed", "driftDir", "speed", "clock", "startDelay"].map((n) => [n, K.property(n)]),
+  ["steerAsk", "gasAsk", "brakeAsk", "driftAsk", "respawnAsk", "laps", "human", "topSpeed", "driftMinSpeed", "driftDir", "speed", "clock", "startDelay"].map((n) => [n, K.property(n)]),
 );
 const r = Object.fromEntries(
   ["lane", "pace", "cornerGrip", "braking", "aim", "aimPerSpeed", "steering", "driftTurn", "stuckAfter", "stuck", "wanted",
@@ -63,6 +64,8 @@ const nearby = pw.sphere(3.5);
 pw.registerSystem("rivals", { includeComponents: ["kart", "rival", "rigid_body"] }, ({ objects, physics }) => {
   const dt = objects.dt;
   for (const kart of objects) {
+    // A kart a player is driving is theirs.
+    if (kart.get(k.human) !== 0) continue;
     const track = kart.get(trackOf);
     if (track === null || !track.exists) continue;
     const curve = track.curve;

@@ -2,10 +2,17 @@
 
 Open it with the Playweft desktop editor (`pw-studio-desktop --open game`) and press **Play**.
 
-**First playable:** Hettie in her crate kart against three rivals on the blocked-out Barnyard Loop, three laps:
-Max's red racer, Puddles' bathtub and The Major's rowing boat (the karts only, for now; the
-animals come later). The race starts from a two-by-two grid on a three-second countdown, and the read-out says
-where you are in the field. The loop starts on a low
+**The game so far:** an online race of up to eight on the blocked-out Barnyard Loop, three laps. Everyone who
+opens the game's link lands on the title, presses Play, and picks one of the eight racers in the lobby: Hettie,
+Max, Puddles, The Major, Mabel, Scraps, Marmalade or Duvet, each a kart with its own handling (speed,
+acceleration, handling, drift and weight, shown on its card and set from `data/racers.ts`). The first player in
+is the host and starts the race; bots drive every kart nobody picked, each in its own style. The race starts on
+a three-second countdown from a shuffled grid, each player watches from behind their own kart, and the results
+list everyone in order, with the county fair's ribbons for the first three, until the host goes back to the
+lobby. Someone arriving mid-race watches the leader and races the next one. (The karts have no animals in them
+yet, apart from Hettie; the lobby shows each racer's headshot on their kart's card.)
+
+The loop starts on a low
 plateau with a kicker that throws the kart onto the road falling away below it, climbs a right-hander onto the barn
 hill, goes light over the crest, drops through an S and rounds a hairpin banked 15°.
 
@@ -24,6 +31,11 @@ A drift builds blue, orange and then purple sparks; letting go gives a mini-turb
 the higher the tier. Grass slows the kart too. Laps are counted along the track's centre line, so a
 shortcut across the infield or driving the wrong way doesn't count.
 
+- `systems/race_phase.ts`, `systems/seats.ts`, `systems/race.ts`, `systems/grid.ts`: the race's phase (lobby,
+  racing, results), who is in the game and what they picked, the host's start and the end of the race, and
+  who drives which kart from where. One Seat object for each of the eight seats tells the game who is here.
+- `systems/views.ts`: each player's camera (`pw.view.set`): their own kart's chase camera in a race, the
+  leader's when watching, the grid in the lobby.
 - `systems/driver.ts`: a player's controls, turned into what the kart is asked to do.
 - `systems/rivals.ts`: the rivals' driving: they follow the centre line a lane to one side, slow for the
   corners they see coming, and drift the long ones. Each rival's Rival card holds the dials for how good it is
@@ -35,6 +47,10 @@ shortcut across the infield or driving the wrong way doesn't count.
 - `systems/chase_camera.ts`: the camera.
 - `systems/telemetry.ts`: a testing aid that logs a kart's motion and its wheels' contact every tick, for objects
   given a Telemetry card.
+- `screens/`: the title and lobby, the race read-out and the results; their look is `data/style.ts` (the
+  county show: green boards, the karts on straw, rosettes for who is who). Fonts: Lilita One and Lato (SIL
+  Open Font License, in `art/fonts/`). The card pictures are `tools/kart_cards.py` (Blender renders of each
+  kart) and `tools/headshots.py` (from each racer's concept).
 - `components/`: the cards (a kart's stats, its tyres, the camera), with every number tunable in the Inspector.
 - The kart's wheels are separate models made by `tools/split_kart.py` from `art/karts/hettie/kart.glb`.
   The loop's layout is `tools/barnyard_loop.py`: its road and hay walls are Sweeps with square rings (mitred

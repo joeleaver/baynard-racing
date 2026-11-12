@@ -1,4 +1,5 @@
-// Driving a kart: the stick turns into the Vehicle's engine force, brake and steer, and the arcade
+// Driving a kart: its driver's asks (systems/driver.ts for a player, systems/rivals.ts for the AI) turn
+// into the Vehicle's engine force, brake and steer, and the arcade
 // layer goes on top — a drift (hop in, the wheels turned into the corner, the tail swung out, sparks
 // building through three tiers) and the mini-turbo when it is let go. The grip itself is the tyres'
 // (systems/tyres.ts lowers the rear tyres' sideways grip while drifting), so the slide is physics.
@@ -9,14 +10,10 @@ const K = pw.component("kart");
 const R = Object.fromEntries(
   ["laps", "engineForce", "topSpeed", "reverseForce", "brakeForce", "steerSlow", "steerFast", "grassSpeed", "padBoost", "hop",
     "driftMinSpeed", "driftSteer", "driftRange", "driftTurn", "driftTurnRange", "driftAngle", "driftHold", "driftCarve", "tierTimes", "boostForce", "boostSpeed", "boostTimes",
-    "driftDir", "charge", "boost", "held", "airborne", "speed"].map((n) => [n, K.property(n)]),
+    "driftDir", "charge", "boost", "held", "airborne", "speed", "steerAsk", "gasAsk", "brakeAsk", "driftAsk", "clock", "startDelay"].map((n) => [n, K.property(n)]),
 );
 const position = pw.vec3("transform", "position");
 const rotation = pw.quat("transform", "rotation");
-const stick = pw.action("drive", "stick");
-const gas = pw.action("drive", "gas");
-const brake = pw.action("drive", "brake");
-const drift = pw.action("drive", "drift");
 
 /** Which spark tier a drift of `charge` seconds has reached: 0 none, 1 blue, 2 orange, 3 purple. */
 export function tierOf(charge, step) {
@@ -26,14 +23,16 @@ export function tierOf(charge, step) {
 const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
 const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
 
-pw.registerSystem("kart", { includeComponents: ["kart", "vehicle", "rigid_body", "controls"] }, ({ objects, physics }) => {
+pw.registerSystem("kart", { includeComponents: ["kart", "vehicle", "rigid_body"] }, ({ objects, physics }) => {
   const dt = objects.dt;
   for (const kart of objects) {
     const g = (n) => kart.get(R[n]);
-    const [sx, sy] = kart.get(stick) ?? [0, 0];
-    const throttle = Math.max(sy, kart.get(gas) ?? 0, 0);
-    const braking = Math.max(-sy, kart.get(brake) ?? 0, 0);
-    const holding = kart.get(drift) === true;
+    // Until the lights go green every kart sits on its brakes, whatever its driver asks.
+    const waiting = g("clock") < g("startDelay");
+    const sx = waiting ? 0 : g("steerAsk");
+    const throttle = waiting ? 0 : g("gasAsk");
+    const braking = waiting ? 1 : g("brakeAsk");
+    const holding = !waiting && g("driftAsk") > 0;
 
     const rot = kart.get(rotation);
     const forward = pw.rotateVector([0, 0, -1], rot);
@@ -59,7 +58,8 @@ pw.registerSystem("kart", { includeComponents: ["kart", "vehicle", "rigid_body",
     let engine = 0;
     let brakeForce = 0;
     if (throttle > 0) engine = g("engineForce") * throttle * clamp(1 - speed / top, -1, 1);
-    if (braking > 0) {
+    if (waiting) brakeForce = g("brakeForce");
+    else if (braking > 0) {
       if (speed > 0.5) brakeForce = g("brakeForce") * braking;
       else engine = -g("reverseForce") * braking * clamp(1 + speed / 6, 0, 1);
     }

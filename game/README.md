@@ -2,7 +2,10 @@
 
 Open it with the Playweft desktop editor (`pw-studio-desktop --open game`) and press **Play**.
 
-**First playable:** Hettie in her crate kart on the blocked-out Barnyard Loop, three laps. The loop starts on a low
+**First playable:** Hettie in her crate kart against three rivals on the blocked-out Barnyard Loop, three laps:
+Max's red racer, Puddles' bathtub and The Major's rowing boat (the karts only, for now; the
+animals come later). The race starts from a two-by-two grid on a three-second countdown, and the read-out says
+where you are in the field. The loop starts on a low
 plateau with a kicker that throws the kart onto the road falling away below it, climbs a right-hander onto the barn
 hill, goes light over the crest, drops through an S and rounds a hairpin banked 15°.
 
@@ -21,9 +24,14 @@ A drift builds blue, orange and then purple sparks; letting go gives a mini-turb
 the higher the tier. Grass slows the kart too. Laps are counted along the track's centre line, so a
 shortcut across the infield or driving the wrong way doesn't count.
 
-- `systems/kart.ts`: driving, the drift and the mini-turbo, on the engine's Vehicle and Wheels.
+- `systems/driver.ts`: a player's controls, turned into what the kart is asked to do.
+- `systems/rivals.ts`: the rivals' driving: they follow the centre line a lane to one side, slow for the
+  corners they see coming, and drift the long ones. Each rival's Rival card holds the dials for how good it is
+  (its pace, how hard it corners and brakes, its lane).
+- `systems/kart.ts`: driving, the drift and the mini-turbo, on the engine's Vehicle and Wheels. A rival and a
+  player drive the same kart by the same rules; they only ask differently.
 - `systems/tyres.ts`: the rear tyres' sideways grip while drifting.
-- `systems/laps.ts`: laps, the race clock and respawns.
+- `systems/laps.ts`: laps, places, the race clock and respawns.
 - `systems/chase_camera.ts`: the camera.
 - `systems/telemetry.ts`: a testing aid that logs a kart's motion and its wheels' contact every tick, for objects
   given a Telemetry card.

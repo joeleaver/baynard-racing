@@ -6,6 +6,7 @@ const doing = (value, doc) => pw.float(value, { group: "Doing", doc });
 pw.defineComponent("kart", {
   track: pw.object({ group: "Links", doc: "The track's centre line (a closed Curve): laps are counted along it." }),
   laps: pw.int(3, { group: "Race", doc: "Laps in a race." }),
+  startDelay: pw.float(3, { unit: "s", group: "Race", doc: "The countdown before the start: every kart waits on its brakes." }),
 
   engineForce: stat(520, "N", "The push at each driving tyre, flat out from a standstill."),
   topSpeed: stat(21, "m/s", "Where the engine runs out of push."),
@@ -43,4 +44,13 @@ pw.defineComponent("kart", {
   bestLap: doing(0, "The best lap's time."),
   finished: doing(0, "When the race was finished, 0 until then."),
   speed: doing(0, "How fast it is going along its nose."),
+  clock: doing(0, "Seconds since Play, countdown included."),
+  place: doing(0, "Where it is in the race: 1 leads; 0 before the first count."),
+
+  // What its driver asks for this tick, written by systems/driver.ts or systems/rivals.ts.
+  steerAsk: pw.float(0, { group: "Asks", doc: "Steering, -1 full left to 1 full right." }),
+  gasAsk: pw.float(0, { group: "Asks", doc: "Throttle, 0 to 1." }),
+  brakeAsk: pw.float(0, { group: "Asks", doc: "Brake, then reverse, 0 to 1." }),
+  driftAsk: pw.float(0, { group: "Asks", doc: "1 while drift is held." }),
+  respawnAsk: pw.float(0, { group: "Asks", doc: "1 to be put back on the road." }),
 });

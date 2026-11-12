@@ -5,7 +5,8 @@
 // player or the game, the drivers ask (a player through their controls, a rival by reading the
 // track), the kart turns those asks into the Vehicle's engine, brake and steer and its drift and
 // boost, and the tyres take the grip the drift gives them. After physics: laps and places are counted
-// along the track, the chase cameras follow, and each player is shown their own.
+// along the track, the chase cameras follow, each player is shown their own, and the music follows
+// the race.
 import "./systems/race_phase";
 import "./systems/seats";
 import "./systems/race";
@@ -17,4 +18,5 @@ import "./systems/tyres";
 import "./systems/laps";
 import "./systems/chase_camera";
 import "./systems/views";
+import "./systems/music";
 import "./systems/telemetry";

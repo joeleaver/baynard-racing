@@ -34,6 +34,10 @@ shortcut across the infield or driving the wrong way doesn't count.
 - `systems/race_phase.ts`, `systems/seats.ts`, `systems/race.ts`, `systems/grid.ts`: the race's phase (lobby,
   racing, results), who is in the game and what they picked, the host's start and the end of the race, and
   who drives which kart from where. One Seat object for each of the eight seats tells the game who is here.
+- Sound: picking a racer plays one of its race-start lines for everyone (the library's "<Name> pick" sound,
+  its takes from `audio/callouts/` as the variations, on the mix's Voices bus, which lowers the music).
+  `systems/music.ts` plays the title song (`audio/music/title-screen.mp3`) on the title and in the lobby and the
+  race song (`audio/music/barnyard-loop.mp3`) through the race and its results, on the Music bus.
 - `systems/views.ts`: each player's camera (`pw.view.set`): their own kart's chase camera in a race, the
   leader's when watching, the grid in the lobby.
 - `systems/driver.ts`: a player's controls, turned into what the kart is asked to do.

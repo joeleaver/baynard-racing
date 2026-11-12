@@ -3,8 +3,12 @@
 // lets go of their racer; one coming past the title screen enters the lobby; a racer is picked in the
 // lobby only, and only if nobody else in the lobby has it.
 //
+// A pick is heard by everyone in the game: the racer says one of its lines (the library's
+// "<Name> pick" sound picks which). Game code runs on every machine in step, so each plays it.
+//
 // Runs first in `act`, after systems/race.ts has read the race's phase.
 import { race, seats, host, LOBBY } from "./state";
+import { RACERS } from "../data/racers";
 
 const S = pw.component("seat");
 const here = S.property("here");
@@ -12,6 +16,9 @@ const entered = S.property("entered");
 const picked = S.property("picked");
 const player = pw.field("controls", "player");
 const stick = pw.action("drive", "stick");
+const callouts = RACERS.map((r) => pw.sound(`${r.name} pick`));
+// The line each seat's last pick is saying, so picking again stops it rather than talking over it.
+const saying = new Map();
 
 pw.registerSystem("seats", { includeComponents: ["seat", "controls"], events: ["enter", "pick"] }, ({ objects, events }) => {
   seats.clear();
@@ -35,6 +42,8 @@ pw.registerSystem("seats", { includeComponents: ["seat", "controls"], events: ["
       if (!taken) {
         s.picked = e.racer;
         s.object.set(picked, e.racer);
+        saying.get(e.seat)?.stop();
+        saying.set(e.seat, pw.play(callouts[e.racer - 1]));
       }
     }
   }

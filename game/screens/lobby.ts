@@ -21,11 +21,14 @@ const LAPS = 3;
 const pips = (n) => [1, 2, 3, 4, 5].map((p) => box({ class: p <= n ? "pip on" : "pip" }, []));
 
 function title(net) {
-  const menu = [
-    button({ class: "go", onclick: pw.emit("enter"), focus: "first" }, "Single player"),
-    button({ class: "go second", onclick: pw.emit("net.join") }, "Multiplayer"),
-  ];
-  if (net.problem !== "") {
+  // While Multiplayer is on its way the menu says so, instead of a button that seems to do nothing.
+  const menu = net.joining
+    ? [label({ class: "wait" }, "Joining the online game…")]
+    : [
+        button({ class: "go", onclick: pw.emit("enter"), focus: "first" }, "Single player"),
+        button({ class: "go second", onclick: pw.emit("net.join") }, "Multiplayer"),
+      ];
+  if (net.problem !== "" && !net.joining) {
     menu.push(label({ class: "problem" }, net.problem));
     menu.push(button({ class: "pick", onclick: pw.emit("net.host") }, "Host on this computer"));
   }

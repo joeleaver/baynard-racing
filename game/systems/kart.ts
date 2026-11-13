@@ -12,6 +12,7 @@ const K = pw.component("kart");
 const R = Object.fromEntries(
   ["laps", "engineForce", "topSpeed", "reverseForce", "brakeForce", "steerSlow", "steerFast", "grassSpeed", "padBoost", "hop",
     "driftMinSpeed", "driftSteer", "driftRange", "driftTurn", "driftTurnRange", "driftAngle", "driftHold", "driftCarve", "tierTimes", "boostForce", "boostSpeed", "boostTimes",
+    "stability", "wheelbase", "turnGrip", "airLevel", "airDamp", "groundLevel", "groundDamp",
     "driftDir", "charge", "boost", "held", "airborne", "speed", "steerAsk", "gasAsk", "brakeAsk", "driftAsk", "clock", "startDelay"].map((n) => [n, K.property(n)]),
 );
 const position = pw.vec3("transform", "position");
@@ -115,6 +116,55 @@ pw.registerSystem("kart", { includeComponents: ["kart", "vehicle", "rigid_body"]
         dir = 0;
         charge = 0;
       }
+    }
+    // Stability, when not drifting: the kart turns as fast as its steering asks and no faster, and the
+    // engine eases while the tail is sliding. A slide that starts is caught rather than growing into a
+    // spin — the difference between a kart that is fun at the limit and one that is mostly backwards.
+    // (Turning left is positive about the kart's up, as the steer is.)
+    if (dir === 0 && onGround && Math.abs(speed) > 2) {
+      const yawRate = dot(body.angularVelocity, up);
+      // What the steering asks for, but no more than the tyres can hold: full lock at speed asks for
+      // a turn several times beyond the grip, and a kart that tried would spin. Past the grip, it
+      // runs a little wide instead.
+      const geometric = (speed * Math.tan(steer)) / g("wheelbase");
+      const most = g("turnGrip") / Math.max(Math.abs(speed), 1);
+      const asked = Math.max(-most, Math.min(most, geometric));
+      const excess = yawRate - asked;
+      const slack = 0.25;
+      if (Math.abs(excess) > slack) {
+        const yaw = -g("stability") * (excess - Math.sign(excess) * slack);
+        body.applyTorque([up[0] * yaw, up[1] * yaw, up[2] * yaw]);
+      }
+      const slip = Math.abs(Math.atan2(dot(v, right), Math.abs(speed)));
+      if (slip > 0.3) engine *= 0.5;
+    }
+    // On the road: a kart tipped more than a little off the surface under it — rearing up on its back
+    // wheels, or onto two side wheels — is brought back flat on it and its tipping damped. The
+    // suspension's own movement stays inside the slack, so this touches only a kart going over.
+    if (onGround) {
+      const n = ground.normal;
+      // up × n: about which axis, and (its length, the sine) how far, the kart has tipped.
+      const c = [up[1] * n[2] - up[2] * n[1], up[2] * n[0] - up[0] * n[2], up[0] * n[1] - up[1] * n[0]];
+      const tipped = Math.hypot(c[0], c[1], c[2]);
+      const slack = Math.sin((8 * Math.PI) / 180);
+      if (tipped > slack) {
+        const level = (g("groundLevel") * (tipped - slack)) / tipped;
+        const w = body.angularVelocity;
+        const spin = dot(w, up);
+        const damp = g("groundDamp");
+        body.applyTorque([0, 1, 2].map((i) => c[i] * level - (w[i] - up[i] * spin) * damp));
+      }
+    }
+    // In the air: the kart is turned back toward upright and its tumble damped, keeping the way it
+    // faces, so it lands on its wheels. Off the kicker, a kart launched nose-first used to backflip
+    // and land on its roof or its tail.
+    if (!onGround) {
+      // About which axis, and how far, up is from the world's up: |up × Y| is the sine of the tilt.
+      const axis = [-up[2], 0, up[0]];
+      const w = body.angularVelocity;
+      const level = g("airLevel");
+      const damp = g("airDamp");
+      body.applyTorque([axis[0] * level - w[0] * damp, 0, axis[2] * level - w[2] * damp]);
     }
     if (boost > 0 && onGround) {
       // Along the way the kart is going, not where its nose points: a drift ends with the nose turned

@@ -34,14 +34,38 @@ const flat = (d) => {
   return [d[0] / n, d[2] / n];
 };
 
+/**
+ * A track's centre line read once, a sample a metre: its length, and its heading on the ground at each
+ * sample. The track never changes during a race, so the rivals read the corners ahead from this rather
+ * than asking the curve again for every metre of every look, every tick.
+ */
+const lines = new Map();
+function lineOf(curve) {
+  // A curve is known by its length and where it starts: objects carry no id that lasts past a tick.
+  const length = curve.length;
+  const start = curve.at(0);
+  const key = `${length}:${start[0]}:${start[1]}:${start[2]}`;
+  let line = lines.get(key);
+  if (line === undefined) {
+    const n = Math.max(8, Math.ceil(length));
+    const headings = [];
+    for (let i = 0; i < n; i++) headings.push(flat(curve.directionAt(i / n)));
+    line = { length, n, headings };
+    lines.set(key, line);
+  }
+  return line;
+}
+/** The line's heading `t` of the way along, from the nearest sample. */
+const headingAt = (line, t) => line.headings[Math.round(wrap(t) * line.n) % line.n];
+
 /** How far a corner turns, signed, over `metres` of the curve from `t`, and the tightest speed in it. */
-function lookAlong(curve, t, metres, step, grip) {
-  let heading = flat(curve.directionAt(t));
+function lookAlong(line, t, metres, step, grip) {
+  let heading = headingAt(line, t);
   let turned = 0;
   let tightest = Infinity;
   let at = 0;
   for (let s = step; s <= metres; s += step) {
-    const next = flat(curve.directionAt(wrap(t + s / curve.length)));
+    const next = headingAt(line, t + s / line.length);
     const bend = turnOf(heading, next);
     turned += bend;
     // A bend of `bend` radians over `step` metres is a circle of radius step / |bend|.
@@ -69,6 +93,7 @@ pw.registerSystem("rivals", { includeComponents: ["kart", "rival", "rigid_body"]
     const track = kart.get(trackOf);
     if (track === null || !track.exists) continue;
     const curve = track.curve;
+    const line = lineOf(curve);
     const at = kart.get(position);
     const rot = kart.get(rotation);
     const forward = pw.rotateVector([0, 0, -1], rot);
@@ -77,14 +102,14 @@ pw.registerSystem("rivals", { includeComponents: ["kart", "rival", "rigid_body"]
     const near = curve.closest(at);
 
     const grip = kart.get(r.cornerGrip);
-    const corner = lookAlong(curve, near.t, 20, 2, grip);
+    const corner = lookAlong(line, near.t, 20, 2, grip);
 
     // Where to aim: a point ahead along the centre line, its lane to the right, moved toward the inside
     // of the corner coming up by as much as it likes to cut corners.
     const ahead = kart.get(r.aim) + Math.max(0, speed) * kart.get(r.aimPerSpeed);
-    const tAim = wrap(near.t + ahead / curve.length);
+    const tAim = wrap(near.t + ahead / line.length);
     const p = curve.at(tAim);
-    const [hx, hz] = flat(curve.directionAt(tAim));
+    const [hx, hz] = headingAt(line, tAim);
     const lane = clamp(kart.get(r.lane) + kart.get(r.cutCorners) * clamp(corner.turned / 1.2, -1, 1), -4.5, 4.5);
     const aimAt = [p[0] - hz * lane, p[1], p[2] + hx * lane];
     const to = [aimAt[0] - at[0], aimAt[1] - at[1], aimAt[2] - at[2]];
@@ -127,9 +152,9 @@ pw.registerSystem("rivals", { includeComponents: ["kart", "rival", "rigid_body"]
     let target = kart.get(k.topSpeed) * kart.get(r.pace);
     const reach = 8 + Math.max(0, speed) * 1.6;
     const step = 2;
-    let heading = flat(curve.directionAt(near.t));
+    let heading = headingAt(line, near.t);
     for (let s = step; lapse === 0 && s <= reach; s += step) {
-      const next = flat(curve.directionAt(wrap(near.t + s / curve.length)));
+      const next = headingAt(line, near.t + s / line.length);
       const radius = step / Math.max(Math.abs(turnOf(heading, next)), 1e-4);
       target = Math.min(target, Math.sqrt(grip * radius + 2 * brakeRate * Math.max(0, s - step)));
       heading = next;
@@ -141,12 +166,12 @@ pw.registerSystem("rivals", { includeComponents: ["kart", "rival", "rigid_body"]
     // starts while it is still catching the last one; and only where the road runs on fairly straight
     // after it, so the mini-turbo it ends with has room instead of firing the kart into the next bend.
     const drifting = kart.get(k.driftDir);
-    const [nx, nz] = flat(curve.directionAt(near.t));
+    const [nx, nz] = headingAt(line, near.t);
     const lined = Math.abs(turnOf(flat(forward), [nx, nz])) < 0.3;
-    const after = lookAlong(curve, wrap(near.t + 20 / curve.length), 25, 2.5, grip);
+    const after = lookAlong(line, near.t + 20 / line.length, 25, 2.5, grip);
     let drift = 0;
     if (drifting !== 0) {
-      const still = lookAlong(curve, near.t, 10, 2, grip).turned * drifting;
+      const still = lookAlong(line, near.t, 10, 2, grip).turned * drifting;
       drift = still > 0.25 && !fluffDrift ? 1 : 0;
       // In a drift the stick tightens or opens it: tighten when the aim point is further inside.
       if (drift) steer = clamp(drifting * angle * kart.get(r.steering), -1, 1) * drifting;

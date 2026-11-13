@@ -38,6 +38,6 @@ pw.screen("results button", { includeComponents: [S] }, ({ seat, objects }) => {
   if (me === undefined || me.get(seatPhase) !== 2) return [];
   const host = me.get(hostOf);
   return box({ class: "resultsgo" }, [
-    host === seat.player ? button({ class: "go", onclick: pw.emit("again") }, "Back to the lobby") : label({ class: "bannerchip" }, `Waiting for Player ${host} to go back to the lobby`),
+    host === seat.player ? button({ class: "go", onclick: pw.emit("again"), focus: "first" }, "Back to the lobby") : label({ class: "bannerchip" }, `Waiting for Player ${host} to go back to the lobby`),
   ]);
 });

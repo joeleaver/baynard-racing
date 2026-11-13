@@ -48,6 +48,8 @@ export function style() {
 .pip { width: 16px; height: 7px; border-radius: 4px; background: #1D4426; margin-right: 3px; }
 .pip.on { background: #FFC531; }
 .pick { margin-top: 5px; font-family: ${strong}; font-size: 14px; color: #1D4426; background: #FFC531; border-radius: 10px; padding: 4px 0; text-align: center; border: 0; box-shadow: 0 3px 0 #B07F12; }
+/* The button a controller has focused (the engine marks it pw-focused). */
+.go.pw-focused, .pick.pw-focused { box-shadow: 0 0 0 4px #FFFBF2, 0 0 18px 5px rgba(255,197,49,0.85); transform: scale(1.05); }
 .pickgap { margin-top: 5px; height: 27px; }
 .rosette { position: absolute; right: 8px; top: 8px; width: 46px; height: 46px; border-radius: 23px; display: flex; align-items: center; justify-content: center; font-family: ${display}; font-size: 15px; color: #FFFBF2; }
 .rosette.red { background: #D63B2F; box-shadow: 0 0 0 4px #FFFBF2, 0 0 0 7px #D63B2F; }
@@ -78,7 +80,7 @@ export function style() {
 .time { font-size: 22px; color: #FFFBF2; text-shadow: 0 2px 4px #000c; }
 .best { font-size: 15px; color: #E5F1E2; text-shadow: 0 2px 4px #000c; }
 .speedo { position: fixed; right: 28px; bottom: 22px; display: flex; flex-direction: row; align-items: baseline; font-family: ${text}; }
-.speed { font-family: ${display}; font-size: 64px; color: #FFFBF2; text-shadow: 0 4px 0 #1D4426; }
+.speed { font-family: ${display}; font-size: 64px; color: #FFFBF2; text-shadow: 0 4px 0 #1D4426; width: 112px; text-align: right; }
 .unit { font-size: 18px; color: #FFFBF2; margin-left: 6px; text-shadow: 0 2px 4px #000c; }
 .spark { position: fixed; left: 0; width: 100vw; bottom: 34px; display: flex; flex-direction: row; justify-content: center; }
 .chip { font-family: ${display}; font-size: 24px; color: #1D4426; border-radius: 14px; padding: 6px 18px; }

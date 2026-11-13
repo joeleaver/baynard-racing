@@ -22,7 +22,7 @@ const pips = (n) => [1, 2, 3, 4, 5].map((p) => box({ class: p <= n ? "pip on" : 
 
 function title(net) {
   const menu = [
-    button({ class: "go", onclick: pw.emit("enter") }, "Single player"),
+    button({ class: "go", onclick: pw.emit("enter"), focus: "first" }, "Single player"),
     button({ class: "go second", onclick: pw.emit("net.join") }, "Multiplayer"),
   ];
   if (net.problem !== "") {
@@ -83,14 +83,14 @@ pw.screen("lobby", { includeComponents: [S] }, ({ seat, objects, net }) => {
       ? button({ class: "go", onclick: pw.emit("start") }, "Start race")
       : label({ class: "wait" }, host === 0 ? "The first player to pick a racer starts the race" : `Waiting for Player ${host} to start the race`);
   const away = shared
-    ? button({ class: "pick back", onclick: pw.emit("net.leave") }, net.hosting ? "Stop hosting" : "Leave")
-    : button({ class: "pick back", onclick: pw.emit("leave") }, "Back");
+    ? button({ class: "pick back", onclick: pw.emit("net.leave"), focus: "back" }, net.hosting ? "Stop hosting" : "Leave")
+    : button({ class: "pick back", onclick: pw.emit("leave"), focus: "back" }, "Back");
 
   return box({ class: "full dim" }, [
     box({ class: "bar" }, [label({ class: "logo" }, "Baynard Racing"), label({ class: "track" }, `Barnyard Loop, ${LAPS} laps`)]),
     box({ class: "stage" }, [
-      box({ class: "board" }, [label({ class: "boardtitle" }, "Pick your racer"), box({ class: "grid" }, pens)]),
-      box({ class: "board side" }, [
+      box({ class: "board" }, [label({ class: "boardtitle" }, "Pick your racer"), box({ class: "grid", focus: "group" }, pens)]),
+      box({ class: "board side", focus: "group" }, [
         label({ class: "boardtitle" }, shared ? "In the lobby" : "Single player"),
         label({ class: "count" }, shared ? `${lobby.length} ${lobby.length === 1 ? "player" : "players"} here` : "You against the bots"),
         ...(net.hosting && net.address !== "" ? [label({ class: "count" }, `Others join at ${net.address}`)] : []),

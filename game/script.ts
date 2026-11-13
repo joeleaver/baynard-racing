@@ -15,6 +15,7 @@ import "./systems/driver";
 import "./systems/rivals";
 import "./systems/kart";
 import "./systems/tyres";
+import "./systems/dust";
 import "./systems/laps";
 import "./systems/chase_camera";
 import "./systems/views";

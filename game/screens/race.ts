@@ -1,13 +1,13 @@
 // The race read-out: the countdown; your place; the field in race order down the left, as faces (yours
-// ringed in yellow, other players' in blue); the lap and the clock; the speed; and the drift's sparks
-// and the mini-turbo. A player watching a race they are not in is told they'll race in the next one.
+// ringed in yellow, other players' in blue); the lap and the clock; the speed; the drift's sparks
+// and the mini-turbo; and, for a kart that has rolled, how long until it is back on the road. A player watching a race they are not in is told they'll race in the next one.
 import { box, label, image } from "@pw/ui";
 import { RACERS, ordinal, clock } from "../data/racers";
 
 const K = pw.component("kart");
 const p = (n) => K.property(n);
-const [laps, progress, raceTime, bestLap, finished, charge, driftDir, boost, speed, tierTimes, place, clockOf, startDelay, phase, racerOf, human] =
-  ["laps", "progress", "raceTime", "bestLap", "finished", "charge", "driftDir", "boost", "speed", "tierTimes", "place", "clock", "startDelay", "phase", "racer", "human"].map(p);
+const [laps, progress, raceTime, bestLap, finished, charge, driftDir, boost, speed, tierTimes, place, clockOf, startDelay, phase, racerOf, human, penalty] =
+  ["laps", "progress", "raceTime", "bestLap", "finished", "charge", "driftDir", "boost", "speed", "tierTimes", "place", "clock", "startDelay", "phase", "racer", "human", "penalty"].map(p);
 const heads = RACERS.map((r) => pw.image(`${r.name} headshot`));
 const SPARKS = [null, ["blue", "Blue sparks"], ["orange", "Orange sparks"], ["purple", "Purple sparks"]];
 
@@ -41,6 +41,8 @@ pw.screen("race", { includeComponents: [K] }, ({ seat, objects }) => {
   const tier = kart.get(driftDir) === 0 ? 0 : Math.min(3, Math.floor(kart.get(charge) / kart.get(tierTimes)));
   if (kart.get(boost) > 0) out.push(box({ class: "spark" }, [label({ class: "chip turbo" }, "Mini-turbo!")]));
   else if (tier > 0) out.push(box({ class: "spark" }, [label({ class: `chip ${SPARKS[tier][0]}` }, SPARKS[tier][1])]));
+  const waiting = kart.get(penalty);
+  if (waiting > 0) out.push(box({ class: "banner" }, [label({ class: "bannerchip" }, `Flipped! Back on the road in ${Math.ceil(waiting)}`)]));
   if (done) out.push(box({ class: "banner" }, [label({ class: "bannerchip" }, "Finished! Waiting for the others.")]));
   return out;
 });

@@ -1,5 +1,8 @@
 {
   "id": "9ad7993e4b00ac98eeac02ff4fe82826",
   "name": "Baynard Racing",
-  "mode": "3d"
+  "mode": "3d",
+  "games": {
+    "playweft.jkbase.app": "01M792WBJ7W10M6BM8MVMY0SDY"
+  }
 }

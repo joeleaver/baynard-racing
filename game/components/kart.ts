@@ -33,6 +33,16 @@ pw.defineComponent("kart", {
   boostForce: stat(1500, "N", "The push of a mini-turbo."),
   boostSpeed: stat(6, "m/s", "How much a mini-turbo raises top speed."),
   boostTimes: stat(0.5, "s", "How long a tier-one mini-turbo lasts; each tier adds as much again."),
+  stability: stat(400, "N·m·s", "How firmly a kart that is not drifting is kept from turning faster than it is steered: higher catches a slide sooner."),
+  groundLevel: stat(600, "N·m", "On the road, how firmly a kart tipped off it (rearing up, or onto two wheels) is brought back flat."),
+  groundDamp: stat(80, "N·m·s", "On the road, how much a kart's tipping is slowed."),
+  airLevel: stat(500, "N·m", "In the air, how firmly the kart is turned back upright, so it lands on its wheels."),
+  airDamp: stat(120, "N·m·s", "In the air, how much its tumbling is slowed."),
+  turnGrip: stat(14, "m/s²", "The sideways pull the tyres hold in a turn: the hardest a kart that is not drifting is let turn."),
+  wheelbase: stat(0.82, "m", "From the front wheels to the back: how fast a steer turns the kart."),
+  rollTilt: stat(73, "°", "Tipped further than this from upright, the kart is rolled (on its side or its roof)."),
+  rollAfter: stat(1, "s", "How long it must stay rolled before it counts, so a tumble that lands on its wheels does not."),
+  rollPenalty: stat(2.5, "s", "How long a rolled kart waits before it is put back on the road."),
 
   driftDir: doing(0, "-1 drifting left, 1 right, 0 not drifting."),
   charge: doing(0, "Seconds of drift built up."),
@@ -49,6 +59,8 @@ pw.defineComponent("kart", {
   speed: doing(0, "How fast it is going along its nose."),
   clock: doing(0, "Seconds since Play, countdown included."),
   place: doing(0, "Where it is in the race: 1 leads; 0 before the first count."),
+  rolledFor: doing(0, "Seconds it has been rolled without counting yet."),
+  penalty: doing(0, "Seconds left before a rolled kart is put back on the road; 0 when it is not waiting."),
 
   // What its driver asks for this tick, written by systems/driver.ts or systems/rivals.ts.
   steerAsk: pw.float(0, { group: "Asks", doc: "Steering, -1 full left to 1 full right." }),

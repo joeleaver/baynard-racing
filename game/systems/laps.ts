@@ -2,15 +2,18 @@
 // is compared with the last, and the difference added to how far round it has gone, so driving the
 // wrong way takes laps back off and a shortcut across the infield counts only what it covers. The race
 // clock runs until the last lap is done. A kart that falls off the world, or whose driver asks, is put
-// back on the centre line where it left it, facing the way round. Then every kart is given its place:
-// the finished in the order they finished, then the rest by how far round they are.
+// back on the centre line where it left it, facing the way round. So is one that has rolled — tipped past
+// `rollTilt` for `rollAfter` seconds — once it has sat out `rollPenalty` seconds where it lies; one that
+// rights itself while it waits drives on. Then every kart is given its place: the finished in the order
+// they finished, then the rest by how far round they are.
 //
 // Runs in `react`, after physics, so it reads where the kart ended up this tick.
 import { race, RACING } from "./state";
 
 const K = pw.component("kart");
 const R = Object.fromEntries(
-  ["laps", "progress", "lastT", "raceTime", "lapStart", "lastLap", "bestLap", "finished", "boost", "driftDir", "charge", "clock", "startDelay", "place", "respawnAsk"].map((n) => [n, K.property(n)]),
+  ["laps", "progress", "lastT", "raceTime", "lapStart", "lastLap", "bestLap", "finished", "boost", "driftDir", "charge", "clock", "startDelay", "place", "respawnAsk",
+    "rollTilt", "rollAfter", "rollPenalty", "rolledFor", "penalty"].map((n) => [n, K.property(n)]),
 );
 const trackOf = pw.object("kart", "track");
 const position = pw.vec3("transform", "position");
@@ -56,8 +59,29 @@ pw.registerSystem("laps", { phase: "react", includeComponents: ["kart", "rigid_b
     kart.set(R.lastT, near.t);
     if (race.phase === RACING && finished === 0 && clock >= kart.get(R.startDelay)) kart.set(R.raceTime, time + dt);
 
-    // Back on the road: below the world, or asked for.
-    if (at[1] < -5 || kart.get(R.respawnAsk) > 0) {
+    // Rolled: how far the kart's own up has tipped from the world's.
+    const [qx, , qz] = kart.get(rotation);
+    const upright = 1 - 2 * (qx * qx + qz * qz);
+    const rolled = upright < Math.cos((kart.get(R.rollTilt) * Math.PI) / 180);
+    let penalty = kart.get(R.penalty);
+    let rolledFor = kart.get(R.rolledFor);
+    let penaltyServed = false;
+    if (penalty > 0) {
+      if (!rolled) penalty = 0;
+      else if ((penalty -= dt) <= 0) {
+        penalty = 0;
+        penaltyServed = true;
+      }
+    } else if (rolled && (rolledFor += dt) >= kart.get(R.rollAfter)) {
+      penalty = kart.get(R.rollPenalty);
+      rolledFor = 0;
+    }
+    if (!rolled) rolledFor = 0;
+    kart.set(R.penalty, penalty);
+    kart.set(R.rolledFor, rolledFor);
+
+    // Back on the road: below the world, asked for, or a rolled kart's penalty served.
+    if (at[1] < -5 || kart.get(R.respawnAsk) > 0 || penaltyServed) {
       const [x, y, z] = track.curve.at(near.t);
       const [dx, , dz] = track.curve.directionAt(near.t);
       kart.rigidBody.teleport([x, y + 0.6, z]);
@@ -67,6 +91,8 @@ pw.registerSystem("laps", { phase: "react", includeComponents: ["kart", "rigid_b
       kart.set(R.boost, 0);
       kart.set(R.driftDir, 0);
       kart.set(R.charge, 0);
+      kart.set(R.penalty, 0);
+      kart.set(R.rolledFor, 0);
     }
   }
 

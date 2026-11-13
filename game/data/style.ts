@@ -28,6 +28,9 @@ export function style() {
 .hero { font-family: ${display}; font-size: 120px; color: #FFC531; text-shadow: 0 8px 0 #1D4426, 0 14px 36px #0009; }
 .tagline { font-size: 22px; color: #FFFBF2; margin: 4px 0 34px 0; text-shadow: 0 2px 6px #000c; }
 .titleboard { width: 360px; align-items: stretch; }
+.go.second { margin-top: 14px; background: #FFFBF2; box-shadow: 0 5px 0 #B9D6B4; }
+.problem { font-size: 15px; color: #FFFBF2; text-align: center; margin: 16px 0 10px 0; }
+.pick.back { margin-top: 12px; background: #24552E; color: #FFFBF2; box-shadow: 0 3px 0 #1D4426; }
 .here { font-size: 15px; color: #B9D6B4; margin-top: 12px; text-align: center; }
 
 .stage { display: flex; flex-direction: row; gap: 20px; padding: 16px 40px 0 40px; align-items: flex-start; }

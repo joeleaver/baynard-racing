@@ -2,11 +2,14 @@
 
 Open it with the Playweft desktop editor (`pw-studio-desktop --open game`) and press **Play**.
 
-**The game so far:** an online race of up to eight on the blocked-out Barnyard Loop, three laps. Everyone who
-opens the game's link lands on the title, presses Play, and picks one of the eight racers in the lobby: Hettie,
+**The game so far:** a race of up to eight on the blocked-out Barnyard Loop, three laps. The game's link loads and
+plays the game in the browser and lands on the title's menu. **Single player** picks a racer and races seven bots
+on the player's own machine (Back returns to the title). **Multiplayer** joins the game Playweft runs online for
+the link (`net.join` with no address); if it can't, the title says why and offers **Host on this computer**
+(`net.host`, the desktop app). In the shared lobby each player picks one of the eight racers: Hettie,
 Max, Puddles, The Major, Mabel, Scraps, Marmalade or Duvet, each a kart with its own handling (speed,
-acceleration, handling, drift and weight, shown on its card and set from `data/racers.ts`). The first player in
-is the host and starts the race; bots drive every kart nobody picked, each in its own style. The race starts on
+acceleration, handling, drift and weight, shown on its card and set from `data/racers.ts`). The first player to
+pick is the host and starts the race, and Leave goes back to playing alone; bots drive every kart nobody picked, each in its own style. The race starts on
 a three-second countdown from a shuffled grid, each player watches from behind their own kart, and the results
 list everyone in order, with the county fair's ribbons for the first three, until the host goes back to the
 lobby. Someone arriving mid-race watches the leader and races the next one. (The karts have no animals in them

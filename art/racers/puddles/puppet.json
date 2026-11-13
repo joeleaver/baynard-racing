@@ -1,0 +1,122 @@
+{
+ "note": "Puddles' puppet build. Run: blender -b --factory-startup --python tools/assemble_racer.py -- art/racers/puddles/puppet.json. The piece meshes are big working files (git-ignored) in workspace/meshes/pieces/.",
+ "head": {
+  "glb": "../../../workspace/meshes/pieces/pig_head.glb",
+  "turn": 180,
+  "z": [
+   0.39,
+   0.82
+  ],
+  "centre": [
+   0,
+   -0.02
+  ],
+  "faces": 8000,
+  "edit": {
+   "clamp": [
+    {
+     "box": [
+      [
+       -0.32,
+       0.12,
+       -0.34
+      ],
+      [
+       0.32,
+       0.6,
+       0.27
+      ]
+     ],
+     "centre": [
+      0,
+      0,
+      -0.04
+     ],
+     "radius": [
+      0.39,
+      0.44,
+      0.4
+     ]
+    }
+   ]
+  }
+ },
+ "body": {
+  "glb": "../../../workspace/meshes/pieces/pig_body.glb",
+  "z": [
+   0,
+   0.5
+  ],
+  "centre": [
+   0,
+   0.0
+  ],
+  "faces": 8000,
+  "edit": {
+   "move": [
+    {
+     "box": [
+      [
+       -0.46,
+       -0.13,
+       0.12
+      ],
+      [
+       -0.3,
+       0.16,
+       0.37
+      ]
+     ],
+     "turn": -90,
+     "about": [
+      0.07,
+      0
+     ],
+     "shift": [
+      0,
+      -0.045,
+      0
+     ]
+    }
+   ],
+   "mirror": "front",
+   "plane": 0.0
+  }
+ },
+ "arm": {
+  "glb": "../../../workspace/meshes/pieces/pig_arm.glb",
+  "length": 0.22,
+  "shoulder": [
+   0.2,
+   0.0,
+   0.45
+  ],
+  "splay": 10,
+  "faces": 2000,
+  "edit": {
+   "mirror": "front",
+   "plane": -0.02
+  }
+ },
+ "voxel": 0.004,
+ "out": "../../../workspace/puddles/puddles_v9.glb",
+ "jaw": {
+  "box": [
+   [
+    -0.095,
+    -0.3,
+    0.485
+   ],
+   [
+    0.095,
+    -0.1,
+    0.548
+   ]
+  ],
+  "pivot": [
+   -0.1,
+   0.55
+  ],
+  "open": 28
+ }
+}

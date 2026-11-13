@@ -147,14 +147,17 @@ Farm-themed, readable at a glance:
 - **Reference sheets** for modelling: every racer and every kart has a standalone concept and a
   front / side / back turnaround in `art/racers/<name>/` and `art/karts/<name>/`. World concepts (ten scenes
   across the regions) and isolated prop concepts are in `art/world/concepts/` and `art/world/props/`.
-- **Characters are puppets (decided 2026-11-04),** built like stop-motion puppets from separate pieces. Each
-  racer's head, body and wing (or arm) are generated as their own concept images, turned into meshes in
-  oxidegen, then rebuilt as clean game meshes with their colour baked on. The head and wings are rigid and
-  ride their own bones on the standard humanoid skeleton. The body bends at the hips and legs. The face pieces
-  (eyes, a two-piece beak or jaw that opens on `jawOpen`, wattle) come from a hifipushie build. Full ARKit face
-  rigs don't suit beaked toy characters, so the mouth is a hinge driven by the callouts' mouth curves.
-  [`tools/assemble_puppet.py`](tools/assemble_puppet.py) does the build from a `puppet.json` beside each
-  racer; Hettie is the first ([`art/racers/hettie/`](art/racers/hettie/)).
+- **Characters are single, fully rigged bodies (decided 2026-11-05, replacing the puppet build of
+  2026-11-04).** Each racer is one sculpted character that looks like its concept, built in hifipushie and
+  checked against the concept's own camera and the turnaround. Arms and legs are part of the body, attached as
+  real limbs. The body exports as one clean game mesh with edge loops wherever it has to deform, rigged on a
+  standard humanoid skeleton. Which parts those are (joints, mouth, eyelids, ears, tail) is judged character by
+  character when its mesh is planned, from what that character has to do. It must bend cleanly at
+  least into its two game poses, seated in its kart and celebrating, and its soft parts (ears, belly, tail)
+  must be able to wobble and react to physics. A talking mouth is optional: with loops round the mouth it can
+  be driven by a jaw bone or morph targets from the callouts' mouth curves. The separate-piece puppet build
+  ([`tools/assemble_puppet.py`](tools/assemble_puppet.py), Hettie in [`art/racers/hettie/`](art/racers/hettie/))
+  predates this decision.
 - **Props and scenery** come from oxidegen (concept image → mesh) and are cleaned up before use.
 - **Audio:** every engine is a live sound graph that follows revs and load; animal voices for hits,
   overtakes and wins; music that follows the race (a lap-three surge, the final-lap key change).

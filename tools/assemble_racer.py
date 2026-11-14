@@ -1,4 +1,4 @@
-"""Assemble a Baynard racer puppet from separately generated head, body and arm meshes, with its own skeleton.
+"""Assemble a Braynard racer puppet from separately generated head, body and arm meshes, with its own skeleton.
 
 blender -b --factory-startup --python tools/assemble_racer.py -- <racer>/puppet.json
 

@@ -46,7 +46,7 @@ function title(net, typed) {
     menu.push(button({ class: "pick", onclick: pw.emit("net.host") }, "Host on this computer"));
   }
   return box({ class: "full deep center" }, [
-    label({ class: "hero" }, "Baynard Racing"),
+    label({ class: "hero" }, "Braynard Racing"),
     label({ class: "tagline" }, "Race your friends round the Barnyard Loop. Bots fill the empty karts."),
     box({ class: "board titleboard" }, menu),
   ]);
@@ -114,7 +114,7 @@ pw.screen("lobby", { includeComponents: [S] }, ({ seat, objects, net, typed }) =
     : button({ class: "pick back", onclick: pw.emit("leave"), focus: "back" }, "Back");
 
   return box({ class: "full dim" }, [
-    box({ class: "bar" }, [label({ class: "logo" }, "Baynard Racing"), label({ class: "track" }, `Barnyard Loop, ${LAPS} laps`)]),
+    box({ class: "bar" }, [label({ class: "logo" }, "Braynard Racing"), label({ class: "track" }, `Barnyard Loop, ${LAPS} laps`)]),
     box({ class: "stage" }, [
       box({ class: "board" }, [label({ class: "boardtitle" }, "Pick your racer"), box({ class: "grid", focus: "group" }, pens)]),
       box({ class: "board side", focus: "group" }, [

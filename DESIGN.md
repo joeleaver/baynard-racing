@@ -1,4 +1,4 @@
-# Baynard Racing — design
+# Braynard Racing — design
 
 *Living document. Started 2026-11-03. Anything marked **(proposal)** hasn't been decided; change it freely.*
 
@@ -10,7 +10,7 @@ Think Mario Kart World's open world and party feel, with drift handling that has
 
 The name is a play on *barnyard*. (It's also a nod to Bayard, the legendary horse.)
 
-Baynard Racing is **Playweft's flagship game**: public, featured, and polished. It's what we point people at
+Braynard Racing is **Playweft's flagship game**: public, featured, and polished. It's what we point people at
 to show what the engine can do, so it sets the quality bar. (3 Dimenshift is the other game we build, but it's
 for internal testing and finding gaps. This one ships.)
 
@@ -28,7 +28,7 @@ for internal testing and finding gaps. This one ships.)
 
 ## The world (proposal)
 
-One county, **Baynard County**, made of regions that flow into each other:
+One county, **Braynard County**, made of regions that flow into each other:
 
 | Region | Feel | Signature track ideas |
 |---|---|---|
@@ -189,11 +189,11 @@ Farm-themed, readable at a glance:
 
 Following Playweft's rule: **the engine supplies general means, the game's rules are game code.**
 
-- **Engine** (filed on Playweft's board, tagged `baynard-racing`): vehicle physics, surfaces, closest
+- **Engine** (filed on Playweft's board, tagged `braynard-racing`): vehicle physics, surfaces, closest
   point on a curve, split screen, trails, racing-grade netcode, streaming, 64-bit positions, particles.
 - **Game code** (this repo): drift and boost rules, kart stats, items, race logic (laps, positions,
   respawn), AI drivers, camera rig, menus and HUD.
-- A gap found here becomes a **general** Playweft feature, never a Baynard-only hack in the engine.
+- A gap found here becomes a **general** Playweft feature, never a Braynard-only hack in the engine.
 
 ## Milestones
 

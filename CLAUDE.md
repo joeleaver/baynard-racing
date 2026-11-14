@@ -1,4 +1,4 @@
-# Baynard Racing
+# Braynard Racing
 
 Playweft's flagship game: an open-world kart racer with drift physics and barnyard animals. It's public,
 featured and polished, so it sets the quality bar. The design is in [`DESIGN.md`](./DESIGN.md); keep it current
@@ -8,7 +8,7 @@ when a decision changes it.
   goes in.
 - **Game code lives here; the engine lives in `../playweft`.** A gap found here becomes a **general** Playweft
   feature (its own PR there, following its CLAUDE.md) or a card on the Playweft Overboard board tagged
-  `baynard-racing`. Never a Baynard-only hack in the engine.
+  `braynard-racing`. Never a Braynard-only hack in the engine.
 - **Art:** `art/` holds sources and approved pieces (`concepts/`, `racers/`, `karts/`, `world/`). Characters are
   sculpted in hifipushie; props and scenery come through oxidegen. Big working files go in `workspace/`
   (git-ignored).

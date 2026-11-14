@@ -1,4 +1,4 @@
-"""Assemble a Baynard racer puppet in Blender from separately generated piece meshes.
+"""Assemble a Braynard racer puppet in Blender from separately generated piece meshes.
 
 blender -b --factory-startup --python tools/assemble_puppet.py -- <config.json>
 

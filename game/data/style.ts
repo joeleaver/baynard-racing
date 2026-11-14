@@ -1,4 +1,4 @@
-// Baynard Racing's look: the county show. Pasture-green painted boards with hedge-dark edges, the karts
+// Braynard Racing's look: the county show. Pasture-green painted boards with hedge-dark edges, the karts
 // on straw, egg-yolk for what you press, and show rosettes for who is who (red you, blue other players)
 // and for the podium (blue, red and white ribbons, as at a county fair). Lilita One for names and
 // headings, Lato for everything else.

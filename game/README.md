@@ -1,4 +1,4 @@
-# Baynard Racing — the Playweft project
+# Braynard Racing — the Playweft project
 
 Open it with the Playweft desktop editor (`pw-studio-desktop --open game`) and press **Play**.
 

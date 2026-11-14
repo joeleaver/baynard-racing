@@ -1,4 +1,4 @@
-// Baynard Racing's systems, in the order they run each tick.
+// Braynard Racing's systems, in the order they run each tick.
 //
 // Before physics: the race's phase is read, the seats counted (who is here, what they picked), the
 // race moves on (the host starts it; it ends when every kart is in), the grid hands each kart to a

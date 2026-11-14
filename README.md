@@ -1,4 +1,4 @@
-# Baynard Racing
+# Braynard Racing
 
 An open-world kart racer starring barnyard animals, built on the [Playweft](https://github.com/joeleaver/playweft)
 engine. It's Playweft's flagship game.

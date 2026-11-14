@@ -29,6 +29,11 @@ export function style() {
 .tagline { font-size: 22px; color: #FFFBF2; margin: 4px 0 34px 0; text-shadow: 0 2px 6px #000c; }
 .titleboard { width: 360px; align-items: stretch; }
 .go.second { margin-top: 14px; background: #FFFBF2; box-shadow: 0 5px 0 #B9D6B4; }
+.menuhead { font-family: ${display}; font-size: 22px; color: #FFFBF2; text-align: center; margin: 22px 0 0 0; }
+.coderow { display: flex; flex-direction: row; gap: 10px; margin-top: 14px; }
+.code { flex: 1; font-size: 20px; color: #1D4426; background: #FFFBF2; border: 0; border-radius: 10px; padding: 8px 12px; }
+.pick.join { margin-top: 0; padding: 8px 18px; font-size: 18px; }
+.gamecode { font-family: ${display}; font-size: 26px; color: #FFC531; margin: 0 0 4px 4px; }
 .problem { font-size: 15px; color: #FFFBF2; text-align: center; margin: 16px 0 10px 0; }
 .pick.back { margin-top: 12px; background: #24552E; color: #FFFBF2; box-shadow: 0 3px 0 #1D4426; }
 .here { font-size: 15px; color: #B9D6B4; margin-top: 12px; text-align: center; }

@@ -11,6 +11,7 @@ import { racer } from "../data/racers";
 import { statsOf } from "../data/handling";
 
 const K = pw.component("kart");
+const driver = K.text("driver");
 const k = Object.fromEntries(
   ["racer", "human", "progress", "lastT", "raceTime", "lapStart", "lastLap", "bestLap", "finished", "boost", "driftDir", "charge", "held", "airborne", "clock", "place", "steerAsk", "gasAsk", "brakeAsk", "driftAsk", "respawnAsk", "phase"].map((n) => [n, K.property(n)]),
 );
@@ -114,6 +115,11 @@ pw.registerSystem("grid", { includeComponents: ["kart", "controls", "rigid_body"
       kart.set(k.human, 0);
       kart.set(player, 0);
     }
+  }
+  // Each kart shows the name of whoever drives it; a bot shows none.
+  for (const kart of objects) {
+    const called = kart.get(k.human) === 0 ? "" : (seats.get(kart.get(k.human))?.name ?? "");
+    if (kart.get(driver) !== called) kart.set(driver, called);
   }
   if (race.phase === LOBBY) for (const kart of objects) kart.set(k.place, 0);
   for (const kart of objects) kart.set(k.phase, race.phase);

@@ -17,6 +17,9 @@ const here = S.property("here");
 const entered = S.property("entered");
 const picked = S.property("picked");
 const ready = S.property("ready");
+const name = S.text("name");
+/** The longest name a player may go by, in characters. */
+const NAME_MOST = 20;
 const countdown = S.property("countdown");
 /** How long everyone must stay ready before the race starts, in seconds. */
 const READY_WAIT = 3;
@@ -26,7 +29,7 @@ const callouts = RACERS.map((r) => pw.sound(`${r.name} pick`));
 // The line each seat's last pick is saying, so picking again stops it rather than talking over it.
 const saying = new Map();
 
-pw.registerSystem("seats", { includeComponents: ["seat", "controls"], events: ["enter", "leave", "pick", "ready"] }, ({ objects, events }) => {
+pw.registerSystem("seats", { includeComponents: ["seat", "controls"], events: ["enter", "leave", "pick", "ready", "rename"] }, ({ objects, events }) => {
   seats.clear();
   for (const seat of objects) {
     const present = seat.get(stick) !== null;
@@ -36,7 +39,11 @@ pw.registerSystem("seats", { includeComponents: ["seat", "controls"], events: ["
       seat.set(ready, 0);
     }
     seat.set(here, present ? 1 : 0);
-    seats.set(seat.get(player), { here: present, entered: seat.get(entered) === 1, picked: seat.get(picked), ready: seat.get(ready) === 1, object: seat });
+    // The name the player goes by is theirs, in their save: whoever sits here shows theirs.
+    const saved = present ? pw.save(seat.get(player)).get("name", "") : "";
+    const called = typeof saved === "string" ? saved : "";
+    if (seat.get(name) !== called) seat.set(name, called);
+    seats.set(seat.get(player), { here: present, entered: seat.get(entered) === 1, picked: seat.get(picked), ready: seat.get(ready) === 1, name: called, object: seat });
   }
   for (const e of events) {
     const s = seats.get(e.seat);
@@ -44,6 +51,13 @@ pw.registerSystem("seats", { includeComponents: ["seat", "controls"], events: ["
     if (e.name === "enter") {
       s.entered = true;
       s.object.set(entered, 1);
+    } else if (e.name === "rename") {
+      // Trimmed and held to a name's length; an empty one forgets it.
+      const chosen = Array.from(e.to.trim()).slice(0, NAME_MOST).join("");
+      if (chosen === "") pw.save(e.seat).remove("name");
+      else pw.save(e.seat).set("name", chosen);
+      s.name = chosen;
+      s.object.set(name, chosen);
     } else if (e.name === "ready" && race.phase === LOBBY) {
       // Ready is a toggle: pressing it again takes it back. Being ready is being in the lobby.
       s.ready = !s.ready;

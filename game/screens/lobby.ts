@@ -15,6 +15,7 @@ styles(style());
 
 const S = pw.component("seat");
 const [here, entered, picked, ready, phase, countdown] = ["here", "entered", "picked", "ready", "phase", "countdown"].map((n) => S.property(n));
+const name = S.text("name");
 const player = pw.field("controls", "player");
 const karts = RACERS.map((r) => pw.image(`${r.name} kart`));
 const heads = RACERS.map((r) => pw.image(`${r.name} headshot`));
@@ -86,7 +87,10 @@ pw.screen("lobby", { includeComponents: [S] }, ({ seat, objects, net, typed }) =
     const you = p === seat.player;
     return box({ class: "entrant" }, [
       n > 0 ? image(heads[n - 1], { class: "face" }) : box({ class: "blank" }, []),
-      box({ class: "entrantname" }, [label({ class: "who" }, you ? "You" : `Player ${p}`), label({ class: "whatracer" }, n > 0 ? RACERS[n - 1].name : "Choosing")]),
+      box({ class: "entrantname" }, [
+        label({ class: "who" }, o.get(name) || (you ? "You" : `Player ${p}`)),
+        label({ class: "whatracer" }, n > 0 ? RACERS[n - 1].name : "Choosing"),
+      ]),
       ...(o.get(ready) === 1 ? [label({ class: "tag ready" }, "Ready")] : []),
     ]);
   });
@@ -121,6 +125,11 @@ pw.screen("lobby", { includeComponents: [S] }, ({ seat, objects, net, typed }) =
           ? [label({ class: "gamecode" }, `Game code: ${net.code}`), label({ class: "count" }, `Invite link: ${net.address}`)]
           : []),
         ...entrants,
+        // The name this player goes by: typed here, kept in their save for every game they join.
+        box({ class: "coderow" }, [
+          input({ class: "code", name: "playername", placeholder: me.get(name) || "Your name" }),
+          button({ class: "pick join", onclick: pw.emit("rename", { to: typed.playername ?? "" }) }, "Save name"),
+        ]),
         box({ class: "spacer" }, []),
         label({ class: "bots" }, bots === 0 ? "Every kart has a player." : `${bots} ${bots === 1 ? "bot fills" : "bots fill"} the rest of the grid.`),
         ...start,

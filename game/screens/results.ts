@@ -6,6 +6,7 @@ import { RACERS, ordinal, clock } from "../data/racers";
 
 const K = pw.component("kart");
 const [racerOf, human, place, finished, phase] = ["racer", "human", "place", "finished", "phase"].map((n) => K.property(n));
+const driver = K.text("driver");
 const heads = RACERS.map((r) => pw.image(`${r.name} headshot`));
 const RIBBONS = ["r1", "r2", "r3"];
 
@@ -19,8 +20,9 @@ pw.screen("results", { includeComponents: [K] }, ({ seat, objects }) => {
     return box({ class: mine ? "line mine" : "line" }, [
       label({ class: `ribbon ${RIBBONS[i] ?? "rn"}` }, ordinal(i + 1)),
       image(heads[n - 1], { class: "face" }),
-      label({ class: "lname" }, RACERS[n - 1].name),
-      label({ class: "ldriver" }, mine ? "You" : who > 0 ? `Player ${who}` : "Bot"),
+      // A player's own name where they gave one, the racer's otherwise; beside it, who drove.
+      label({ class: "lname" }, kart.get(driver) || RACERS[n - 1].name),
+      label({ class: "ldriver" }, kart.get(driver) ? (mine ? `You · ${RACERS[n - 1].name}` : RACERS[n - 1].name) : mine ? "You" : who > 0 ? `Player ${who}` : "Bot"),
       label({ class: "ltime" }, kart.get(finished) > 0 ? clock(kart.get(finished)) : "Still racing"),
     ]);
   });

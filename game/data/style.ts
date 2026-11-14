@@ -31,7 +31,7 @@ export function style() {
 .go.second { margin-top: 14px; background: #FFFBF2; box-shadow: 0 5px 0 #B9D6B4; }
 .menuhead { font-family: ${display}; font-size: 22px; color: #FFFBF2; text-align: center; margin: 22px 0 0 0; }
 .coderow { display: flex; flex-direction: row; gap: 10px; margin-top: 14px; }
-.code { flex: 1; font-size: 20px; color: #1D4426; background: #FFFBF2; border: 0; border-radius: 10px; padding: 8px 12px; }
+.code { flex: 1; min-width: 0; font-size: 20px; color: #1D4426; background: #FFFBF2; border: 0; border-radius: 10px; padding: 8px 12px; }
 .pick.join { margin-top: 0; padding: 8px 18px; font-size: 18px; }
 .gamecode { font-family: ${display}; font-size: 26px; color: #FFC531; margin: 0 0 4px 4px; }
 .problem { font-size: 15px; color: #FFFBF2; text-align: center; margin: 16px 0 10px 0; }

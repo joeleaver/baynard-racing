@@ -7,6 +7,7 @@ pw.defineComponent("kart", {
   track: pw.object({ group: "Links", doc: "The track's centre line (a closed Curve): laps are counted along it." }),
   racer: pw.int(0, { group: "Race", doc: "Which racer's kart this is, 1 to 8: Hettie, Max, Puddles, The Major, Mabel, Scraps, Marmalade, Duvet." }),
   human: pw.int(0, { group: "Race", doc: "The seat of the player driving it this race; 0 when the game drives it." }),
+  driver: pw.text("", { group: "Race", doc: "The name of the player driving it, copied from their seat; empty for a bot or a player with no name." }),
   phase: pw.int(0, { group: "Race", doc: "The race's phase (0 the lobby, 1 racing, 2 the results), copied here for the screens." }),
   laps: pw.int(3, { group: "Race", doc: "Laps in a race." }),
   startDelay: pw.float(3, { unit: "s", group: "Race", doc: "The countdown before the start: every kart waits on its brakes." }),

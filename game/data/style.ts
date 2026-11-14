@@ -14,6 +14,16 @@ export function style() {
 .dim { background: linear-gradient(180deg, #10261699 0%, #10261633 35%, #102616cc 100%); }
 .deep { background: linear-gradient(180deg, #102616cc 0%, #10261688 50%, #102616ee 100%); }
 .center { align-items: center; justify-content: center; }
+
+.loadfield { background: radial-gradient(ellipse at 50% 40%, #3B7A44 0%, #2F6B3A 45%, #1D4426 100%); }
+.loadheads { display: flex; flex-direction: row; gap: 10px; margin: 26px 0 30px 0; }
+.loadhead { width: 64px; height: 64px; border-radius: 12px; border: 3px solid #FFFBF2; box-shadow: 0 4px 0 #1D4426; animation: bob 1.6s ease-in-out infinite; }
+@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+.loadbar { width: min(560px, 80vw); height: 18px; border-radius: 10px; background: #1D4426; box-shadow: inset 0 3px 0 #10261A; overflow: hidden; }
+.loadfill { height: 100%; border-radius: 10px; background: #FFC531; box-shadow: inset 0 -4px 0 #B07F12; }
+.loadfill.starting { width: 100%; }
+.loadcount { font-size: 16px; color: #B9D6B4; margin-top: 10px; }
+.loadtip { font-size: 20px; color: #FFFBF2; margin-top: 34px; max-width: 640px; text-align: center; }
 .spacer { flex-grow: 1; }
 
 .bar { display: flex; flex-direction: row; align-items: baseline; padding: 22px 40px 0 40px; }

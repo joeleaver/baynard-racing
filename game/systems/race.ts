@@ -1,4 +1,4 @@
-// The race's rules: the lobby until the host starts it, then the race, then the results once every kart
+// The race's rules: the lobby until everyone in it has been ready for a moment (systems/seats.ts), then the race, then the results once every kart
 // has finished or the rest have had long enough after the winner, then the lobby again when the host
 // says so. A race nobody is in any more goes back to the lobby.
 //
@@ -9,14 +9,15 @@ import { race, players, host, LOBBY, RACING, RESULTS } from "./state";
 const R = pw.component("race");
 const p = Object.fromEntries(["phase", "host", "firstFinish", "allDone", "clock", "wait"].map((n) => [n, R.property(n)]));
 
-pw.registerSystem("race rules", { includeComponents: ["race"], events: ["start", "again"] }, ({ objects, events }) => {
+pw.registerSystem("race rules", { includeComponents: ["race"], events: ["again"] }, ({ objects, events }) => {
   const dt = objects.dt;
   const boss = host();
   for (const r of objects) {
     r.set(p.host, boss);
     const said = (name) => events.some((e) => e.name === name && e.seat === boss);
     let phase = r.get(p.phase);
-    if (phase === LOBBY && boss !== 0 && said("start")) {
+    // The seats rule when everyone is ready (systems/seats.ts): the race starts on their word.
+    if (phase === LOBBY && race.startNow) {
       phase = RACING;
       race.started = true;
       r.set(p.clock, 0);

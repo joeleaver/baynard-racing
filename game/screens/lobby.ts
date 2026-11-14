@@ -5,8 +5,8 @@
 // link offers their game first (`net.invited`). If a game can't be joined the title says why and
 // offers to host on this computer instead (`net.host`, Playweft on a desktop). In a shared game the
 // lobby shows straight away, with a private game's code and invite link. In the lobby
-// players pick one of the eight racers (one each: a racer another player has is theirs) and the host
-// (the first player to pick) starts the race. Bots race every kart nobody picked.
+// players pick one of the eight racers (one each: a racer another player has is theirs) and press
+// Ready; the race starts a moment after everyone is ready. Bots race every kart nobody is in.
 import { box, label, button, image, input, styles } from "@pw/ui";
 import { RACERS, RATINGS } from "../data/racers";
 import { style } from "../data/style";
@@ -14,7 +14,7 @@ import { style } from "../data/style";
 styles(style());
 
 const S = pw.component("seat");
-const [here, entered, picked, phase, hostOf] = ["here", "entered", "picked", "phase", "host"].map((n) => S.property(n));
+const [here, entered, picked, ready, phase, countdown] = ["here", "entered", "picked", "ready", "phase", "countdown"].map((n) => S.property(n));
 const player = pw.field("controls", "player");
 const karts = RACERS.map((r) => pw.image(`${r.name} kart`));
 const heads = RACERS.map((r) => pw.image(`${r.name} headshot`));
@@ -63,7 +63,6 @@ pw.screen("lobby", { includeComponents: [S] }, ({ seat, objects, net, typed }) =
     .filter((o) => o.get(here) === 1 && (shared || o.get(entered) === 1))
     .sort((a, b) => a.get(player) - b.get(player));
   const mine = me.get(picked);
-  const host = me.get(hostOf);
 
   const pens = RACERS.map((r, i) => {
     const n = i + 1;
@@ -88,15 +87,24 @@ pw.screen("lobby", { includeComponents: [S] }, ({ seat, objects, net, typed }) =
     return box({ class: "entrant" }, [
       n > 0 ? image(heads[n - 1], { class: "face" }) : box({ class: "blank" }, []),
       box({ class: "entrantname" }, [label({ class: "who" }, you ? "You" : `Player ${p}`), label({ class: "whatracer" }, n > 0 ? RACERS[n - 1].name : "Choosing")]),
-      ...(shared && p === host ? [label({ class: "tag" }, "Host")] : []),
+      ...(o.get(ready) === 1 ? [label({ class: "tag ready" }, "Ready")] : []),
     ]);
   });
-  const racing = lobby.filter((o) => o.get(picked) > 0).length;
-  const bots = RACERS.length - (shared ? racing : lobby.length);
-  const start =
-    host === seat.player
-      ? button({ class: "go", onclick: pw.emit("start") }, "Start race")
-      : label({ class: "wait" }, host === 0 ? "The first player to pick a racer starts the race" : `Waiting for Player ${host} to start the race`);
+  const bots = RACERS.length - lobby.length;
+  // Everyone presses Ready; a moment after the last one does, the race starts.
+  const meReady = me.get(ready) === 1;
+  const unready = lobby.filter((o) => o.get(ready) !== 1).length;
+  const left = Math.ceil(me.get(countdown));
+  const status =
+    left > 0
+      ? label({ class: "wait soon" }, `Starting in ${left}…`)
+      : meReady
+        ? label({ class: "wait" }, `Waiting for ${unready} ${unready === 1 ? "player" : "players"} to get ready`)
+        : null;
+  const start = [
+    ...(status === null ? [] : [status]),
+    button({ class: meReady ? "go second" : "go", onclick: pw.emit("ready") }, meReady ? "Not ready" : "Ready"),
+  ];
   const away = shared
     ? button({ class: "pick back", onclick: pw.emit("net.leave"), focus: "back" }, net.hosting ? "Stop hosting" : "Leave")
     : button({ class: "pick back", onclick: pw.emit("leave"), focus: "back" }, "Back");
@@ -115,7 +123,7 @@ pw.screen("lobby", { includeComponents: [S] }, ({ seat, objects, net, typed }) =
         ...entrants,
         box({ class: "spacer" }, []),
         label({ class: "bots" }, bots === 0 ? "Every kart has a player." : `${bots} ${bots === 1 ? "bot fills" : "bots fill"} the rest of the grid.`),
-        start,
+        ...start,
         away,
       ]),
     ]),

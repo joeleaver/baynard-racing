@@ -69,6 +69,8 @@ export function style() {
 .who { font-size: 17px; color: #FFFBF2; }
 .whatracer { font-size: 13px; color: #B9D6B4; }
 .tag { margin-left: auto; font-family: ${strong}; font-size: 12px; color: #1D4426; background: #FFC531; border-radius: 8px; padding: 3px 8px; }
+.tag.ready { background: #7BC86C; }
+.wait.soon { font-family: ${display}; font-size: 24px; color: #FFC531; border-color: #FFC531; margin-bottom: 10px; }
 .bots { font-size: 15px; color: #B9D6B4; margin: 4px 4px 12px 4px; }
 
 .order { position: fixed; left: 18px; top: 120px; display: flex; flex-direction: column; }

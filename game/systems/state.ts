@@ -15,6 +15,8 @@ export const race = {
   /** The tick the race moved into its phase: a race starting this tick, or the lobby coming back. */
   started: false,
   backToLobby: false,
+  /** Everyone in the lobby has been ready long enough: the race starts this tick (systems/seats.ts). */
+  startNow: false,
 };
 
 /** Each seat in the game this tick, by seat number: whether somebody is there, and what they chose. */
@@ -25,9 +27,11 @@ export function players() {
   return [...seats.entries()].filter(([, s]) => s.here && s.entered).map(([n]) => n).sort((a, b) => a - b);
 }
 
-/** The player who starts races: the lowest seat in the lobby, or 0 with nobody there. */
+/** The player who takes everyone back to the lobby after a race: whoever has been in the game longest — the lowest seat with somebody
+ * on it, the creator of a private game — or 0 with nobody there. On a player's own machine that is
+ * them. */
 export function host() {
-  return players()[0] ?? 0;
+  return [...seats.entries()].filter(([, s]) => s.here).map(([n]) => n).sort((a, b) => a - b)[0] ?? 0;
 }
 
 /** The racer a seat picked, 0 for none. */
